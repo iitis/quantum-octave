@@ -33,7 +33,7 @@ while(nargin--)
 temp = va_arg();
 	if(length(temp)>1)
 		if (coef==1)
-     sum++;
+     			sum++;
 		endif
 
 		if(matrix_size==[0,0])
