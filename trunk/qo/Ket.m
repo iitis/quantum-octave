@@ -15,8 +15,10 @@ if ( isvector (vek))
 		tempvek = a;
 	elseif (vek(1) == 1)
 		tempvek = b;
-	else 
-		printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+	else
+		error(ket: );
+		//printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+		error("ket: [" ); error(" %d ",vek); error("]");
 		clear ret;
 		return;
 	endif
@@ -26,7 +28,7 @@ if ( isvector (vek))
 		elseif (vek(i) == 1)
 			tempvek = kron(tempvek,b);
 		else
-			printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+			error("ket: [" ); error(" %d ",vek); error("]");
 			clear ret;
 			return;
 		endif

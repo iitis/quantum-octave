@@ -10,7 +10,7 @@ while (nargin--)
         if ( isvector (vek) && length(vek)==ketlngth)
         	tempmtr(:,nargin+1)=vek;
 	else
-		printf("Error: vectors are of different sizes\n");
+		error("Normalize: vectors are of different sizes");
 		clear ret;
 		return;
 	endif
