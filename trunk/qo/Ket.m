@@ -34,7 +34,7 @@ tempvek = 0;
 vek = va_arg();
 nargin--;
 while (nargin--)
-	vek = [vek, va_arg ()];
+	vek = [vek, va_arg()];
 endwhile
 
 if ( isvector (vek))
