@@ -1,45 +1,36 @@
-## -*- texinfo -*-
-## @deftypefn {Function File} {} Ket (@var{binary_vector}, @dots{})
-## The @code{Ket} function generates vertical complex vector from any
-## number of @var{binary_vector}s.
-##
-## @example
-## @group
-## Ket([1,0,1])
-## @result{}
-##	0
-##	0
-##	0
-##	0
-##	0
-##	1
-##	0
-##	0
-## @end group
-## @end example
-##
-## @end deftypefn
-##
-## @seealso{ State, Not, Id, H}
-##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modyfication: 18 March 2004
+function ret = ket (varargin)
+a = [1,0]';
+b = [0,1]';
+ret = [0];
+tempvek = 0;
 
-function ret = Ket (binvec)
-if ( size(binvec)(1) != 1 )
-	error("Error in input vector!");
-endif
-num = 0;
-s = size(binvec)(2);
+vek = va_arg();
+nargin--;
+while (nargin--)
+	vek = [vek, va_arg ()];
+endwhile
 
-for i = 1:s
-	temp = binvec(s+1 - i);
-	if (temp == 0 || temp ==1)
-		num += (2^(i-1))*temp;
-	else
-		error("Number %d found in input vector!",temp);
+if ( isvector (vek))
+	if (vek(1) == 0)
+		tempvek = a;
+	elseif (vek(1) == 1)
+		tempvek = b;
+	else 
+		printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+		clear ret;
+		return;
 	endif
-endfor
-ret = KetN(num,size(binvec)(2));
-endfunction
+	for i = 2:length (vek);
+		if (vek(i) == 0)
+			tempvek = kron(tempvek,a);
+		elseif (vek(i) == 1)
+			tempvek = kron(tempvek,b);
+		else
+			printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+			clear ret;
+			return;
+		endif
+	endfor
+endif
+ret = tempvek;
+endfunction 
