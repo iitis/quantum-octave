@@ -2,8 +2,26 @@
 ## @deftypefn {Function File} {} Ket (@var{binary_vector}, @dots{})
 ## The @code{Ket} function generates vertical complex vector from any
 ## number of @var{binary_vector}s.
+##
+## @example
+## @group
+## Ket([1,0,1])
+## @result{}
+##	0
+##	0
+##	0
+##	0
+##	0
+##	1
+##	0
+##	0
+## @end group
+## @end example
+##
 ## @end deftypefn
-
+##
+## @seealso{ State, Not, Id, H}
+##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
 
