@@ -22,7 +22,7 @@
 function ret = Encode(state, code)
 # TODO right now code argument is skipped
 
-flag = -1; # 0-bitflip, 1-faseflip, 2-shor
+flag = -1; # 0-bitflip, 1-phaseflip, 2-shor
 
 if(nargin!=2)
 	usage("Encode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
@@ -45,20 +45,21 @@ if(qs!=1)
 endif
 
 if (flag==0) # bitflip
-	g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # encoding gate
+	g = Circuit(ControlledGate(3,Not,[1],[2]),ControlledGate(3,Not,[1],[3])); # encoding gate
+	
 	newstate = Kron(state, State(Ket([0,0])));
 	ret = Evolve(g, newstate);
-elseif(flag==1) # faseflip
-	g = ControlledGate(3,Not,[1],[3])*ControlledGate(3,Not,[1],[2]); # encoding gate
-	g*= ProductGate(3,H,[1,2,3]);
+elseif(flag==1) # phaseflip
+	g = Circuit(ControlledGate(3,Not,[1],[3]), ControlledGate(3,Not,[1],[2]), ProductGate(3,H,[1,2,3])); # encoding gate
 	newstate = Kron(state, State(Ket([0,0])));
 	ret = Evolve(g, newstate);
 elseif(flag==2) # shor
-	g = ControlledGate(9,Not,[1],[4])*ControlledGate(9,Not,[1],[7]); 
-	g*= ProductGate(9,H,[1,4,7]);
-	gc= ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); 
- 	g*= Kron(gc,gc,gc);
-	newstate = Compose(state, State(KetN(0,8)));
+	
+	g = Circuit(ControlledGate(9,Not,[1],[4]), ControlledGate(9,Not,[1],[7]), ProductGate(9,H,[1,4,7]));
+	
+	gc= Circuit(ControlledGate(3,Not,[1],[2]),ControlledGate(3,Not,[1],[3])); 
+	g = Circuit(g,Kron(gc,gc,gc));
+	newstate = Kron(state, State(KetN(0,8)));
 	ret = Evolve(g, newstate);
 endif
 

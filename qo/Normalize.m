@@ -22,15 +22,16 @@
 
 function ret = Normalize(varargin)
 ret = [0];
-vek = va_arg();
-temp = zeros(length(vek),nargin);
+NARGIN = nargin;
 
-va_start();
+vek = varargin{1};
+temp = zeros(length(vek),NARGIN);
+
 ketlength = length(vek);
-while (nargin--)
-	vek = va_arg();
+while (NARGIN)
+	vek = varargin{NARGIN--};
 	if ( isvector (vek) && length(vek)==ketlength)
-		temp(:,nargin+1)=vek;
+		temp(:,NARGIN+1)=vek;
 	else
 		error("Vectors are of different sizes!");
 		return;

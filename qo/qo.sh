@@ -15,6 +15,6 @@ if [ ${PWD_PATH} == "." ]; then
 else
 	QO_PATH=${PWD_PATH};
 fi
-export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples
+export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples:${QO_PATH}/tests
 
 octave

@@ -19,7 +19,7 @@
 
 function ret = MaxMix(varargin)
 	if( nargin == 1)
-		di = va_arg();
+		di = varargin{1};
 		ret = (1/2^di)*eye(2^di);
 	elseif( nargin == 0)
 		ret = (1/2)*eye(2);
