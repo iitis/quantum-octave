@@ -21,6 +21,17 @@
 
 function PlotProbs(probs)
 #TODO need checking if probs are valid
+
+#If probs is column vector we suppose that's state vector
+if(size(probs)(2)==1)
+	probs = abs(probs).^2
+	plot(probs,"^");
+#If probs is to column vector we suppose that's measure outcom
+elseif(size(probs)(2)==2)
 	plot(probs(:,1),probs(:,2),"^");
+#else it's an error
+else
+	error("Wrong input");
+endif
 endfunction
 
