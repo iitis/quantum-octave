@@ -24,6 +24,9 @@
 ## Last modification : 25 March 2004
 
 function ret = CNot(size,contrv,targetv)
+if (nargin != 3) 
+	usage ("CNot (size, control, targets)");
+endif
 
 ret = ControlledGate(size, Not, contrv, targetv );
 

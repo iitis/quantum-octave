@@ -27,9 +27,14 @@
 ## Last modyfication: 18 March 2004
 
 function ret = Ket (binvec)
+if (nargin != 1 )
+	usage ("Ket (binvec)");
+endif
+
 if ( size(binvec)(1) != 1 )
 	error("Error in input vector!");
 endif
+
 num = 0;
 s = size(binvec)(2);
 

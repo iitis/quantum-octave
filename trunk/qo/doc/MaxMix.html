@@ -4,35 +4,35 @@
 	  <meta name="GENERATOR" content="Quanta Plus">
 	  <meta name="KEYWORDS" content="quantum, octave, quantum mechanics, simulation, quantum computer, quantum information, matlab, ket, state, cnot, H, Hadamard, rot, density matrix, density matrices">
 	  <link rel="StyleSheet" rev="StyleSheet" href="quantum-octave.css" type="text/css">
-	  <title>Id -- QuantumOctave Package Documentation</title>
+	  <title>MaxMix -- QuantumOctave Package Documentation</title>
 </head>
 <body>
 <p>
-	<h2>Id</h2>
+	<h2>MaxMix</h2>
 </p>
 <hr width="100%">
 <p>
 	<h3>Declaration</h3>
-	Id ( nmu )<br>
+	MaxMix ( [num] )<br>
 
 </p>
 <hr width="100%">
 <p>
 	<h3>Description</h3>
-	This function returns <em>2<sup>num</sup>x 2<sup>num</sup></em> identity transformation, that is transformation acting
-	on <em>num</em> qubits. If no argument is supplied then it returns identity transformation for one qubit.
+	For a given number <pre>num</pre> this functions returns maximaly mixed states of <pre>num</pre>-qubits. If <pre>num</pre> 
+	is ommited then functions returns maximaly mixed state of one qubit.
 </p>
 <hr width="100%">
 <p>
 	<h3>Example</h3>
 	<pre>
-octave:1> Id(2)
-ans =
+	octave:1> MaxMix(2)
+	ans =
 
-1  0  0  0
-0  1  0  0
-0  0  1  0
-0  0  0  1
+	  0.25000  0.00000  0.00000  0.00000
+	  0.00000  0.25000  0.00000  0.00000
+	  0.00000  0.00000  0.25000  0.00000
+	  0.00000  0.00000  0.00000  0.25000
 	</pre>
 </p>
 
@@ -40,7 +40,7 @@ ans =
 <hr width="100%">
 <a href="index.html" target="_self">Back to main page</a>
 <p class="footnote">
-		&copy; 2003 Jarek Miszczak<br>
+		&copy; 2003-2004 Jarek Miszczak<br>
 		Last modification: Wed Nov  5 15:57:19 CET 2003
 </p>
 

@@ -32,6 +32,9 @@
 <font color="#8080ff">## Last modification : 25 March 2004</font>
 
 <font color="#ffff00">function</font> ret = CNot<font color="#00ffff">(</font>size,contrv,targetv<font color="#00ffff">)</font>
+<font color="#ffff00">if</font> <font color="#00ffff">(</font><font color="#00ffff">nargin</font> <font color="#ffff00">!=</font> <font color="#ff6060">3</font><font color="#00ffff">)</font>
+    usage <font color="#00ffff">(</font><font color="#ff6060">&quot;CNot (size, controls, targets)&quot;</font><font color="#00ffff">)</font>;
+<font color="#ffff00">endif</font>
 
 ret = ControlledGate<font color="#00ffff">(</font>size, Not, contrv, targetv <font color="#00ffff">)</font>;
 
