@@ -21,12 +21,17 @@
 function PlotProbs(probs)
 # TODO need checking if probs are valid
 
+#temporary
+#tmp=length(probs);
+#gset mxtics 1
+#gset xrange [-1:tmp+1]
+
 #If probs is column vector we suppose that's state vector
 if(size(probs)(2)==1)
-	plot([0:length(probs)-1],abs(probs).^2,"^");
+	plot([0:length(probs)-1],abs(probs).^2,"^;Probabilities;");
 #If probs is to column vector we suppose that's measure outcome
 elseif(size(probs)(2)==2)
-	plot(probs(:,1),probs(:,2),"^");
+	plot(probs(:,1),probs(:,2),"^;Probabilities;");
 #else it's an error
 else
 	error("Wrong input");
