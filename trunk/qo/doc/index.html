@@ -23,21 +23,37 @@
 	<h2>Functions</h2>
 	<ul>
 	<!-- state of quantum system -->
-	<li><a href="Ket.html" name="ket">Ket</a> - returns ket vector</li>
+	<li><a href="Ket.html" name="Ket">Ket</a> - returns ket vector</li>
+	<li><a href="KetN.html" name="KetN">KetN</a> - returns ket vector</li>
 	<li><a href="State.html" name="State">State</a> - quantum state represented by density matrix</li>
+	<li><a href="MixStates.html" name="MixStates">MixStates</a> - mixture of states</li>
+	<li><a href="Normalize.html" name="Normalize">Normalize</a> - mesurment</li>
+
 	<!-- unitary operations on quantum system -->
 	<li><a href="Id.html" name="Id">Id</a> - identity transformation on <em>n</em> qubits</li>
 	<li><a href="H.html" name="H">H</a> - Hadamard tfansformation on <em>n</em> qubits</li>
-	<li><a href="RotX.html" name="RotX">RotX</a> - </li>
-	<li><a href="RotY.html" name="RotY.html">RotY</a> - </li>
-	<li><a href="RotZ.html" name="RotZ.html">RotZ</a> - </li>
+	<li><a href="RotX.html" name="RotX">RotX</a>,
+	<a href="RotY.html" name="RotY.html">RotY</a>,
+	<a href="RotZ.html" name="RotZ.html">RotZ</a> - </li>
 	<li><a href="Phase.html" name="Phase">Phase</a> - </li>
+
 	<!-- general constructs for assembling quantum unitary operations -->
 	<li><a href="ProductGate.html" name="ProductGate">ProductGate</a> - returns gate which is a tensor product of a one-qubit gate and <a href="Id.html">Id</a> gate</li>
 	<li><a href="ControledGate.html" name="ControledGate">ControledGate</a> - returns a controled quantum gate</li>
+	<li><a href="CNot.html" name="CNot">CNot</a> - CNot gate</li>
+	<li><a href="Evolve.html" name="Evolve">Evolve</a> - unitary evolution</li>
+	<li><a href="PTrace.html" name="PTrace">PTrace</a> - partial tarce</li>
+	<li><a href="Projection.html" name="Projection">Projection</a> - projection</li>
+
 	<!-- investigation of quantum state -->
 	<li><a href="PrintAmps.html" name="PrintAmps">PrintAmps</a> - print the amplitudes of state vector</li>
 	<li><a href="PrintProbs.html" name="PrintProbs">PrintProbs</a> - print probabilitis of obtaining any state from the set of base states</li>
+	<li><a href="PlotAmps.html" name="PlotAmps">PlotAmps</a> - plot the amplitudes of state vector</li>
+	<li><a href="PlotProbs.html" name="PlotAmps">PlottAmps</a> - plot probabilitis of obtaining any state from the set of base states</li>
+
+	<li><a href="BuildBinaryVector.html" name="BuildBinaryVector">BuildBinaryVector</a> - helper function</li>
+	<li><a href="Dec2BinVec.html" name="Dec2BinVec">Dec2BinVec</a> - helper function</li>
+	<li><a href="isunitary.html" name="isunitary">isunitary</a> - helper function</li>
 	</ul>
 </p>
 <hr width="100%">
@@ -46,20 +62,37 @@
 	<h2>Files</h2>
 	<ul>
 	<!-- state of quantum system -->
-	<li><a href="Ket.m.html" class="src">Ket.m</a></li>
-	<li><a href="State.m.html" class="src">State.m</a></li>
+	<li><a href="Ket.m.html" name="Ket">Ket.m</a></li>
+	<li><a href="KetN.m.html" name="KetN">KetN.m</a></li>
+	<li><a href="State.m.html" name="State.m">State.m</a></li>
+	<li><a href="MixStates.m.html" name="MixStates.m">MixStates.m</a></li>
+	<li><a href="Normalize.m.html" name="Normalize.m">Normalize.m</a></li>
+
 	<!-- unitary operations on quantum system -->
-	<li><a href="Id.m.html" class="src">Id.m</a></li>
-	<li><a href="H.m.html" class="src">H.m</a></li>
-	<li><a href="RotX.m.html" class="src">RotX.m</a></li>
-	<li><a href="RotY.m" class="src">RotY.m</a></li>
-	<li><a href="RotZ.m.html" class="src">RotZ.m</a></li>
+	<li><a href="Id.m.html" name="Id.m">Id.m</a></li>
+	<li><a href="H.m.html" name="H.m">H.m</a></li>
+	<li><a href="RotX.m.html" name="RotX.m">RotX.m</a></li>
+	<li><a href="RotY.m.html" name="RotY.m">RotY.m</a></li>
+	<li><a href="RotZ.m.html" name="RotZ.m">RotZ.m</a></li>
+	<li><a href="Phase.m.html" name="Phase">Phase.m</a></li>
+
 	<!-- general constructs for assembling quantum unitary operations -->
-	<li><a href="ProductGate.m.html" class="src">ProductGate.m</a></li>
-	<li><a href="ControledGate.m.html" class="src">ControledGate.m</a></li>
+	<li><a href="ProductGate.m.html" name="ProductGate.m">ProductGate.m</a></li>
+	<li><a href="ControledGate.m.html" name="ControledGate.m">ControledGate.m</a></li>
+	<li><a href="CNot.m.html" name="CNot.m">CNot.m</a></li>
+	<li><a href="Evolve.m.html" name="Evolve.m">Evolve.m</a></li>
+	<li><a href="PTrace.m.html" name="PTrace.m">PTrace.m</a></li>
+	<li><a href="Projection.m.html" name="Projection.m">Projection.m</a></li>
+
 	<!-- investigation of quantum state -->
-	<li><a href="PrintAmps.m.html" class="src">PrintAmps.m</a></li>
-	<li><a href="PrintProbs.m.html" class="src">PrintProbs.m.html</a></li>
+	<li><a href="PrintAmps.m.html" name="PrintAmps.m">PrintAmps.m</a></li>
+	<li><a href="PrintProbs.m.html" name="PrintProbs.m">PrintProbs.m</a></li>
+	<li><a href="PlotAmps.m.html" name="PlotAmps.m">PlotAmps.m</a></li>
+	<li><a href="PlotProbs.m.html" name="PlotAmps.m">PlottAmps.m</a></li>
+
+	<li><a href="BuildBinaryVector.m.html" name="BuildBinaryVector.m">BuildBinaryVector.m</a></li>
+	<li><a href="Dec2BinVec.m.html" name="Dec2BinVec.m">Dec2BinVec.m</a></li>
+	<li><a href="isunitary.m.html" name="isunitary.m">isunitary.m</a></li>
 	</ul>
 </p>
 <hr width="100%">

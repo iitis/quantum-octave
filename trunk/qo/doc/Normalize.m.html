@@ -1,32 +1,53 @@
 <html>
 <head>
 <title>~/quantum-octave/Normalize.m.html</title>
-<meta name="Generator" content="Vim/6.2">
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
+<meta name="Generator" content="Vim/6.1">
 </head>
 <body bgcolor="#e5e5e5" text="#000000">
 <pre>
-<font color="#a52a2a"> 1</font>  <font color="#a52a2a"><b>function</b></font> ret = Normalize<font color="#008b8b">(</font>varargin<font color="#008b8b">)</font>
-<font color="#a52a2a"> 2</font>  ret = <font color="#008b8b">[</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span><font color="#008b8b">]</font>;
-<font color="#a52a2a"> 3</font>  vek = va_arg<font color="#008b8b">()</font>;
-<font color="#a52a2a"> 4</font>  tempmtr = zeros<font color="#008b8b">(</font>length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font>,<font color="#008b8b">nargin</font><font color="#008b8b">)</font>;
-<font color="#a52a2a"> 5</font>  <font color="#0000ff">#varargin;</font>
-<font color="#a52a2a"> 6</font>  va_start<font color="#008b8b">()</font>;
-<font color="#a52a2a"> 7</font>  ketlngth = length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font>;
-<font color="#a52a2a"> 8</font>  <font color="#a52a2a"><b>while</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font><font color="#a52a2a"><b>--</b></font><font color="#008b8b">)</font>
-<font color="#a52a2a"> 9</font>          vek = va_arg <font color="#008b8b">()</font>;
-<font color="#a52a2a">10</font>          <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> isvector <font color="#008b8b">(</font>vek<font color="#008b8b">)</font> <font color="#a52a2a"><b>&amp;&amp;</b></font> length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font><font color="#a52a2a"><b>==</b></font>ketlngth<font color="#008b8b">)</font>
-<font color="#a52a2a">11</font>              tempmtr<font color="#008b8b">(</font>:,<font color="#008b8b">nargin</font><font color="#a52a2a"><b>+</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font>=vek;
-<font color="#a52a2a">12</font>      <font color="#a52a2a"><b>else</b></font>
-<font color="#a52a2a">13</font>          printf<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Error: vectors are of different sizes\n&quot;</font></span><font color="#008b8b">)</font>;
-<font color="#a52a2a">14</font>          <font color="#008b8b">clear</font> ret;
-<font color="#a52a2a">15</font>          <font color="#a52a2a"><b>return</b></font>;
-<font color="#a52a2a">16</font>      <font color="#a52a2a"><b>endif</b></font>
-<font color="#a52a2a">17</font>  <font color="#a52a2a"><b>endwhile</b></font>
-<font color="#a52a2a">18</font>          ret = sum<font color="#008b8b">(</font>tempmtr,<span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#008b8b">)</font>;
-<font color="#a52a2a">19</font>          norm = sqrt<font color="#008b8b">(</font>ret<font color="#a52a2a"><b>'</b></font><font color="#a52a2a"><b>*</b></font>ret<font color="#008b8b">)</font>;
-<font color="#a52a2a">20</font>          ret = ret<font color="#a52a2a"><b>./</b></font>norm;
-<font color="#a52a2a">21</font>  <font color="#a52a2a"><b>endfunction</b></font>
+<font color="#a52a2a"> 1</font>  <font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#a52a2a"> 2</font>  <font color="#0000ff">## @deftypefn {Function File} Normalize (@var{Ket})</font>
+<font color="#a52a2a"> 3</font>  <font color="#0000ff">## The @code{Normalize} function generates normalized Ket vector from any</font>
+<font color="#a52a2a"> 4</font>  <font color="#0000ff">## number of @var{Ket}s. </font>
+<font color="#a52a2a"> 5</font>  <font color="#0000ff">## @example</font>
+<font color="#a52a2a"> 6</font>  <font color="#0000ff">## Normalize (Ket([0,1,1]),2*Ket([1,0,0]))</font>
+<font color="#a52a2a"> 7</font>  <font color="#0000ff">## @result{}</font>
+<font color="#a52a2a"> 8</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a"> 9</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a">10</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a">11</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.44721</font>
+<font color="#a52a2a">12</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.89443</font>
+<font color="#a52a2a">13</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a">14</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a">15</font>  <font color="#0000ff">##</font>  <font color="#0000ff">0.00000</font>
+<font color="#a52a2a">16</font>  <font color="#0000ff">## @end example</font>
+<font color="#a52a2a">17</font>  <font color="#0000ff">## @end deftypefn</font>
+<font color="#a52a2a">18</font>  <font color="#0000ff">## @seealso{State, Evolve}</font>
+<font color="#a52a2a">19</font>  <font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#a52a2a">20</font>  <font color="#0000ff">## Created: 25 November 2003</font>
+<font color="#a52a2a">21</font>
+<font color="#a52a2a">22</font>  <font color="#a52a2a"><b>function</b></font> ret = Normalize<font color="#008b8b">(</font>varargin<font color="#008b8b">)</font>
+<font color="#a52a2a">23</font>  ret = <font color="#008b8b">[</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span><font color="#008b8b">]</font>;
+<font color="#a52a2a">24</font>  vek = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">25</font>  tempmtr = zeros<font color="#008b8b">(</font>length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font>,<font color="#008b8b">nargin</font><font color="#008b8b">)</font>;
+<font color="#a52a2a">26</font>
+<font color="#a52a2a">27</font>  va_start<font color="#008b8b">()</font>;
+<font color="#a52a2a">28</font>  ketlngth = length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font>;
+<font color="#a52a2a">29</font>  <font color="#a52a2a"><b>while</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font><font color="#a52a2a"><b>--</b></font><font color="#008b8b">)</font>
+<font color="#a52a2a">30</font>      vek = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">31</font>      <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> isvector <font color="#008b8b">(</font>vek<font color="#008b8b">)</font> <font color="#a52a2a"><b>&amp;&amp;</b></font> length<font color="#008b8b">(</font>vek<font color="#008b8b">)</font><font color="#a52a2a"><b>==</b></font>ketlngth<font color="#008b8b">)</font>
+<font color="#a52a2a">32</font>          tempmtr<font color="#008b8b">(</font>:,<font color="#008b8b">nargin</font><font color="#a52a2a"><b>+</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font>=vek;
+<font color="#a52a2a">33</font>      <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">34</font>          error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Normalize: vectors are of different sizes&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">35</font>          <font color="#008b8b">clear</font> ret;
+<font color="#a52a2a">36</font>          <font color="#a52a2a"><b>return</b></font>;
+<font color="#a52a2a">37</font>      <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">38</font>  <font color="#a52a2a"><b>endwhile</b></font>
+<font color="#a52a2a">39</font>
+<font color="#a52a2a">40</font>  ret = sum<font color="#008b8b">(</font>tempmtr,<span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">41</font>  norm = sqrt<font color="#008b8b">(</font>ret<font color="#a52a2a"><b>'</b></font><font color="#a52a2a"><b>*</b></font>ret<font color="#008b8b">)</font>;
+<font color="#a52a2a">42</font>  ret = ret<font color="#a52a2a"><b>./</b></font>norm;
+<font color="#a52a2a">43</font>  <font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>
