@@ -39,6 +39,7 @@ endif
 if (outcome(1)==-0.5) # if first qubit is 1 then, perform Z on teleported state
 	lstate = Evolve(Sz, lstate);
 endif
-	ret = lstate;
+
+ret = lstate;
 printf("Teleportation done.\n");
 endfunction

@@ -37,9 +37,9 @@ ret = zeros (rs); # inicialize returned density matrix
 # loop over every matrix emelent of returned density matrix
 for i = 1:rs
 	for j = 1:rs
-		bi = ReverseVec(Dec2BinVec(i-1,rq))'; # those have to be row vectors
-		bj = ReverseVec(Dec2BinVec(j-1,rq))';
-	
+		bi = ReverseVec((Dec2BinVec(i-1,rq))); # those have to be row vectors
+		bj = ReverseVec(Dec2BinVec(j-1,rq));
+
 	# sum loop over elements of targv list
 		for k = 0:ts-1
 			bk = Dec2BinVec(k,tq);
