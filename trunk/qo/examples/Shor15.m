@@ -5,46 +5,105 @@ lstate=1;
 
 if (nargin==0)
 	lstate = State(KetN(0,7));
+#	lstate = KetN(0,7);
 else
 	lstate = state;	
 endif
 
 
+nq =7;
 
-prep = ProductGate(7,Not, [4:7]);
+# Preparation
+g = ProductGate(nq,H, [1:3]);
+lstate = Evolve(g, lstate);
 
-lstate = Evolve(prep, lstate);
+##########################################
+#function
+#y1
+target = 4;
+g = CNot(nq, 2,target);
+lstate = Evolve(g, lstate);
 
-WH = ProductGate(7, H, [1:3]);
+#y2
+target = 5;
 
-lstate = Evolve(WH, lstate);
+g = CNot(nq, [2:3],target);
+lstate = Evolve(g, lstate);
 
-A = CNot(7, 3, 5);
-lstate = Evolve(A, lstate);
+g = ProductGate(nq, Not, [2:3]);
+lstate = Evolve(g, lstate);
 
-B = CNot(7, 3, 6);
-lstate = Evolve(B, lstate);
+g = CNot(nq, [1:3],target);
+lstate = Evolve(g, lstate);
 
-lstate = PTrace(lstate, [4:7]);
+g = ProductGate(nq, Not, [2:3]);
+lstate = Evolve(g, lstate);
 
-#QFT
-H1=ProductGate(3, H, [1]);
-lstate = Evolve(H1, lstate);
+#y3
+target = 6;
 
-CPh1=ControlledGate(3, Phase(0,pi/2),1 ,2);
-lstate = Evolve(CPh1, lstate);
+g = ProductGate(nq, Not, 2);
+lstate = Evolve(g, lstate);
 
-H2=ProductGate(3, H, [2]);
-lstate = Evolve(H2, lstate);
+g = CNot(nq, [2:3],target);
+lstate = Evolve(g, lstate);
 
-CPh2=ControlledGate(3, Phase(0,pi/4),1 ,3);
-lstate = Evolve(CPh2, lstate);
+g = ProductGate(nq, Not, 2);
+lstate = Evolve(g, lstate);
 
-CPh3=ControlledGate(3, Phase(0,pi/2),2 ,3);
-lstate = Evolve(CPh3, lstate);
+g = ProductGate(nq, Not, [2:3]);
+lstate = Evolve(g, lstate);
 
-H2=ProductGate(3, H, [3]);
-lstate = Evolve(H2, lstate);
+g = CNot(nq, [1:3],target);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, [2:3]);
+lstate = Evolve(g, lstate);
+
+#y3
+target = 7;
+
+g = ProductGate(nq, Not, [1:3]);
+lstate = Evolve(g, lstate);
+
+g = CNot(nq, [1:3],target);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, [1:3]);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, 2);
+lstate = Evolve(g, lstate);
+
+g = CNot(nq, [2:3],target);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, 2);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, 3);
+lstate = Evolve(g, lstate);
+
+g = CNot(nq, [2:3],target);
+lstate = Evolve(g, lstate);
+
+g = ProductGate(nq, Not, 3);
+lstate = Evolve(g, lstate);
+##########################################
+# end of function
+
+# traceout
+lstate = PTrace(lstate,[4:7]);
+
+
+# permutation
+g = Swap(3, [1,3]);
+lstate = Evolve(g, lstate);
+
+# quantum fourier transform
+g = QFT(3);
+lstate = Evolve(g, lstate);
+
 
 ret=lstate;
 
