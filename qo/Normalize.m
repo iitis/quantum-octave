@@ -21,6 +21,9 @@
 ## Last modification: 25 March 2004
 
 function ret = Normalize(varargin)
+if (nargin < 1 )
+	usage ("Normalize (ket)");
+endif
 ret = [0];
 NARGIN = nargin;
 
