@@ -6,10 +6,10 @@ if (dotvek(1) == 1)
 	idx++;
 else
 	tmp = Id(1);
-endif	
+endif
 
 if (max(dotvek)>regsize || min(dotvek)<1)
-	printf("Error: qubit index greater then register given size or less than 0\n");
+	error("ProductGate: qubit index greater then register given size or less than 0");
 	return;
 endif
 
