@@ -19,8 +19,13 @@
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 15 March 2004
+## LAst modyfication: 10 May 2004
 
 function ret = PTrace(state,tqidx)
+if ( nargin != 2 )
+	usage (" PTrace (state, trace_qubits)");
+endif
+
 targv = sort(tqidx); # must be sorted!
 
 ss = size(state)(2); # dimension of matrix state - always power of 2
