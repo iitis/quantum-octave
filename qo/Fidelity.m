@@ -3,25 +3,16 @@
 ## Function @code{Fidelity} returns fidelity (distance between)
 ## of state @var{rho} vs. @var{sigma}.
 ##
-## @example 
-## @group
-## Fidelity(State(Ket([0,0,0])),[1,2])
-##  @result{} 
-##	1 0
-##	0 0
-## @end group
-## @end example
-##
 ## @end deftypefn
 ##
-## @seealso {Encode, Decode, Recover}
+## @seealso {Encode, Decode, Recover, Entropy, TrNorm}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 29 March 2004
 
 function ret = Fidelity(rho,sigma)
 if (nargin!=2)
-	usage("Fidelity(rho,sigma)");
+	usage("Fidelity (rho,sigma)");
 endif
 
 sr = size(rho);
