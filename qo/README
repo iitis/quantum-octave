@@ -1,26 +1,27 @@
 General information
 ^^^^^^^^^^^^^^^^^^^
-QuantumOctave is a set of GNU Octave function for doing quick-and-dirty simulations of quantum computers and -- in general -- quantum systems. 
-
-Our ambition is implementation of complete set of function needed for performing quantum computation.
-
+QuantumOctave is a set of GNU Octave functions for doing quick-and-dirty simulations of quantum 
+computers and -- in general -- quantum systems. Our ambition is implementation of complete set 
+of function needed for performing quantum computation.
 
 You can download the package from the project home page.
 
 	http://quantum-octave.sf.net/ 
 
+or using SourceForge CVS service.
+
 Instalation
 ^^^^^^^^^^^
-To use quantum-octave you need GNU Octave in version higer then 2.1.35. You can download it for
+To use quantum-octave you need GNU Octave in version higher then 2.1.35. You can download it for
 
 	http://www.octave.org/
 	
 or, if you using Linux, install binary version which ships with your distribution.
 	
-Ungzip an untar with m-files and add directory quantum-octave to OCTAVE_PATH environment variable. 
+Ungzip and untar with m-files and add directory quantum-octave to OCTAVE_PATH environment variable. 
 Users of bash compatible shell should type
 
-	export OCTAVE_PATH=$OCTAVE_PATH:/path/to/quantm-octave:/path/to/quantm-octave/examples
+	export OCTAVE_PATH=$OCTAVE_PATH:/path/to/quantum-octave:/path/to/quantum-octave/examples
 
 Package was tested with GNU Ocatve versions 2.1.35 and 2.1.35. We encourage you to use the newest
 version available.
