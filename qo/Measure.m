@@ -28,7 +28,7 @@ function ret = Measure(state, observables, str)
 
 flag=-1; # 0 - return measured state (default); 1 - return structure
 
-lobservables = ReverseVec(observables);
+lobservables = observables;
 
 
 if(nargin==2)
@@ -97,7 +97,7 @@ for j=0:2^lo-1 # for every possible projection
 	for i=1:lo
 		projection = kron(projection,nth(listobs,i)(indexes(i)).proj);
 		prob(j+1).out(i)=nth(listobs,i)(indexes(i)).l;
-		prob(j+1).out=ReverseVec(prob(j+1).out);
+		prob(j+1).out=prob(j+1).out;
 	endfor
 #*	projection
 	p = trace(state*projection); # compute probability 
