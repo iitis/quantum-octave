@@ -1,3 +1,12 @@
+## -*- texinfo -*-
+## @deftypefn {Function File} Normalize (@var{binary_vector}, @dots{})
+## The @code{Ket} function generates vertical complex vector from any
+## number of @var{binary_vector}s.
+## @end deftypefn
+
+## Author: Piotr Gawron, Jaroslaw Miszczak
+## Created: 25 November 2003
+
 function ret = Normalize(varargin)
 ret = [0];
 vek = va_arg();
@@ -6,16 +15,17 @@ tempmtr = zeros(length(vek),nargin);
 va_start();
 ketlngth = length(vek);
 while (nargin--)
-        vek = va_arg ();
-        if ( isvector (vek) && length(vek)==ketlngth)
-        	tempmtr(:,nargin+1)=vek;
+	vek = va_arg ();
+	if ( isvector (vek) && length(vek)==ketlngth)
+		tempmtr(:,nargin+1)=vek;
 	else
 		error("Normalize: vectors are of different sizes");
 		clear ret;
 		return;
 	endif
 endwhile
-        ret = sum(tempmtr,2);
-        norm = sqrt(ret'*ret);
-        ret = ret./norm;
+
+ret = sum(tempmtr,2);
+norm = sqrt(ret'*ret);
+ret = ret./norm;
 endfunction
