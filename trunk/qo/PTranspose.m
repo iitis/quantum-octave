@@ -6,25 +6,27 @@
 ##
 ## @example 
 ## @group
-## PTranspose(State(Ket([0,0,0])),[1,2])
+## PTranspose(State(GHZ),[1,2])
 ##  @result{} 
-##	
-##	
-##
+##	0.50000
 ## @end group
 ## @end example
 ##
 ## @end deftypefn
 ##
-## @seealso {ProductGate, PTrace}
+## @seealso {ProductGate, PTrace, Entropy, GHZ, W, Werner}
 ## Author: Piotr Gawron, Jaroslaw Miszczak
+##
 ## Created: 22 March 2004
+##
+## Last modyfication: 26 March 2004
 
 function ret = PTranspose(state,tqidx)
 if (nargin != 2)
 	usage ("PTranspose (state, qubits_vector)");
 endif
 
+# calculate some parameters
 ss = size(state)(2); # dimension of matrix state - always power of 2
 sq = log2(ss); # numer of qubits in matrix state
 
@@ -37,15 +39,15 @@ if ( rq < 0 )
 	error ("To many qubits in transposition vector!");
 endif
 
-# compute binary mask
-mask_dec = sum(2.^(tqidx-1)); # sum powers of 2 in tqdix
-mask_bin = Dec2BinVec(mask_dec,tq); # wher to flip elements
-if (sq-tq > 0)
-	comp = Dec2BinVec(0,sq-tq); # other elements of mask are zero
-	mask = BuildBinaryVector(tqidx,mask_bin,comp,sq);
-else 
-	mask = mask_bin;
+if ( max(tqidx) > sq || min(tqidx) < 1 )
+	error ("Transposition index is out of bound!");
 endif
+
+# where to flip elements
+mask = zeros(sq,1);
+for mi = 1:tq
+	mask(tqidx(mi)) = 1;
+endfor	
 
 ret = zeros (ss); # inicialize returned density matrix
 
@@ -58,7 +60,7 @@ for i = 1:ss
 		rbi = bi;
 		rbj = bj;
 		for ii = 1:sq
-			if (mask(ii) == 1)
+			if ( mask(ii) == 1)
 				# flip bits
 				rbi(ii) = bj(ii); 
 				rbj(ii) = bi(ii);
