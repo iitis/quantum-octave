@@ -20,9 +20,9 @@
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
 
-function ret = Id(varargin)
+function ret = Id(arg)
 	if(nargin==1)
-		di = va_arg();
+		di = arg;
 		ret = eye(2^di);
 	elseif(nargin==0)
 		ret = eye(2);
