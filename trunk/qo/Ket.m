@@ -1,3 +1,9 @@
+## -*- texinfo -*-
+## @deftypefn {Function File} {} Ket (@var{binary_vector}, @dots{})
+## The @code{Ket} function generates vertical complex vector from any
+## number of @var{binary_vector}s.
+## @end deftypefn
+
 function ret = Ket (varargin)
 a = [1,0]';
 b = [0,1]';
