@@ -1,7 +1,8 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Id([@var{size}] )
-## Function @code{Id(@var{size})} returns 2^size x 2^size dentity
-## matrix, argument is optional, if not suplied is set to 1.
+## @deftypefn{Function file} {} Id([@var{size}])
+## Function @code{Id(@var{size})} returns 2^@var{size} x 2^@var{size} 
+## unitary matrix - that is matrix accting on @var{size} qubits.
+## Argument is optional, if not suplied is set to 1.
 ## 
 ## @example 
 ## @group
@@ -14,7 +15,7 @@
 ## @end group
 ## @end example
 ## @end deftypefn
-## @seealso {H, Not}
+## @seealso {Not, H, Pase}
 ## 
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003

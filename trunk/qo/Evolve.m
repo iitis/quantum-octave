@@ -12,7 +12,7 @@
 ## @end group
 ## @end example
 ## @end deftypefn
-
+## @seealso{ State, ProductGate }
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
 
