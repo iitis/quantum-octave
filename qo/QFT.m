@@ -25,6 +25,6 @@ for x=[0:twopowN-1]
 		ret(x+1,y+1)=e^(twopii*x*y/(twopowN));
 	endfor
 endfor
-ret = 1/sqrt(2^n)*ret;
+ret = (1/sqrt(2^n))*ret;
 
 endfunction
