@@ -6,30 +6,30 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} State(@var{ket})</font>
-<font color="#8080ff">## Function @code{State} returns density matrix representing state @var{ket}. Density matrix is vailid if state is normalized.</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## State (Normalize(Ket([0,1])+Ket([1,0])))</font>
-<font color="#8080ff">##  @result{} </font>
-<font color="#8080ff">## 0.00000  0.00000  0.00000  0.00000</font>
-<font color="#8080ff">## 0.00000  0.50000  0.50000  0.00000</font>
-<font color="#8080ff">## 0.00000  0.50000  0.50000  0.00000</font>
-<font color="#8080ff">## 0.00000  0.00000  0.00000  0.00000</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">## @seealso {Normalize}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">## Created: 25 November 2003</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} State(@var{ket})</font>
+<font color="#0000ff">## Function @code{State} returns density matrix representing state @var{ket}. Density matrix is vailid if state is normalized.</font>
+<font color="#0000ff">## </font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## State (Normalize(Ket([0,1])+Ket([1,0])))</font>
+<font color="#0000ff">##  @result{} </font>
+<font color="#0000ff">## 0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">## 0.00000  0.50000  0.50000  0.00000</font>
+<font color="#0000ff">## 0.00000  0.50000  0.50000  0.00000</font>
+<font color="#0000ff">## 0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">## @seealso {Normalize}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">## Created: 25 November 2003</font>
 
-<font color="#ffff00">function</font> ret = State<font color="#00ffff">(</font>ket<font color="#00ffff">)</font>
-    ret = ket<font color="#ffff00">*</font>ket<font color="#ffff00">'</font>;
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>function</b></font> ret = State<font color="#008b8b">(</font>ket<font color="#008b8b">)</font>
+    ret = ket<font color="#a52a2a"><b>*</b></font>ket<font color="#a52a2a"><b>'</b></font>;
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

@@ -6,37 +6,38 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} Concurrence(@var{rho})</font>
-<font color="#8080ff">## Function @code{Concurrence} returns concurrence of the state</font>
-<font color="#8080ff">## @var{rho}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {Negativity, Entropy, TrNorm}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">## Created: 5 Mai 2004</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} Concurrence(@var{rho})</font>
+<font color="#0000ff">## Function @code{Concurrence} returns concurrence of the two qubit </font>
+<font color="#0000ff">## state @var{rho}. Functions can calculate concurrence for</font>
+<font color="#0000ff">## density matrix or state vector.</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {Negativity, Entropy, TrNorm}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">## Created: 05 May 2004</font>
 
-<font color="#ffff00">function</font> ret = Concurrence <font color="#00ffff">(</font>state<font color="#00ffff">)</font>
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> <font color="#00ffff">nargin</font> <font color="#ffff00">!=</font> <font color="#ff6060">1</font><font color="#00ffff">)</font>
-    usage<font color="#00ffff">(</font><font color="#ff6060">&quot;Concurrence (state)&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>function</b></font> ret = Concurrence <font color="#008b8b">(</font>state<font color="#008b8b">)</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> <font color="#008b8b">nargin</font> <font color="#a52a2a"><b>!=</b></font> <font color="#ff00ff">1</font><font color="#008b8b">)</font>
+    usage<font color="#008b8b">(</font><font color="#ff00ff">&quot;Concurrence (state)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-ss = size<font color="#00ffff">(</font>state<font color="#00ffff">)</font>;
-gt = kron<font color="#00ffff">(</font>Sy,Sy<font color="#00ffff">)</font>; <font color="#8080ff"># fliping operation</font>
+ss = size<font color="#008b8b">(</font>state<font color="#008b8b">)</font>;
+gt = kron<font color="#008b8b">(</font>Sy,Sy<font color="#008b8b">)</font>; <font color="#0000ff"># fliping operation</font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> ss <font color="#ffff00">==</font> <font color="#00ffff">[</font><font color="#ff6060">4</font>,<font color="#ff6060">1</font><font color="#00ffff">]</font> <font color="#00ffff">)</font>
-    fs = gt<font color="#ffff00">*</font>conj<font color="#00ffff">(</font>state<font color="#00ffff">)</font>; <font color="#8080ff"># flip the state vector</font>
-    ret = abs <font color="#00ffff">(</font>state<font color="#ffff00">'</font><font color="#ffff00">*</font>fs<font color="#00ffff">)</font>;
-<font color="#ffff00">elseif</font> <font color="#00ffff">(</font> ss <font color="#ffff00">==</font> <font color="#00ffff">[</font><font color="#ff6060">4</font>,<font color="#ff6060">4</font><font color="#00ffff">]</font> <font color="#00ffff">)</font>
-    fs = gt<font color="#ffff00">*</font><font color="#00ffff">(</font>conj<font color="#00ffff">(</font>state<font color="#00ffff">)</font><font color="#ffff00">*</font>gt<font color="#00ffff">)</font>;  <font color="#8080ff"># flip the state matrix</font>
-    ev = sqrt<font color="#00ffff">(</font>sort<font color="#00ffff">(</font>eig <font color="#00ffff">(</font>state<font color="#ffff00">*</font>fs<font color="#00ffff">)))</font>; <font color="#8080ff"># compute square roots of eigenvalues of state*fs</font>
-    ret = max<font color="#00ffff">(</font><font color="#ff6060">0</font>,ev<font color="#00ffff">(</font><font color="#ff6060">4</font><font color="#00ffff">)</font> <font color="#ffff00">-</font> ev<font color="#00ffff">(</font><font color="#ff6060">3</font><font color="#00ffff">)</font> <font color="#ffff00">-</font> ev<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">)</font> <font color="#ffff00">-</font> ev<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">))</font>;
-<font color="#ffff00">else</font>
-    error <font color="#00ffff">(</font><font color="#ff6060">&quot;I don't know how to compute conncurrence for this state&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> ss <font color="#a52a2a"><b>==</b></font> <font color="#008b8b">[</font><font color="#ff00ff">4</font>,<font color="#ff00ff">1</font><font color="#008b8b">]</font> <font color="#008b8b">)</font>
+    fs = gt<font color="#a52a2a"><b>*</b></font>conj<font color="#008b8b">(</font>state<font color="#008b8b">)</font>; <font color="#0000ff"># flip the state vector</font>
+    ret = abs <font color="#008b8b">(</font>state<font color="#a52a2a"><b>'</b></font><font color="#a52a2a"><b>*</b></font>fs<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>elseif</b></font> <font color="#008b8b">(</font> ss <font color="#a52a2a"><b>==</b></font> <font color="#008b8b">[</font><font color="#ff00ff">4</font>,<font color="#ff00ff">4</font><font color="#008b8b">]</font> <font color="#008b8b">)</font>
+    fs = gt<font color="#a52a2a"><b>*</b></font><font color="#008b8b">(</font>conj<font color="#008b8b">(</font>state<font color="#008b8b">)</font><font color="#a52a2a"><b>*</b></font>gt<font color="#008b8b">)</font>;  <font color="#0000ff"># flip the state matrix</font>
+    ev = sqrt<font color="#008b8b">(</font>sort<font color="#008b8b">(</font>eig <font color="#008b8b">(</font>state<font color="#a52a2a"><b>*</b></font>fs<font color="#008b8b">)))</font>; <font color="#0000ff"># compute square roots of eigenvalues of state*fs</font>
+    ret = max<font color="#008b8b">(</font><font color="#ff00ff">0</font>,ev<font color="#008b8b">(</font><font color="#ff00ff">4</font><font color="#008b8b">)</font> <font color="#a52a2a"><b>-</b></font> ev<font color="#008b8b">(</font><font color="#ff00ff">3</font><font color="#008b8b">)</font> <font color="#a52a2a"><b>-</b></font> ev<font color="#008b8b">(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font> <font color="#a52a2a"><b>-</b></font> ev<font color="#008b8b">(</font><font color="#ff00ff">1</font><font color="#008b8b">))</font>;
+<font color="#a52a2a"><b>else</b></font>
+    error <font color="#008b8b">(</font><font color="#ff00ff">&quot;I don't know how to compute conncurrence for this state&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>
