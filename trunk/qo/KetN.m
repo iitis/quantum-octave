@@ -1,26 +1,23 @@
 ## -*- texinfo -*-
-## @deftypefn {Function File} {} KetN (@var{binary_vector}, @dots{})
-## The @code{Ket} function generates vertical complex vector from any
-## number of @var{binary_vector}s.
+## @deftypefn {Function File} {} KetN (@var{int}, @var{size})
+## The @code{Ket} function generates vertical complex vector from
+## nonnegative number @var{int} in @var{size}-qubit space. If @var{size} is
+## @var{size} is ommited the smallest space proper for requested vector.
 ##
 ## @example
 ## @group
-## Ket([1,0,1])
+## KetN(3,2)
 ## @result{}
 ##	0
 ##	0
 ##	0
-##	0
-##	0
 ##	1
-##	0
-##	0
 ## @end group
 ## @end example
 ##
 ## @end deftypefn
 ##
-## @seealso{ State, Not, Id, H}
+## @seealso{Ket, State, Not, Id, H}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 05 March 2004
