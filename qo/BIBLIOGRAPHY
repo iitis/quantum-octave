@@ -11,9 +11,9 @@ Ekert A., Quantum cryptography based on Bell theorem, Phys. Rev. Lett. 67, 661–6
 Gottesman D., Chuang I., Quantum digital signatures, arXiv:quant-ph/0105032, 2001.
 Horodecki M., Entanglement measures, Quantum Information and Computation, Vol. 1, No. 1, pp. 3-26, 2001.
 Horodecki, M. Horodecki P., Horodecki R., Separability of mixed states: necessary and sufficient conditions, Phys. Lett. A, vol. 223 (1-2), 1-131, 1996.	
-Preskill J., Lecture Notes in Quantum Computation, http://www.theory.caltech.edu/people/preskill/ph229/, 2001.
-Strona projektu quantum-octave, http://quantum-octave.sourceforge.net/, 2004.
-Vidal G., Werner R. F., Computable measure of entanglement, Phys. Rev. A, vol. 65, 032314, 2002.
-Werner R. F., Quantum states with Einstein-Rosen-Podolsky correlations admitting a hidden-variable model, Phys. Rev. A, vol. 40, 4277-4281, 1989.
-Grudka A., Quantum teleportation between multiparties, quant-ph/0303112, 2003.
-Grudka A., Wojcik A., Multiparty d-dimensional quantum information splitting , Acta Phys. Pol. A 102, 703, 2002.
+P. Horodecki, How to measure amount of entanglement contained in unknow state, quant-ph/0111082
+J. Preskill, Lecture Notes in Quantum Computation, http://www.theory.caltech.edu/people/preskill/ph229/, 2001.
+G. Vidal, R. F. Werner, Computable measure of entanglement, Phys. Rev. A, vol. 65, 032314, 2002.
+R. F. Werner, Quantum states with Einstein-Rosen-Podolsky correlations admitting a hidden-variable model, Phys. Rev. A, vol. 40, 4277-4281, 1989.
+A. Grudka, Quantum teleportation between multiparties, quant-ph/0303112, 2003.
+A. Grudka, A. Wojcik,  Multiparty d-dimensional quantum information splitting , Acta Phys. Pol. A 102, 703, 2002.
