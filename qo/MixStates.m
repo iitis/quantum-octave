@@ -3,13 +3,12 @@
 ## This function allow to represent a mixture of mixed states.
 ## The argument is a list of density matrices (for example returned
 ## by function State). Every density matrix can be preceded by a
-## (complex) number. If no number is specifed the default
-## value 1 is used. If a numbe is specified then it is
-## normalied so that the result would be vaild density matrix.
+## number. If no number is specifed the default value 1 is used. 
+## The result is normalised so that it would be a vaild density matrix.
 ## For example:
 ## @example
 ## @group
-## MixState(State(Ket([0,1])), 0.5, State(Ket([1,0])))
+## MixStates(State(Ket([0,1])), 0.5, State(Ket([1,0])))
 ##  @result{}
 ## 0.00000  0.00000  0.00000  0.00000
 ## 0.00000  0.66667  0.00000  0.00000
@@ -18,44 +17,48 @@
 ## @end group
 ## @end example
 ## @end deftypefn
-
+##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
+## Last modyfication: 07 May 2004
 
 function ret = MixStates(varargin)
-NARGIN = nargin;
+argc =  nargin;
 
-summtr = 0;
-coef = 1;
-sum = 0;
+if (argc == 0)
+	usage ("MixStates ([num,] state [[,num], state] )");
+endif
 
-matrix_size = [0,0];
+was_scalar = false;
+mixs = 1;
 
-while(NARGIN--)
-temp = varargin{NARGIN};
-	if(length(temp)>1)
-		if (coef==1)
-     			sum++;
+# buil structure for representing mixture
+for argn = 1:argc
+	if ( isscalar(varargin{argn}) )
+		if ( was_scalar )
+			error ("Wrong form of mixture (two numbers without matrix)!");
+		elseif ( !was_scalar ) 
+			mixture(mixs).c = varargin{argn};
+			was_scalar = true;
 		endif
-
-		if(matrix_size==[0,0])
-			matrix_size = size(temp);
-		elseif(matrix_size!=size(temp))
-			error("Matrices have to be the same size");
-		elseif(size(temp)(1)!=size(temp)(2))
-			error("Matrices have to be square");
-		elseif(floor(log2(size(temp)))!=ceil(log2(size(temp))))
-			error("Matrices have to be size 2^n x 2^n");
+	elseif ( issquare(varargin{argn}) && !isscalar(varargin{argn}) )
+		mixture(mixs).m = varargin{argn};
+		if ( was_scalar )
+			mixture(mixs).c = varargin{argn-1};
+		elseif ( !was_scalar )
+			mixture(mixs).c = 1;
 		endif
-
-		summtr+=coef.*temp;
-		coef=1;
-	else
-		coef=temp;
-		sum+=coef;
+		was_scalar = false;
+		mixs++;
 	endif
-endwhile
-sum;
-ret = summtr./sum;
+endfor
 
+# sum components
+ret =  zeros( size(mixture(1).m) );
+for n = 1:mixs - 1
+	ret += mixture(n).c*mixture(n).m ;
+endfor
+
+# normalize result
+ret = ret/trace(ret);
 endfunction
