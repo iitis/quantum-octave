@@ -42,6 +42,6 @@ for i = 1:bs
 endfor
 
 # build number based on binary vector
-ret = sum(2.^[0:bs-1].*temp');
+ret = sum(2.^[0:bs-1].*temp);
 
 endfunction
