@@ -6,11 +6,15 @@
 # (c) 2004 Jarek Miszczak
 # Last modyfication: Tue Mar 23 12:19:51 UTC 2004
 
+# Changing this variable if you want to copy this file to other 
+# directory, for example in your PATH.
 PWD_PATH=$(dirname $0);
+
 if [ ${PWD_PATH} == "." ]; then
 	QO_PATH=$(pwd);
 else
 	QO_PATH=${PWD_PATH};
 fi
 export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples
+
 octave
