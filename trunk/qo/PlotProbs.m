@@ -24,9 +24,8 @@ function PlotProbs(probs)
 
 #If probs is column vector we suppose that's state vector
 if(size(probs)(2)==1)
-	probs = abs(probs).^2
-	plot(probs,"^");
-#If probs is to column vector we suppose that's measure outcom
+	plot([0:length(probs)-1],abs(probs).^2,"^");
+#If probs is to column vector we suppose that's measure outcome
 elseif(size(probs)(2)==2)
 	plot(probs(:,1),probs(:,2),"^");
 #else it's an error
