@@ -23,7 +23,7 @@
 ## Created: 12 December 2003.
 ## Last modyfication: 10 February 2004.
 
-function ret = Measure(state)
+function ret = MeasureZ(state)
   state_size = size(state)(1);
 #  qubit_count = log2(state_size)
   

@@ -41,23 +41,23 @@ endif
 
 proj1 = [0,0;0,1];
 
-sort(contrv);
-sort(targetv);
+lcontrv = sort(contrv);
+ltargetv = sort(targetv);
 
 flags = zeros(1,size);
 
-for i = 1:length(contrv)
-	ctmp = contrv(i);
+for i = 1:length(lcontrv)
+	ctmp = lcontrv(i);
 	flags(ctmp) = 1;
 endfor
 
-for i = 1:length(targetv)
-	ttmp = targetv(i);
-	if flags(ttmp) != 0
+for i = 1:length(ltargetv)
+	ttmp = ltargetv(i);
+	if (flags(ttmp) != 0)
 		error("arguments overlaping");
 		return;
 	else
-	flags(ttmp) = 2;
+		flags(ttmp) = 2;
 	endif
 endfor
 
