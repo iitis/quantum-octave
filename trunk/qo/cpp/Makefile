@@ -32,3 +32,4 @@ Dec2BinVec:
 
 clean:
 	rm -f $(OBJ)
+	rm -f *.o
