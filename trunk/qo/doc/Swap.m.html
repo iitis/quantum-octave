@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>~/quantum-octave/Swap.m.html</title>
+<meta name="Generator" content="Vim/6.2">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<pre>
+<font color="#ffff00">function</font> ret = Swap<font color="#00ffff">(</font>s, qubits<font color="#00ffff">)</font>
+<font color="#ffff00">if</font> <font color="#00ffff">(</font><font color="#00ffff">nargin</font><font color="#ffff00">!=</font><font color="#ff6060">2</font><font color="#00ffff">)</font>
+    usage<font color="#00ffff">(</font><font color="#ff6060">&quot;Swap(state, qubits)&quot;</font><font color="#00ffff">)</font>;
+<font color="#ffff00">endif</font>
+<font color="#ffff00">if</font> <font color="#00ffff">(</font>size<font color="#00ffff">(</font>qubits<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font><font color="#ffff00">!=</font><font color="#ff6060">2</font><font color="#00ffff">)</font>
+    error<font color="#00ffff">(</font><font color="#ff6060">&quot;only exactly 2 qubits can be swaped!&quot;</font><font color="#00ffff">)</font>;
+<font color="#ffff00">endif</font>
+
+<font color="#ffff00">if</font><font color="#00ffff">(</font> <font color="#00ffff">(</font>qubits<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">)</font><font color="#ffff00">&gt;</font>s<font color="#00ffff">)</font> <font color="#ffff00">||</font> <font color="#00ffff">(</font>qubits<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">)</font><font color="#ffff00">&gt;</font>s<font color="#00ffff">)</font> <font color="#00ffff">)</font>
+    error<font color="#00ffff">(</font><font color="#ff6060">&quot;Qubit index out of bound!&quot;</font><font color="#00ffff">)</font>;
+<font color="#ffff00">endif</font>
+
+<font color="#ffff00">if</font> <font color="#00ffff">(</font>qubits<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">)</font><font color="#ffff00">==</font>qubits<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">))</font>
+    ret =Id<font color="#00ffff">(</font>s<font color="#00ffff">)</font>;
+<font color="#ffff00">else</font>
+    g1 = CNot<font color="#00ffff">(</font>s, qubits<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">)</font>, qubits<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">))</font>;
+    g2 = CNot<font color="#00ffff">(</font>s, qubits<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>, qubits<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">))</font>;
+    g3 = CNot<font color="#00ffff">(</font>s, qubits<font color="#00ffff">(</font><font color="#ff6060">1</font><font color="#00ffff">)</font>, qubits<font color="#00ffff">(</font><font color="#ff6060">2</font><font color="#00ffff">))</font>;
+
+    ret = Circuit<font color="#00ffff">(</font>g1,g2,g3<font color="#00ffff">)</font>;
+<font color="#ffff00">endif</font>
+
+<font color="#ffff00">endfunction</font>
+</pre>
+</body>
+</html>
