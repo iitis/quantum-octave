@@ -43,15 +43,14 @@ if (flag==0) # bitflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
 	endif
-        g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3])*ProductGate(3,Not,[2,3]); # encoding gate
+        g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # decoding gate
         ret = Evolve(g, state);
-#	dupa = 2342389472384623692462342386
 elseif(flag==1) # faseflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
 	endif
         g = ProductGate(3,H,[1,2,3]);
-        g*= ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # encoding gate
+        g*= ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # decoding gate
         ret = Evolve(g, state);
 elseif(flag==2) # shor
  	if (qs!=9)
