@@ -23,5 +23,8 @@
 ## Created: 26 March 2004
 
 function ret = Negativity(state, qlist);
+if ( nargin )
+	usage ("Negativity (state, qubits)");
+endif
 	ret = 0.5*(TrNorm(PTranspose(state,qlist)) - 1); 
 endfunction
