@@ -4,23 +4,13 @@
 ## matrix which represents state with qubits listed in @var{list} 
 ## tagged using qubit authentication algorithm.
 ## Matrix  @var{gate} specifies algorithm.
-## @example 
-## @group
-## CheckTag(State(Ket([0])),Not)
-##  @result{}
-##
-##
-##
-##
-## @end group
-## @end example
 ## @end deftypefn
 ## @seealso {ProductGate, ControlledGate, Encode, Decode, Recover}
 ## 
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 27 March 2004
 
-function ret = TagQubits(state, gate)
+function ret = CheckTag(state, gate)
 if (nargin != 2)
 	usage ("CheckTaq (state, gate)");
 endif
@@ -31,9 +21,8 @@ P1 = Projection([1]);
 key = State(PsiM);
 tag = State(Ket([0]));
 
-trans = kron(kron(key, state), tag)
+decgate = kron(kron(Id,P0), gate') +  kron (kron(Id,P1), Id(2));
 
-encgate = kron(kron(P0,Id), Id(2)) +  kron (kron(P1,Id), gate);
+ret = Evolve(decgate, state);
 
-ret = Evolve(encgate, trans);
 endfunction

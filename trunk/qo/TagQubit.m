@@ -17,7 +17,7 @@
 ##
 ## Created: 27 March 2004
 
-function ret = TagQubits(state, gate)
+function ret = TagQubit(state, gate)
 if (nargin != 2)
 	usage ("TagQubits (state, gate)");
 endif
@@ -28,7 +28,7 @@ P1 = Projection([1]);
 key = State(PsiM);
 tag = State(Ket([0]));
 
-trans = kron(kron(key, state), tag)
+trans = kron(kron(key, state), tag);
 
 encgate = kron(kron(P0,Id), Id(2)) +  kron (kron(P1,Id), gate);
 
