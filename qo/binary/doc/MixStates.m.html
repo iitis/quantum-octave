@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>~/quantum-octave/MixStates.m.html</title>
+<meta name="Generator" content="Vim/6.1">
+</head>
+<body bgcolor="#e5e5e5" text="#000000">
+<pre>
+<font color="#a52a2a"> 1</font>  <font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#a52a2a"> 2</font>  <font color="#0000ff">## @deftypefn {Function File} {} MixStates (@var{state}, @dots{})</font>
+<font color="#a52a2a"> 3</font>  <font color="#0000ff">## This function allow to represent a mixture of mixed states.</font>
+<font color="#a52a2a"> 4</font>  <font color="#0000ff">## The argument is a list of density matrices (for example returned</font>
+<font color="#a52a2a"> 5</font>  <font color="#0000ff">## by function State). Every density matrix can be preceded by a</font>
+<font color="#a52a2a"> 6</font>  <font color="#0000ff">## (complex) number. If no number is specifed the default</font>
+<font color="#a52a2a"> 7</font>  <font color="#0000ff">## value 1 is used. If a numbe is specified then it is</font>
+<font color="#a52a2a"> 8</font>  <font color="#0000ff">## normalied so that the result would be vaild density matrix.</font>
+<font color="#a52a2a"> 9</font>  <font color="#0000ff">## For example:</font>
+<font color="#a52a2a">10</font>  <font color="#0000ff">## @example</font>
+<font color="#a52a2a">11</font>  <font color="#0000ff">## @group</font>
+<font color="#a52a2a">12</font>  <font color="#0000ff">## MixState(State(Ket([0,1])), 0.5, State(Ket([1,0])))</font>
+<font color="#a52a2a">13</font>  <font color="#0000ff">##  @result{}</font>
+<font color="#a52a2a">14</font>  <font color="#0000ff">## 0.00000  0.00000  0.00000  0.00000</font>
+<font color="#a52a2a">15</font>  <font color="#0000ff">## 0.00000  0.66667  0.00000  0.00000</font>
+<font color="#a52a2a">16</font>  <font color="#0000ff">## 0.00000  0.00000  0.33333  0.00000</font>
+<font color="#a52a2a">17</font>  <font color="#0000ff">## 0.00000  0.00000  0.00000  0.00000</font>
+<font color="#a52a2a">18</font>  <font color="#0000ff">## @end group</font>
+<font color="#a52a2a">19</font>  <font color="#0000ff">## @end example</font>
+<font color="#a52a2a">20</font>  <font color="#0000ff">## @end deftypefn</font>
+<font color="#a52a2a">21</font>
+<font color="#a52a2a">22</font>  <font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#a52a2a">23</font>  <font color="#0000ff">## Created: 25 November 2003</font>
+<font color="#a52a2a">24</font>
+<font color="#a52a2a">25</font>  <font color="#a52a2a"><b>function</b></font> ret = MixStates<font color="#008b8b">(</font>varargin<font color="#008b8b">)</font>
+<font color="#a52a2a">26</font>  summtr = <span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>;
+<font color="#a52a2a">27</font>  coef = <span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span>;
+<font color="#a52a2a">28</font>  sum = <span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>;
+<font color="#a52a2a">29</font>
+<font color="#a52a2a">30</font>  matrix_size = <font color="#008b8b">[</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>,<span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span><font color="#008b8b">]</font>;
+<font color="#a52a2a">31</font>
+<font color="#a52a2a">32</font>  <font color="#a52a2a"><b>while</b></font><font color="#008b8b">(</font><font color="#008b8b">nargin</font><font color="#a52a2a"><b>--</b></font><font color="#008b8b">)</font>
+<font color="#a52a2a">33</font>  temp = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">34</font>      <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font>length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>&gt;</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">35</font>          <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font>coef<font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">36</font>                  sum<font color="#a52a2a"><b>++</b></font>;
+<font color="#a52a2a">37</font>          <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">38</font>
+<font color="#a52a2a">39</font>          <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font>matrix_size<font color="#a52a2a"><b>==</b></font><font color="#008b8b">[</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>,<span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span><font color="#008b8b">])</font>
+<font color="#a52a2a">40</font>              matrix_size = size<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>;
+<font color="#a52a2a">41</font>          <font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>matrix_size<font color="#a52a2a"><b>!=</b></font>size<font color="#008b8b">(</font>temp<font color="#008b8b">))</font>
+<font color="#a52a2a">42</font>              error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Matrices have to be the same size&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">43</font>          <font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>size<font color="#008b8b">(</font>temp<font color="#008b8b">)(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font><font color="#a52a2a"><b>!=</b></font>size<font color="#008b8b">(</font>temp<font color="#008b8b">)(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#008b8b">))</font>
+<font color="#a52a2a">44</font>              error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Matrices have to be square&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">45</font>          <font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>floor<font color="#008b8b">(</font>log2<font color="#008b8b">(</font>size<font color="#008b8b">(</font>temp<font color="#008b8b">)))</font><font color="#a52a2a"><b>!=</b></font>ceil<font color="#008b8b">(</font>log2<font color="#008b8b">(</font>size<font color="#008b8b">(</font>temp<font color="#008b8b">))))</font>
+<font color="#a52a2a">46</font>              error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Matrices have to be size 2^n x 2^n&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">47</font>          <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">48</font>
+<font color="#a52a2a">49</font>          summtr<font color="#a52a2a"><b>+</b></font>=coef<font color="#a52a2a"><b>.*</b></font>temp;
+<font color="#a52a2a">50</font>          coef=<span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span>;
+<font color="#a52a2a">51</font>      <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">52</font>          coef=temp;
+<font color="#a52a2a">53</font>          sum<font color="#a52a2a"><b>+</b></font>=coef;
+<font color="#a52a2a">54</font>      <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">55</font>  <font color="#a52a2a"><b>endwhile</b></font>
+<font color="#a52a2a">56</font>  sum;
+<font color="#a52a2a">57</font>  ret = summtr<font color="#a52a2a"><b>./</b></font>sum;
+<font color="#a52a2a">58</font>
+<font color="#a52a2a">59</font>  <font color="#a52a2a"><b>endfunction</b></font>
+</pre>
+</body>
+</html>
