@@ -1,4 +1,4 @@
-function testcoding(code, error)
+function testcoding(code, er1, er2, er3)
 
 v = Normalize(2*2*Ket([0])+Ket([1]));
 s = State(v)
@@ -8,9 +8,13 @@ pss = GetPureState(ss)
 
 en = Encode(s, code)
 
-en1 = Evolve(ProductGate(3,RotX(error),[1]), en)
-en2 = Evolve(ProductGate(3,RotX(error),[2]), en)
-en3 = Evolve(ProductGate(3,RotX(error),[3]), en)
+en1 = Evolve(ProductGate(3,RotY(er1),[1])*ProductGate(3,RotY(er2),[2])*ProductGate(3,RotY(er3),[3]),en)
+en2 = Evolve(ProductGate(3,RotY(er1),[2])*ProductGate(3,RotY(er2),[3])*ProductGate(3,RotY(er3),[1]),en)
+en3 = Evolve(ProductGate(3,RotY(er1),[3])*ProductGate(3,RotY(er2),[1])*ProductGate(3,RotY(er3),[2]),en)
+
+#en1 = Evolve(ProductGate(3,Not,[1]),en)
+#en2 = Evolve(ProductGate(3,Not,[2]),en)
+#en3 = Evolve(ProductGate(3,Not,[3]),en)
 
 r1 = Recover(en1,code)
 r2 = Recover(en2,code)
