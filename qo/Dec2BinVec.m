@@ -24,6 +24,9 @@
 ## Last modyfication: 15 March 2004
 
 function ret = Dec2BinVec(number, len)
+if (nargin != 2)
+	error("Two numbers required!");
+endif
 # number must be nonegative
 if( number > 2^len )
 	error("Number %d is to big to fit length %d!", number, len);
