@@ -32,11 +32,14 @@ else
 	ev = eig(state); # eigenvalues of density matrix
 	nb = size(ev)(1); # number of eigenvalues
 	for  i = 1:nb 
-		if ( ev(i) == 0 )
+		if ( ev(i) == 0.0 )
 			ret -= 0;	
 		else
 			ret -= ev(i)*log2(ev(i));
 		endif
 	endfor
+endif	
+if (ret < 10e-15) 
+	ret = 0.0;
 endif	
 endfunction
