@@ -8,10 +8,10 @@
 ## @group
 ## Dev2BinVec(4,3)
 ##  @result{} 
-##	1 0 1
+##	1 0 0
 ## Dev2BinVec(4,4)
 ##  @result{} 
-##	1 0 1 0
+##	0 1 0 0
 ## @end group
 ## @end example
 ##
