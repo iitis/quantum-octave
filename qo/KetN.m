@@ -21,14 +21,16 @@
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 05 March 2004
+## Last modyfication: 06 May 2004
 
-function ret = KetN (number,size)
-if(nargin==1)
+function ret = KetN (number, size)
+
+if ( nargin==1 )
 	lsize = ceil(log2(number+1));
-elseif(nargin==2)
+elseif ( nargin==2 )
 	lsize = size;
-else
-	error("KetN takes no more than 2 parameters!");
+elseif (nargin > 2 || nargin <=0 )
+	usage ("KetN (number, [size])");
 endif
 
 if(number>=2^lsize)

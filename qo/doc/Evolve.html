@@ -4,35 +4,34 @@
 	  <meta name="GENERATOR" content="Quanta Plus">
 	  <meta name="KEYWORDS" content="quantum, octave, quantum mechanics, simulation, quantum computer, quantum information, matlab, ket, state, cnot, H, Hadamard, rot, density matrix, density matrices">
 	  <link rel="StyleSheet" rev="StyleSheet" href="quantum-octave.css" type="text/css">
-	  <title>Id -- QuantumOctave Package Documentation</title>
+	  <title>Evolve -- QuantumOctave Package Documentation</title>
 </head>
 <body>
 <p>
-	<h2>Id</h2>
+	<h2>Evolve</h2>
 </p>
 <hr width="100%">
 <p>
 	<h3>Declaration</h3>
-	Id ( nmu )<br>
-
+	Evolve ( mtx, state )<br>
 </p>
 <hr width="100%">
 <p>
 	<h3>Description</h3>
-	This function returns <em>2<sup>num</sup>x 2<sup>num</sup></em> identity transformation, that is transformation acting
-	on <em>num</em> qubits. If no argument is supplied then it returns identity transformation for one qubit.
+	Function <pre>Evolve</pre> implements unitary evolution. It accepts unitary matrix <pre>mtx</pre> as a first argument 
+	and density matrix <pre>state</pre> as a second argument. It does't check is arguments are vaild, but it preform normalization!
 </p>
 <hr width="100%">
 <p>
 	<h3>Example</h3>
 	<pre>
-octave:1> Id(2)
-ans =
-
-1  0  0  0
-0  1  0  0
-0  0  1  0
-0  0  0  1
+	octave:12> Evolve(ProductGate (2,Not,[1,2]),State (Ket ([0,1])))
+	ans =
+	
+	  0  0  0  0
+	  0  0  0  0
+	  0  0  1  0
+	  0  0  0  0
 	</pre>
 </p>
 
@@ -40,9 +39,8 @@ ans =
 <hr width="100%">
 <a href="index.html" target="_self">Back to main page</a>
 <p class="footnote">
-		&copy; 2003 Jarek Miszczak<br>
-		Last modification: Wed Nov  5 15:57:19 CET 2003
+		&copy; 2003-2004 Jarek Miszczak<br>
+		Last modification: Thu May  6 13:57:11 UTC 2004
 </p>
-
 </body>
 </html>
