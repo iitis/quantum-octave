@@ -24,36 +24,20 @@
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
+## Last modyfication: 18 March 2004
 
-function ret = Ket (varargin)
-a = [1,0]';
-b = [0,1]';
-ret = [0];
-tempvek = 0;
-
-vek = va_arg();
-nargin--;
-while (nargin--)
-	vek = [vek, va_arg()];
-endwhile
-
-if ( isvector (vek))
-	if (vek(1) == 0)
-		tempvek = a;
-	elseif (vek(1) == 1)
-		tempvek = b;
-	else
-		error("%d is other than 0 or 1", vek(1));
-	endif
-	for i = 2:length (vek);
-		if (vek(i) == 0)
-			tempvek = kron(tempvek,a);
-		elseif (vek(i) == 1)
-			tempvek = kron(tempvek,b);
-		else
-			error("%d is other than 0 or 1", vek(i));
-		endif
-	endfor
+function ret = Ket (binvec)
+if ( size(binvec)(1) != 1 )
+	error("Error in input vector!");
 endif
-ret = tempvek;
+num = 0;
+for i = 1: size(binvec)(2)
+	temp = binvec(i);
+	if (temp == 0 || temp ==1)
+		num += (2^(i-1))*binvec(i);
+	else
+		error("Number %d found in input vector!",temp);
+	endif
+endfor
+ret = KetN(num,size(binvec)(2));
 endfunction
