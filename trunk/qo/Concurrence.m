@@ -1,14 +1,15 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} Concurrence(@var{rho})
 ## Function @code{Concurrence} returns concurrence of the two qubit 
-## state @var{rho}.
+## state @var{rho}. Functions can calculate concurrence for
+## density matrix or state vector.
 ##
 ## @end deftypefn
 ##
 ## @seealso {Negativity, Entropy, TrNorm}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 5 Mai 2004
+## Created: 05 May 2004
 
 function ret = Concurrence (state)
 if ( nargin != 1)

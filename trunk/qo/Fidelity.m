@@ -12,7 +12,7 @@
 
 function ret = Fidelity(rho,sigma)
 if (nargin!=2)
-	usage("Fidelity (rho,sigma)");
+	usage("Fidelity (rho, sigma)");
 endif
 
 sr = size(rho);

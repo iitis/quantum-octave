@@ -4,21 +4,18 @@
 ## controled by @var{contrv}. Size of the result gate is given by @var{size}.
 ## @end deftypefn
 ##
-## @seealso {Not, ControledGate, CNot}
+## @seealso {Phase, ControledGate, CNot}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ##
 ## Created: 01 June 2004
-##
 
-
-function ret = CPhase(size,phase,contrv,targetv)
-if (nargin != 4) 
+function ret = CPhase(s,phase,contrv,targetv)
+if ( nargin != 4 ) 
 	usage ("CPhase (size, phase, control, targets)");
 endif
 
-p=Phase(0,phase);
+p = Phase(0,phase);
 
-ret = ControlledGate(size, p, contrv, targetv );
-
+ret = ControlledGate(s, p, contrv, targetv);
 endfunction
