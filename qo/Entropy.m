@@ -6,15 +6,19 @@
 ## 
 ## @example 
 ## @group
-## Entropy(MixState(Ket([0,0,1]),State(Ket([1,0,0]))))
+## Entropy(MixState(State(Ket([0,0,1]),State(Ket([1,0,0]))))
 ##  @result{} 
 ##	1	
 ## @end group
+## @group
+## Entropy(MaxMix(2))
+##	@result{}
+##	2	
 ## @end example
 ##
 ## @end deftypefn
 ##
-## @seealso {PTrace, Evolve}
+## @seealso {PTrace, PTranspose, Evolve, Negativity}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 22 March 2004
