@@ -23,14 +23,16 @@
 ## Created: 25 November 2003
 
 function ret = MixStates(varargin)
+NARGIN = nargin;
+
 summtr = 0;
 coef = 1;
 sum = 0;
 
 matrix_size = [0,0];
 
-while(nargin--)
-temp = va_arg();
+while(NARGIN--)
+temp = varargin{NARGIN};
 	if(length(temp)>1)
 		if (coef==1)
      			sum++;

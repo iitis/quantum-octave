@@ -15,10 +15,11 @@
 
 function ret = Kron(varargin)
 
-ret = va_arg();
-nargin--;
-while (nargin--)
-	ret = kron(ret,va_arg());
+NARGIN = nargin;
+
+ret = 1;
+while (NARGIN)
+	ret = kron(varargin{NARGIN--},ret);
 endwhile
 
 endfunction

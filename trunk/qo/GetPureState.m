@@ -18,6 +18,8 @@
 ## Created: 26 March 2004
 
 function ret = GetPureState(state)
+error("FUNCTION IS BROKEN");
+
 if ( nargin != 1 )
 	usage("GetPureState (mixed_state)");
 endif

@@ -21,7 +21,7 @@
 
 function ret = Decode(state, code)
 
-flag = -1; # 0-bitflip, 1-faseflip, 2-shor
+flag = -1; # 0-bitflip, 1-phaseflip, 2-shor
 
 if(nargin!=2)
         usage("Decode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
@@ -43,27 +43,25 @@ if (flag==0) # bitflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
 	endif
-##	# it is not nedded
-        g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # decoding gate
+
+        g = Circuit(ControlledGate(3,Not,[1],[2]), ControlledGate(3,Not,[1],[3])); # decoding gate
         ret = Evolve(g, state);
 
-#        ret = state;
-elseif(flag==1) # faseflip
+elseif(flag==1) # phaseflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
 	endif
-        g = ProductGate(3,H,[1,2,3]);
-        g*= ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # decoding gate
+	
+        g = Circuit(ProductGate(3,H,[1,2,3]), ControlledGate(3,Not,[1],[2]), ControlledGate(3,Not,[1],[3]));
         ret = Evolve(g, state);
 elseif(flag==2) # shor
- 	if (qs!=9)
-	        error("state should be density matrix of 9 qubit system")
+	if (qs!=9)
+        	error("state should be density matrix of 9 qubit system")
 	endif
-        gc = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]);
-        g = Kron(gc,gc,gc);
-        g*= ProductGate(9,H,[1,4,7]);
-	g*= ControlledGate(9,Not,[1],[4])*ControlledGate(9,Not,[1],[7]);
-        ret = Evolve(g, state);
+
+	gc = Circuit(ControlledGate(3,Not,[1],[2]), ControlledGate(3,Not,[1],[3]), ControlledGate(3,Not,[2,3],[1]));
+	g = Kron(gc,gc,gc);
+	ret = Evolve(g, state);
 endif
 
 endfunction

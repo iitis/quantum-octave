@@ -19,5 +19,7 @@
 ## Created: 25 November 2003
 
 function ret = Evolve(evolution, state)
-	 ret = evolution*state*evolution';
+	evl = evolution*state*evolution';
+	tr  = trace(evl);
+	ret = evl/tr;
 endfunction

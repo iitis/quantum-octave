@@ -21,7 +21,7 @@
 
 function ret = Recover(state, code)
 
-flag = -1; # 0-bitflip, 1-faseflip, 2-shor
+flag = -1; # 0-bitflip, 1-phaseflip, 2-shor
 
 if(nargin!=2)
         usage("Recover(state, \"bitflip\"|\"phaseflip\"|\"shor\")");
@@ -49,10 +49,8 @@ if (flag==0) # bitflip
 	
 	outcome = Measure(lstate,"IZZ"); # measure second syndrome
 	lstate = outcome.state; # evolution
-	
-	newstate = PTrace(lstate, [2:3]);
-	
-	ret = newstate;
+
+	ret = PTrace(lstate, [2:3]);
 
 elseif(flag==1) # phaseflip
         if (qs!=3)
@@ -68,11 +66,28 @@ elseif(flag==1) # phaseflip
 	newstate = PTrace(lstate, [2:3]);
 	
 	ret = newstate;
-
 elseif(flag==2) # shor
-        if (qs!=9)
-                error("state should be density matrix of 9 qubit system")
-        endif
+	if (qs!=9)
+		error("state should be density matrix of 9 qubit system")
+	endif
+	lstate = state;
+	
+	outcome = Measure(lstate, "IZZIZZIZZ");
+	lstate = outcome.state;
+	
+	lstate = PTrace(lstate, [2,3,5,6,8,9]);
+
+	g = Circuit(ProductGate(3,H,[1:3]), ControlledGate(3,Not,[1],[2]), ControlledGate(3,Not,[1],[3]), ControlledGate(3,Not,[2,3],[1]));
+		
+	lstate = Evolve(g,lstate);
+	
+	outcome = Measure(lstate,"IZZ");
+	lstate = outcome.state;
+	
+	lstate = PTrace(lstate, [2,3]);
+	
+	ret = lstate;
+		
 endif
 
 endfunction
