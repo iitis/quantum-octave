@@ -1,10 +1,29 @@
 ## -*- texinfo -*-
-## @deftypefn ProductGate(@var{size},@var{gate},@var{targetv} )
+## @deftypefn {Function file} {} ProductGate(@var{size},@var{gate},@var{targetv})
 ## Function @code{ProductGate} generates operator of size equal 2^@var{size}.
 ## Parameter @var{gate} is 2x2 basic operator (ex. Not). Paramter
 ## @var{targetv} is list of indices of target qubits.
+##
+## @example 
+## @group
+## ProductGate(3,Not,[1,2])
+##  @result{}
+## 0  0  0  0  0  0  1  0
+## 0  0  0  0  0  0  0  1
+## 0  0  0  0  1  0  0  0
+## 0  0  0  0  0  1  0  0
+## 0  0  1  0  0  0  0  0
+## 0  0  0  1  0  0  0  0
+## 1  0  0  0  0  0  0  0
+## 0  1  0  0  0  0  0  0
+##
+## @end group
+## @end example
+##
 ## @end deftypefn
-
+##
+## @seealso {ControledGate, Id, Not, H, Pase}
+##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
 

@@ -1,12 +1,26 @@
 ## -*- texinfo -*-
-## @deftypefn ControledGate(@var{size},@var{gate},@var{contrv},@var{targetv} )
-## Function @code{ControledGate} generates operator of size equal 2^@var{size}.
-## Parameter @var{gate} is 2x2 basic operator (ex. Not). Paramters
-## @var{contrv},@var{targetv} are lists of indices of control and target qubits.
+## @deftypefn {Function file} {} ControledGate(@var{size},@var{gate},@var{contrv},@var{targetv})
+## Function @code{ControledGate} returns controled operation @var{gate} on qubits @var{targetv} controled by @var{contrv}. Size of the result gate is given by @var{size}.
+## @example 
+## @group
+##  ControledGate (2,Not,[1],[2])
+##  @result{} 
+##  1  0  0  0  
+##  0  1  0  0  
+##  0  0  0  1
+##  0  0  1  0  
+## @end group
+## @end example
+##
 ## @end deftypefn
-
+##
+## @seealso {Id, Not, H, RotX, RotY, RotZ}
+##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
+##
 ## Created: 25 November 2003
+##
+## Last modification : 10 February 2004
 
 function ret = ControledGate(size,gate,contrv,targetv)
 

@@ -1,23 +1,19 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Name([@var{size}] )
-## Function @code{Id(@var{size})} returns 2^size x 2^size dentity
-## matrix, argument is optional, if not suplied is set to 1.
+## @deftypefn{Function file} {} PlotProbs(@var{})
+## Function @code{PlotProbs(@var{size})}
 ## 
 ## @example 
 ## @group
-## Name(2)
+## PlotProbs()
 ##  @result{}
-##	1  0  0  0 
-##	0  1  0  0
-##	0  0  1  0
-##	0  0  0  1
+##
 ## @end group
 ## @end example
 ## @end deftypefn
 ## @seealso {Id, Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 4 January 2004
+## Author: Piotr Gawron, Jaroslaw Miszczak.
+## Created: 4 January 2004.
 
 function PlotProbs(probs)
 #TODO need checking if probs are valid
@@ -33,4 +29,3 @@ else
 	error("Wrong input");
 endif
 endfunction
-

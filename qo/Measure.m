@@ -1,23 +1,27 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Name([@var{size}] )
-## Function @code{Id(@var{size})} returns 2^size x 2^size dentity
-## matrix, argument is optional, if not suplied is set to 1.
-## 
+## @deftypefn{Function file} {} Measure(@var{state})
+## Function @code{Measure} performs ortogonal measurment on state @var{state}. Function returns a probability distribution of results. 
 ## @example 
 ## @group
-## Name(2)
+## Measure(State(Ket([1,0,1])))
 ##  @result{}
-##	1  0  0  0 
-##	0  1  0  0
-##	0  0  1  0
-##	0  0  0  1
+## 0  0
+## 1  0
+## 2  0
+## 3  0
+## 4  0
+## 5  1
+## 6  0
+## 7  0
+##
 ## @end group
 ## @end example
 ## @end deftypefn
 ## @seealso {Id, Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 12 December 2003
+## Author: Piotr Gawron, Jaroslaw Miszczak.
+## Created: 12 December 2003.
+## Last modyfication: 10 February 2004.
 
 function ret = Measure(state)
   state_size = size(state)(1);

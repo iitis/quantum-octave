@@ -1,5 +1,7 @@
 ## -*- texinfo -*-
-## @deftypefn {Function File} {} Evolve ()
+## @deftypefn {Function File} {} Evolve (@var{gate},@var{state})
+## This function performs unitary evolution described by gate @var{gate} on the state @var{state}.
+## 
 ## For example:
 ## @example
 ## @group
@@ -17,6 +19,5 @@
 ## Created: 25 November 2003
 
 function ret = Evolve(evolution, state)
-
 	ret = evolution*state*conj(evolution);
 endfunction

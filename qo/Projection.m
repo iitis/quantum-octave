@@ -1,17 +1,17 @@
-## DOCUMENTATION!!!!!
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Name([@var{size}] )
-## Function @code{Id(@var{size})} returns 2^size x 2^size dentity
-## matrix, argument is optional, if not suplied is set to 1.
-## 
+## @deftypefn{Function file} {} Projection(@var{vec}) returns projection operator defined as |@var{vec}><@var{vec}|.
 ## @example 
 ## @group
-## Name(2)
+## Projection([1,0,1])
 ##  @result{}
-##	1  0  0  0 
-##	0  1  0  0
-##	0  0  1  0
-##	0  0  0  1
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  1  0  0
+## 0  0  0  0  0  0  0  0
+## 0  0  0  0  0  0  0  0
 ## @end group
 ## @end example
 ## @end deftypefn

@@ -12,7 +12,7 @@
 ## @end group
 ## @end example
 ## @end deftypefn
-## @seealso{Id, H, Phase}
+## @seealso{Id, H, Phase, RotX, RotY, RotZ}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
