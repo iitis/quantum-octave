@@ -1,22 +1,25 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} PlotProbs(@var{})
-## Function @code{PlotProbs(@var{size})}
-## 
+## @deftypefn{Function file} {} PlotProbs(@var{PROB})
+## Function @code{PlotProbs(@var{PROBE})} plots probability 
+## distribution. Performing measurment on quantum state you 
+## obtain probability distribution. Try:
 ## @example 
 ## @group
-## PlotProbs()
-##  @result{}
+## PlotProbs(Measure(State(Ket([0,1]))))
+## PlotProbs(Measure(MixStates(1/2,State(Ket([0,1])),
+## 				1/2,State(Ket([1,0]))
+##			)))
 ##
 ## @end group
 ## @end example
 ## @end deftypefn
-## @seealso {Id, Not, H, Pase}
+## @seealso {PrintAmps, PlotAmps, PrintProbs}
 ## 
 ## Author: Piotr Gawron, Jaroslaw Miszczak.
 ## Created: 4 January 2004.
 
 function PlotProbs(probs)
-#TODO need checking if probs are valid
+# TODO need checking if probs are valid
 
 #If probs is column vector we suppose that's state vector
 if(size(probs)(2)==1)
