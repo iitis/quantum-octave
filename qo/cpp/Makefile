@@ -8,6 +8,7 @@
 SELL = /bin/sh
 
 # change this variable if you are using non-standard version of octave
+# for example:
 # TOOL = /usr/local/octave-2.1.57/bin/mkoctfile
 TOOL = mkoctfile
 
@@ -15,6 +16,7 @@ TOOL = mkoctfile
 FLAGS = -s
 
 .SUFFIXES = .cc .oct
+
 OBJ = BuildBinaryVector.oct KetN.oct Dec2BinVec.oct
 
 all: BuildBinaryVector KetN Dec2BinVec
