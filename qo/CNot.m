@@ -1,38 +1,35 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} ControledGate(@var{size},@var{gate},@var{contrv},@var{targetv})
-## Function @code{ControledGate} returns controled operation @var{gate} on qubits @var{targetv} 
+## @deftypefn {Function file} {} CNot(@var{size},@var{contrv},@var{targetv})
+## Function @code{CNot} returns controled Not operation on qubits @var{targetv} 
 ## controled by @var{contrv}. Size of the result gate is given by @var{size}.
 ## @example 
 ## @group
-##  ControledGate (2,Not,[1],[2])
+##  CNot (2,[2],[1])
 ##  @result{} 
 ##  1  0  0  0  
+##  0  0  0  1  
+##  0  0  1  0
 ##  0  1  0  0  
-##  0  0  0  1
-##  0  0  1  0  
 ## @end group
 ## @end example
 ##
 ## @end deftypefn
 ##
-## @seealso {Id, Not, H, RotX, RotY, RotZ}
+## @seealso {Not, ControledGate}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ##
-## Created: 25 November 2003
+## Created: 23 February 2003
 ##
 ## Last modification : 10 February 2004
 
-function ret = ControledGate(size,gate,contrv,targetv)
+function ret = CNot(size,contrv,targetv)
 
-if(nargin!=4)
-	usage("ControledGate(size,gate,contrv,targetv)\n");
+if(nargin!=3)
+	usage("CNot(size,contrv,targetv)\n");
 endif
 if(!is_scalar(size))
 	error("1st parameter should be scalar");
-endif
-if(is_square(gate)!=2)
-	error("2nd parameter should be matrix 2x2");
 endif
 
 if(size < max(max(contrv),max(targetv)))
@@ -68,7 +65,7 @@ ret = Id(size);
 if (flags(1) == 1)
 	tmp = proj1;
 elseif (flags(1) == 2)
-	tmp = Id(1) - gate;
+	tmp = Id(1) - Not;
 elseif (flags(1) == 0)
 	tmp = Id(1);
 else
@@ -81,7 +78,7 @@ for i = 2:size
 if (flags(i) == 1)
 	tmp = kron(tmp,proj1);
 elseif (flags(i) == 2)
-	tmp = kron(tmp,Id(1) - gate);
+	tmp = kron(tmp,Id(1) - Not);
 elseif (flags(i) == 0)
 	tmp = kron(tmp,Id(1));
 else
