@@ -26,20 +26,20 @@
 function ret = Measure(state, observables, str)
 #TODO test if state is valid state and if observables are in form "XYZZYXI"
 
-flag=-1; # 0 - return measured state vector (default); 1 - return structure
+flag=-1; # 0 - return measured state (default); 1 - return structure
 
 if(nargin==2)
 	flag=0;
 elseif(nargin==3)
-	if(strcmp("vec",str))
+	if(strcmp("state",str))
 		flag=0;
 	elseif(strcmp("struct",str))
 		flag=1;
 	else
-		usage("Measure(state, observables[, {\"vec\"|\"struct\"}])");
+		usage("Measure(state, observables[, {\"state\"|\"struct\"}])");
 	endif
 else
-	usage("Measure(state, observables[, {\"vec\"|\"struct\"}])");
+	usage("Measure(state, observables[, {\"state\"|\"struct\"}])");
 endif
 
 chosestate=false; # true if we want to return state vector
@@ -52,7 +52,7 @@ endif
 lo = length(observables);
 
 listobs = {};
-for i=1:lo
+for i=lo+1-[1:lo]
 	if (observables(i)=="X")
 		listobs(i)=Observable(0.5*Sx);
 	elseif (observables(i)=="Y")
@@ -60,7 +60,12 @@ for i=1:lo
 	elseif (observables(i)=="Z")
 		listobs(i)=Observable(0.5*Sz);	
 	elseif (observables(i)=="I")
-		listobs(i)=Observable(Id);
+		#listobs(i)=Observable(Id);
+		temp(1).l = 1;
+		temp(2).l = 1;
+		temp(1).proj = Id(1);
+		temp(2).proj = Id(1);
+		listobs(i)=temp;
 	elseif
 		error("Unexpected %s found, it should be {X,Y,Z,I}",observables(i));
 	endif
@@ -72,7 +77,7 @@ cumprob = 0; # cumulative probability
 prob.out=0; 	# eigenvalue
 prob.p=0;	# probability	
 
-retstate = zeros(size(state)(2),1); # state we return
+retstate = zeros(size(state)(2)); # state we return
 rettemp=1;
 
 for j=0:2^lo-1 # for every possible projection
@@ -83,28 +88,16 @@ for j=0:2^lo-1 # for every possible projection
 		projection = kron(projection,nth(listobs,i)(indexes(i)).proj);
 		prob(j+1).out(i)=nth(listobs,i)(indexes(i)).l;
 	endfor
+#*	projection
 	p = trace(state*projection); # compute probability 
 	prob(j+1).p = p;
-	cumprob+=p;
-	if(chosestate && (cumprob>=random)) # so we are building state after measurment
+	cumprob+=p; # to draw state
+
+#* 	STAN = (projection*state*projection)/p
+
+	if(chosestate && (cumprob>random)) # so we are building state after measurment
 		chosestate = false;
-		listops={};
-		for i=1:lo
-			if (observables(i)=="X")
-				listops(i)=Observable(0.5*Sx,"vec");
-			elseif (observables(i)=="Y")
-				listops(i)=Observable(0.5*Sy,"vec");
-			elseif (observables(i)=="Z")
-				listops(i)=Observable(0.5*Sz,"vec");	
-			elseif (observables(i)=="I")
-				listops(i)=Observable(Id,"vec");
-			elseif
-				error("Unexpected %s found, it should be {X,Y,Z,I}",observables(i));
-			endif
-		endfor
-		for i=1:lo
-			rettemp = kron(rettemp,nth(listops,i)(indexes(i)).vec);
-		endfor
+		rettemp = (projection*state*projection)/p;
 		retstate = rettemp;
 	endif
 endfor
