@@ -17,7 +17,7 @@ FLAGS = -s
 
 .SUFFIXES = .cc .oct
 
-OBJ = BuildBinaryVector.oct KetN.oct Dec2BinVec.oct H.otc
+OBJ = BuildBinaryVector.oct KetN.oct Dec2BinVec.oct H.oct
 
 all: BuildBinaryVector KetN Dec2BinVec H
 	
@@ -36,3 +36,4 @@ H:
 clean:
 	rm -f $(OBJ)
 	rm -f *.o
+	rm -f *~
