@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>~/quantum-octave/PlotAmps.m.html</title>
+<meta name="Generator" content="Vim/6.1">
+</head>
+<body bgcolor="#e5e5e5" text="#000000">
+<pre>
+<font color="#a52a2a"> 1</font>  <font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#a52a2a"> 2</font>  <font color="#0000ff">## @deftypefn {Function file} {} PlotAmps(@var{ket},@var{type})</font>
+<font color="#a52a2a"> 3</font>  <font color="#0000ff">## Function @code{PlotAmps} plots amplitude of @var{ket} vector in standard base. Second argument describes which part of amplitude is plotted. &quot;Re&quot; - only real part, &quot;Im&quot; - only imaginary part, &quot;RI&quot; - real and imaginary part with diffrent colors. If the second is ommited it is assumed to be &quot;Re&quot;.</font>
+<font color="#a52a2a"> 4</font>  <font color="#0000ff">## Try this:</font>
+<font color="#a52a2a"> 5</font>  <font color="#0000ff">## @example </font>
+<font color="#a52a2a"> 6</font>  <font color="#0000ff">##  @group</font>
+<font color="#a52a2a"> 7</font>  <font color="#0000ff">## PlotAmps(Ket([1,1,0]))</font>
+<font color="#a52a2a"> 8</font>  <font color="#0000ff">## PlotAmps(Ket([1,0])+Ket([0,1]),&quot;Im&quot;)</font>
+<font color="#a52a2a"> 9</font>  <font color="#0000ff">## PlotAmps(Ket([1,0])+i*Ket([0,1]),&quot;RI&quot;)</font>
+<font color="#a52a2a">10</font>  <font color="#0000ff">## @end group</font>
+<font color="#a52a2a">11</font>  <font color="#0000ff">## @end example</font>
+<font color="#a52a2a">12</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">13</font>  <font color="#0000ff">## @end deftypefn</font>
+<font color="#a52a2a">14</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">15</font>  <font color="#0000ff">## @seealso {PlotProbs, Measure}</font>
+<font color="#a52a2a">16</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">17</font>  <font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#a52a2a">18</font>  <font color="#0000ff">## Created: 4 February 2004</font>
+<font color="#a52a2a">19</font>
+<font color="#a52a2a">20</font>  <font color="#a52a2a"><b>function</b></font> PlotAmps<font color="#008b8b">(</font>varargin<font color="#008b8b">)</font>
+<font color="#a52a2a">21</font>
+<font color="#a52a2a">22</font>  <font color="#0000ff"># </font><span style="background-color: #ffff00"><font color="#0000ff">TODO</font></span><font color="#0000ff"> need checking if ket is valid</font>
+<font color="#a52a2a">23</font>  <font color="#0000ff"># first argument is allways ket</font>
+<font color="#a52a2a">24</font>  <font color="#0000ff"># if we have only one parameter then we draw real part</font>
+<font color="#a52a2a">25</font>
+<font color="#a52a2a">26</font>  <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font><font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">27</font>      temp = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">28</font>      <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font><font color="#a52a2a"><b>!</b></font>isvector<font color="#008b8b">(</font>temp<font color="#008b8b">))</font>
+<font color="#a52a2a">29</font>          error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Argument should be ket vector&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">30</font>      <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">31</font>          plot<font color="#008b8b">([</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>:length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">]</font>,real<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>,<span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;^;Amplitudes;&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">32</font>      <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">33</font>  <font color="#a52a2a"><b>elseif</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font><font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">34</font>      temp = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">35</font>      <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font><font color="#a52a2a"><b>!</b></font>isvector<font color="#008b8b">(</font>temp<font color="#008b8b">))</font>
+<font color="#a52a2a">36</font>          error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Argument should be ket vector&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">37</font>      <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">38</font>          ReIm = va_arg<font color="#008b8b">()</font>;
+<font color="#a52a2a">39</font>          <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font>ReIm<font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Re&quot;</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">40</font>              plot<font color="#008b8b">([</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>:length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">]</font>,real<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>,<span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;^;Real;&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">41</font>          <font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>ReIm<font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Im&quot;</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">42</font>              plot<font color="#008b8b">([</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>:length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">]</font>,imag<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>,<span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;^;Imag;&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">43</font>          <font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>ReIm<font color="#a52a2a"><b>==</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;RI&quot;</font></span><font color="#008b8b">)</font>
+<font color="#a52a2a">44</font>              plot<font color="#008b8b">([</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>:length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">]</font>,real<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>,<span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;^;Real;&quot;</font></span>, <font color="#008b8b">[</font><span style="background-color: #f2f2f2"><font color="#ff00ff">0</font></span>:length<font color="#008b8b">(</font>temp<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">]</font>,imag<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>,<span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;^;Imag;&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">45</font>          <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">46</font>              error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;wrong second argument&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">47</font>          <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">48</font>      <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">49</font>
+<font color="#a52a2a">50</font>  <font color="#a52a2a"><b>else</b></font>
+<font color="#a52a2a">51</font>      error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;PlotAmps takes one or two arguments&quot;</font></span><font color="#008b8b">)</font>;
+<font color="#a52a2a">52</font>  <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a">53</font>
+<font color="#a52a2a">54</font>  <font color="#a52a2a"><b>endfunction</b></font>
+<font color="#a52a2a">55</font>
+</pre>
+</body>
+</html>
