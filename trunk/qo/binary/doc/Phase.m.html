@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>~/quantum-octave/Phase.m.html</title>
+<meta name="Generator" content="Vim/6.1">
+</head>
+<body bgcolor="#e5e5e5" text="#000000">
+<pre>
+<font color="#a52a2a"> 1</font>  <font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#a52a2a"> 2</font>  <font color="#0000ff">## @deftypefn {Function File} {} Phase (@var{phi})</font>
+<font color="#a52a2a"> 3</font>  <font color="#0000ff">## The @code{Not(@var{phi})} function returns 2x2 phase rotation by @var{phi} rad matrix</font>
+<font color="#a52a2a"> 4</font>  <font color="#0000ff">## @example </font>
+<font color="#a52a2a"> 5</font>  <font color="#0000ff">## @group</font>
+<font color="#a52a2a"> 6</font>  <font color="#0000ff">## Phase(pi/4)</font>
+<font color="#a52a2a"> 7</font>  <font color="#0000ff">##  @result{} </font>
+<font color="#a52a2a"> 8</font>  <font color="#0000ff">## 0.70711 + 0.70711i  0.00000 + 0.00000i</font>
+<font color="#a52a2a"> 9</font>  <font color="#0000ff">## 0.00000 + 0.00000i  0.70711 + 0.70711i</font>
+<font color="#a52a2a">10</font>  <font color="#0000ff">## @end group</font>
+<font color="#a52a2a">11</font>  <font color="#0000ff">## @end example</font>
+<font color="#a52a2a">12</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">13</font>  <font color="#0000ff">## @end deftypefn</font>
+<font color="#a52a2a">14</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">15</font>  <font color="#0000ff">## @seealso {Id, Not, H, RotX, RotY, RotZ}</font>
+<font color="#a52a2a">16</font>  <font color="#0000ff">##</font>
+<font color="#a52a2a">17</font>  <font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#a52a2a">18</font>  <font color="#0000ff">## Created: 25 November 2003</font>
+<font color="#a52a2a">19</font>
+<font color="#a52a2a">20</font>  <font color="#a52a2a"><b>function</b></font> ret = Phase<font color="#008b8b">(</font>phi<font color="#008b8b">)</font>
+<font color="#a52a2a">21</font>      ret = Id<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">)</font><font color="#a52a2a"><b>.*</b></font><font color="#008b8b">e</font><font color="#a52a2a"><b>^</b></font><font color="#008b8b">(</font>i<font color="#a52a2a"><b>*</b></font>phi<font color="#008b8b">)</font>;
+<font color="#a52a2a">22</font>  <font color="#a52a2a"><b>endfunction</b></font>
+</pre>
+</body>
+</html>
