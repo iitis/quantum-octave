@@ -1,4 +1,4 @@
-function ret = ket (varargin)
+function ret = Ket (varargin)
 a = [1,0]';
 b = [0,1]';
 ret = [0];
@@ -16,9 +16,8 @@ if ( isvector (vek))
 	elseif (vek(1) == 1)
 		tempvek = b;
 	else
-		error(ket: );
-		//printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
-		error("ket: [" ); error(" %d ",vek); error("]");
+		#printf("Error: in ket: [" ); printf(" %d ",vek); printf("]\n");
+		error("%d is other than 0 or 1", vek(1));
 		clear ret;
 		return;
 	endif
@@ -28,11 +27,11 @@ if ( isvector (vek))
 		elseif (vek(i) == 1)
 			tempvek = kron(tempvek,b);
 		else
-			error("ket: [" ); error(" %d ",vek); error("]");
+		error("%d is other than 0 or 1", vek(i));
 			clear ret;
 			return;
 		endif
 	endfor
 endif
 ret = tempvek;
-endfunction 
+endfunction
