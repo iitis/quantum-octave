@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>~/quantum-octave/Observable.m.html</title>
+<meta name="Generator" content="Vim/6.2">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
+</head>
+<body bgcolor="#000040" text="#c0c0c0">
+<pre>
+<font color="#90f020"> 1</font>  <font color="#80a0f8">## -*- texinfo -*-</font>
+<font color="#90f020"> 2</font>  <font color="#80a0f8">## @deftypefn {Function file} {} Observable(obs)</font>
+<font color="#90f020"> 3</font>  <font color="#80a0f8">## Function @code{Observable} returns spectral measure </font>
+<font color="#90f020"> 4</font>  <font color="#80a0f8">## for given 1 qubit observabvle</font>
+<font color="#90f020"> 5</font>  <font color="#80a0f8">## </font>
+<font color="#90f020"> 6</font>  <font color="#80a0f8">## @example </font>
+<font color="#90f020"> 7</font>  <font color="#80a0f8">##</font>
+<font color="#90f020"> 8</font>  <font color="#80a0f8">## @end deftypefn</font>
+<font color="#90f020"> 9</font>  <font color="#80a0f8">##</font>
+<font color="#90f020">10</font>  <font color="#80a0f8">## @seealso {Id, Not}</font>
+<font color="#90f020">11</font>  <font color="#80a0f8">##</font>
+<font color="#90f020">12</font>  <font color="#80a0f8">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#90f020">13</font>  <font color="#80a0f8">## Created: 19 March 2004</font>
+<font color="#90f020">14</font>
+<font color="#90f020">15</font>  <font color="#f8fc60">function</font> ret = Observable<font color="#40fcf8">(</font>obs, str<font color="#40fcf8">)</font>
+<font color="#90f020">16</font>  <font color="#80a0f8"># </font><span style="background-color: #1048d0"><font color="#d04810">TODO</font></span><font color="#80a0f8"> check if obs is hermietian and of size 2x2</font>
+<font color="#90f020">17</font>  flag = <font color="#f8fc60">-</font><font color="#f8a0a0">1</font>;<font color="#80a0f8"># 0 - vec, 1 - proj</font>
+<font color="#90f020">18</font>  <font color="#f8fc60">if</font><font color="#40fcf8">(</font><font color="#40fcf8">nargin</font><font color="#f8fc60">==</font><font color="#f8a0a0">1</font><font color="#40fcf8">)</font>
+<font color="#90f020">19</font>          flag = <font color="#f8a0a0">1</font>;
+<font color="#90f020">20</font>  <font color="#f8fc60">elseif</font> <font color="#40fcf8">(</font><font color="#40fcf8">nargin</font> <font color="#f8fc60">==</font> <font color="#f8a0a0">2</font><font color="#40fcf8">)</font>
+<font color="#90f020">21</font>          <font color="#f8fc60">if</font><font color="#40fcf8">(</font>strcmp<font color="#40fcf8">(</font>str,<font color="#f8a0a0">&quot;vec&quot;</font><font color="#40fcf8">))</font>
+<font color="#90f020">22</font>                  flag=<font color="#f8a0a0">0</font>;
+<font color="#90f020">23</font>          <font color="#f8fc60">elseif</font><font color="#40fcf8">(</font>strcmp<font color="#40fcf8">(</font>str,<font color="#f8a0a0">&quot;proj&quot;</font><font color="#40fcf8">))</font>
+<font color="#90f020">24</font>                  flag=<font color="#f8a0a0">1</font>;
+<font color="#90f020">25</font>          <font color="#f8fc60">else</font>
+<font color="#90f020">26</font>                  usage<font color="#40fcf8">(</font><font color="#f8a0a0">&quot;Observable(obs[, {\&quot;</font>proj<font color="#f8fc60">\</font><font color="#f8a0a0">&quot; | \&quot;</font>vec<font color="#f8fc60">\</font><font color="#f8a0a0">&quot;}])&quot;</font><font color="#40fcf8">)</font>;
+<font color="#90f020">27</font>          <font color="#f8fc60">endif</font>
+<font color="#90f020">28</font>  <font color="#f8fc60">endif</font>
+<font color="#90f020">29</font>
+<font color="#90f020">30</font>  <font color="#40fcf8">[</font>V,l<font color="#40fcf8">]</font>=eig<font color="#40fcf8">(</font>obs<font color="#40fcf8">)</font>;
+<font color="#90f020">31</font>
+<font color="#90f020">32</font>
+<font color="#90f020">33</font>  ret<font color="#40fcf8">(</font><font color="#f8a0a0">1</font><font color="#40fcf8">)</font>.l = l<font color="#40fcf8">(</font><font color="#f8a0a0">1</font>,<font color="#f8a0a0">1</font><font color="#40fcf8">)</font>;
+<font color="#90f020">34</font>  ret<font color="#40fcf8">(</font><font color="#f8a0a0">2</font><font color="#40fcf8">)</font>.l = l<font color="#40fcf8">(</font><font color="#f8a0a0">2</font>,<font color="#f8a0a0">2</font><font color="#40fcf8">)</font>;
+<font color="#90f020">35</font>  <font color="#f8fc60">if</font><font color="#40fcf8">(</font>flag<font color="#f8fc60">==</font><font color="#f8a0a0">1</font><font color="#40fcf8">)</font>
+<font color="#90f020">36</font>          ret<font color="#40fcf8">(</font><font color="#f8a0a0">1</font><font color="#40fcf8">)</font>.proj = V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">1</font><font color="#40fcf8">)</font><font color="#f8fc60">*</font>V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">1</font><font color="#40fcf8">)</font><font color="#f8fc60">'</font>;
+<font color="#90f020">37</font>          ret<font color="#40fcf8">(</font><font color="#f8a0a0">2</font><font color="#40fcf8">)</font>.proj = V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">2</font><font color="#40fcf8">)</font><font color="#f8fc60">*</font>V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">2</font><font color="#40fcf8">)</font><font color="#f8fc60">'</font>;
+<font color="#90f020">38</font>  <font color="#f8fc60">elseif</font><font color="#40fcf8">(</font>flag<font color="#f8fc60">==</font><font color="#f8a0a0">0</font><font color="#40fcf8">)</font>
+<font color="#90f020">39</font>          ret<font color="#40fcf8">(</font><font color="#f8a0a0">1</font><font color="#40fcf8">)</font>.vec = V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">1</font><font color="#40fcf8">)</font>;
+<font color="#90f020">40</font>          ret<font color="#40fcf8">(</font><font color="#f8a0a0">2</font><font color="#40fcf8">)</font>.vec = V<font color="#40fcf8">(</font>:,<font color="#f8a0a0">2</font><font color="#40fcf8">)</font>;
+<font color="#90f020">41</font>  <font color="#f8fc60">else</font>
+<font color="#90f020">42</font>          error<font color="#40fcf8">(</font><font color="#f8a0a0">&quot;internal error :-P&quot;</font><font color="#40fcf8">)</font>
+<font color="#90f020">43</font>  <font color="#f8fc60">endif</font>
+<font color="#90f020">44</font>  <font color="#f8fc60">endfunction</font>
+</pre>
+</body>
+</html>
