@@ -20,12 +20,11 @@
 ## Created: 23 March 2004
 
 function ret = Encode(state, code)
-# TODO right now code argument is skipped
 
 flag = -1; # 0-bitflip, 1-phaseflip, 2-shor
 
 if(nargin!=2)
-	usage("Encode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
+	usage("Encode(state, \"bitflip\"|\"phaseflip\"|\"shor\")");
 endif
 
 if(strcmp(code,"bitflip"))
@@ -35,7 +34,7 @@ elseif(strcmp(code,"phaseflip"))
 elseif(strcmp(code,"shor"))
 	flag=2;
 else
-	usage("Encode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
+	usage("Encode(state, \"bitflip\"|\"phaseflip\"|\"shor\")");
 endif
 
 qs = log2(size(state)(2)); # number of qubits in the input state
