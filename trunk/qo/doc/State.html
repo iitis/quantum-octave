@@ -4,30 +4,59 @@
 	  <meta name="GENERATOR" content="Quanta Plus">
 	  <meta name="KEYWORDS" content="quantum, octave, quantum mechanics, simulation, quantum computer, quantum information, matlab, ket, state, cnot, H, Hadamard, rot, density matrix, density matrices">
 	  <link rel="StyleSheet" rev="StyleSheet" href="quantum-octave.css" type="text/css">
-	  <title>Function name -- QuantumOctave Package Documentation</title>
+	  <title>State -- QuantumOctave Package Documentation</title>
 </head>
 <body>
-
 <p>
-	<h1>Function name</h1>
-	<hr>
+	<h2>State</h2>
+</p>
+<hr width="100%">
+<p>
+	<h3>Declaration</h3>
+	State ( ket_vector )
+</p>
+<hr width="100%">
+<p>
+	<h3>Description</h3>
+	This function allows to obtain density matrix form <samp>ket_vector</samp> representin state 
+	of&nbsp;quantum system.
+</p>
+<hr width="100%">
+<p>
+	<h3>Example</h3>
+	<pre>
+	octave:5> k = Ket ([0,1,0])
+	k =
+	 
+	  0
+	  0
+	  1
+	  0
+	  0
+	  0
+	  0
+	  0
+ 	
+	octave:6> State (k)
+	ans =
+	 
+	  0  0  0  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+	  0  0  1  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+	  0  0  0  0  0  0  0  0
+ 	</pre>
 </p>
 
-<p>
-	<h2>Function</h2>
-	Definiction of function
-<hr>
-</p>
-
-<p>
-<h3>Example</h3>
-	An example
-	<hr>
-</p>
-
-<p>
-	&copy; 2003 Jarek Miszczak<br>
-	Last modification: Fri Oct 31 15:18:27 CET 2003
+<!-- footnote -->
+<hr width="100%">
+<a href="index.html" target="_self">Back to main page</a>
+<p class="footnote">
+		&copy; 2003-2004 Jarek Miszczak<br>
+		Last modification: Tue Mar 16 13:35:44 UTC 2004
 </p>
 
 </body>
