@@ -12,7 +12,7 @@
 
 function ret = CheckTag(state, gate)
 if (nargin != 2)
-	usage ("CheckTaq (state, gate)");
+	usage ("CheckTag (state, gate)");
 endif
 
 P0 = Projection([0]);
