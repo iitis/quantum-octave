@@ -6,47 +6,47 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn{Function file} {} PlotProbs(@var{PROB})</font>
-<font color="#8080ff">## Function @code{PlotProbs(@var{PROBE})} plots probability </font>
-<font color="#8080ff">## distribution. Performing measurment on quantum state you </font>
-<font color="#8080ff">## obtain probability distribution. Try:</font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## PlotProbs(Measure(State(Ket([0,1]))))</font>
-<font color="#8080ff">## PlotProbs(Measure(MixStates(1/2,State(Ket([0,1])),</font>
-<font color="#8080ff">## </font>             <font color="#8080ff">1/2,State(Ket([1,0]))</font>
-<font color="#8080ff">##</font>          <font color="#8080ff">)))</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">## @seealso {PrintAmps, PlotAmps, PrintProbs}</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
-<font color="#8080ff">## Created: 4 January 2004.</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn{Function file} {} PlotProbs(@var{PROB})</font>
+<font color="#0000ff">## Function @code{PlotProbs(@var{PROBE})} plots probability </font>
+<font color="#0000ff">## distribution. Performing measurment on quantum state you </font>
+<font color="#0000ff">## obtain probability distribution. Try:</font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## PlotProbs(Measure(State(Ket([0,1]))))</font>
+<font color="#0000ff">## PlotProbs(Measure(MixStates(1/2,State(Ket([0,1])),</font>
+<font color="#0000ff">## </font>             <font color="#0000ff">1/2,State(Ket([1,0]))</font>
+<font color="#0000ff">##</font>          <font color="#0000ff">)))</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">## @seealso {PrintAmps, PlotAmps, PrintProbs}</font>
+<font color="#0000ff">## </font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
+<font color="#0000ff">## Created: 4 January 2004.</font>
 
-<font color="#ffff00">function</font> PlotProbs<font color="#00ffff">(</font>probs<font color="#00ffff">)</font>
-<font color="#8080ff"># </font><span style="background-color: #ffff00"><font color="#808080">TODO</font></span><font color="#8080ff"> need checking if probs are valid</font>
+<font color="#a52a2a"><b>function</b></font> PlotProbs<font color="#008b8b">(</font>probs<font color="#008b8b">)</font>
+<font color="#0000ff"># </font><span style="background-color: #ffff00"><font color="#0000ff">TODO</font></span><font color="#0000ff"> need checking if probs are valid</font>
 
-<font color="#8080ff">#temporary</font>
-<font color="#8080ff">#tmp=length(probs);</font>
-<font color="#8080ff">#gset mxtics 1</font>
-<font color="#8080ff">#gset xrange [-1:tmp+1]</font>
+<font color="#0000ff">#temporary</font>
+<font color="#0000ff">#tmp=length(probs);</font>
+<font color="#0000ff">#gset mxtics 1</font>
+<font color="#0000ff">#gset xrange [-1:tmp+1]</font>
 
-<font color="#8080ff">#If probs is column vector we suppose that's state vector</font>
-<font color="#ffff00">if</font><font color="#00ffff">(</font>size<font color="#00ffff">(</font>probs<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font><font color="#ffff00">==</font><font color="#ff6060">1</font><font color="#00ffff">)</font>
-    plot<font color="#00ffff">([</font><font color="#ff6060">0</font>:length<font color="#00ffff">(</font>probs<font color="#00ffff">)</font><font color="#ffff00">-</font><font color="#ff6060">1</font><font color="#00ffff">]</font>,abs<font color="#00ffff">(</font>probs<font color="#00ffff">)</font><font color="#ffff00">.^</font><font color="#ff6060">2</font>,<font color="#ff6060">&quot;^;Probabilities;&quot;</font><font color="#00ffff">)</font>;
-<font color="#8080ff">#If probs is to column vector we suppose that's measure outcome</font>
-<font color="#ffff00">elseif</font><font color="#00ffff">(</font>size<font color="#00ffff">(</font>probs<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font><font color="#ffff00">==</font><font color="#ff6060">2</font><font color="#00ffff">)</font>
-    plot<font color="#00ffff">(</font>probs<font color="#00ffff">(</font>:,<font color="#ff6060">1</font><font color="#00ffff">)</font>,probs<font color="#00ffff">(</font>:,<font color="#ff6060">2</font><font color="#00ffff">)</font>,<font color="#ff6060">&quot;^;Probabilities;&quot;</font><font color="#00ffff">)</font>;
-<font color="#8080ff">#else it's an error</font>
-<font color="#ffff00">elseif</font><font color="#00ffff">(</font>IsState<font color="#00ffff">(</font>probs<font color="#00ffff">))</font>
-    PlotProbs<font color="#00ffff">(</font>MeasureZ<font color="#00ffff">(</font>probs<font color="#00ffff">))</font>; <font color="#8080ff"># Obvious and very ugly hack!</font>
-<font color="#ffff00">else</font>
-    error<font color="#00ffff">(</font><font color="#ff6060">&quot;Wrong input&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
-<font color="#ffff00">endfunction</font>
+<font color="#0000ff">#If probs is column vector we suppose that's state vector</font>
+<font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font>size<font color="#008b8b">(</font>probs<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font><font color="#a52a2a"><b>==</b></font><font color="#ff00ff">1</font><font color="#008b8b">)</font>
+    plot<font color="#008b8b">([</font><font color="#ff00ff">0</font>:length<font color="#008b8b">(</font>probs<font color="#008b8b">)</font><font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font><font color="#008b8b">]</font>,abs<font color="#008b8b">(</font>probs<font color="#008b8b">)</font><font color="#a52a2a"><b>.^</b></font><font color="#ff00ff">2</font>,<font color="#ff00ff">&quot;^;Probabilities;&quot;</font><font color="#008b8b">)</font>;
+<font color="#0000ff">#If probs is to column vector we suppose that's measure outcome</font>
+<font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>size<font color="#008b8b">(</font>probs<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font><font color="#a52a2a"><b>==</b></font><font color="#ff00ff">2</font><font color="#008b8b">)</font>
+    plot<font color="#008b8b">(</font>probs<font color="#008b8b">(</font>:,<font color="#ff00ff">1</font><font color="#008b8b">)</font>,probs<font color="#008b8b">(</font>:,<font color="#ff00ff">2</font><font color="#008b8b">)</font>,<font color="#ff00ff">&quot;^;Probabilities;&quot;</font><font color="#008b8b">)</font>;
+<font color="#0000ff">#else it's an error</font>
+<font color="#a52a2a"><b>elseif</b></font><font color="#008b8b">(</font>IsState<font color="#008b8b">(</font>probs<font color="#008b8b">))</font>
+    PlotProbs<font color="#008b8b">(</font>MeasureZ<font color="#008b8b">(</font>probs<font color="#008b8b">))</font>; <font color="#0000ff"># Obvious and very ugly hack!</font>
+<font color="#a52a2a"><b>else</b></font>
+    error<font color="#008b8b">(</font><font color="#ff00ff">&quot;Wrong input&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

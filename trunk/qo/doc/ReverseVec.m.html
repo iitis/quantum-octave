@@ -6,38 +6,38 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} ReverseVec(@var{vec})</font>
-<font color="#8080ff">## Function @code{ReverseVec} reverses indexes in vector @var{vec}.</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @example</font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## ReverseVec([1,2,3,5])</font>
-<font color="#8080ff">##  @result{}</font>
-<font color="#8080ff">##  [5,3,2,1]</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {Dec2BinVec, BinVec2Dec, Ket, BuildBinaryVector}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">## Created: 25 November 2003</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} ReverseVec(@var{vec})</font>
+<font color="#0000ff">## Function @code{ReverseVec} reverses indexes in vector @var{vec}.</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @example</font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## ReverseVec([1,2,3,5])</font>
+<font color="#0000ff">##  @result{}</font>
+<font color="#0000ff">##  [5,3,2,1]</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {Dec2BinVec, BinVec2Dec, Ket, BuildBinaryVector}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">## Created: 25 November 2003</font>
 
-<font color="#ffff00">function</font> ret = ReverseVec<font color="#00ffff">(</font>vec<font color="#00ffff">)</font>
-<font color="#ffff00">if</font> <font color="#00ffff">(</font><font color="#00ffff">nargin</font> =<font color="#ffff00">!</font> <font color="#ff6060">1</font> <font color="#00ffff">)</font>
-    usage <font color="#00ffff">(</font><font color="#ff6060">&quot;ReverseVec (vector)&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
-ret=<font color="#ff6060">0</font>;
-<font color="#8080ff">#if ( !isvector(vec) )</font>
-<font color="#8080ff">#</font>   <font color="#8080ff">error (&quot;Single vector expected as argument!&quot;);</font>
-<font color="#8080ff">#endif</font>
-vs = size<font color="#00ffff">(</font>vec<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>;
-<font color="#ffff00">for</font> i = <font color="#ff6060">1</font>:vs
-    ret<font color="#00ffff">(</font>i<font color="#00ffff">)</font> = vec<font color="#00ffff">(</font>vs<font color="#ffff00">+</font><font color="#ff6060">1</font> <font color="#ffff00">-</font>i<font color="#00ffff">)</font>;
-<font color="#ffff00">endfor</font>
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>function</b></font> ret = ReverseVec<font color="#008b8b">(</font>vec<font color="#008b8b">)</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font> =<font color="#a52a2a"><b>!</b></font> <font color="#ff00ff">1</font> <font color="#008b8b">)</font>
+    usage <font color="#008b8b">(</font><font color="#ff00ff">&quot;ReverseVec (vector)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
+ret=<font color="#ff00ff">0</font>;
+<font color="#0000ff">#if ( !isvector(vec) )</font>
+<font color="#0000ff">#</font>   <font color="#0000ff">error (&quot;Single vector expected as argument!&quot;);</font>
+<font color="#0000ff">#endif</font>
+vs = size<font color="#008b8b">(</font>vec<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>for</b></font> i = <font color="#ff00ff">1</font>:vs
+    ret<font color="#008b8b">(</font>i<font color="#008b8b">)</font> = vec<font color="#008b8b">(</font>vs<font color="#a52a2a"><b>+</b></font><font color="#ff00ff">1</font> <font color="#a52a2a"><b>-</b></font>i<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endfor</b></font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

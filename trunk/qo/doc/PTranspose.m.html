@@ -6,80 +6,88 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} PTranspose(state, targv)</font>
-<font color="#8080ff">## Function @code{PTrace} returns density matrix obtained</font>
-<font color="#8080ff">## from matrix @var{state} by performing transposintion on </font>
-<font color="#8080ff">## subspaces of qubits listed in @var{targv}.</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## PTranspose(State(GHZ),[1,2])</font>
-<font color="#8080ff">##  @result{} </font>
-<font color="#8080ff">##</font>  <font color="#8080ff">0.50000</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {ProductGate, PTrace, Entropy, GHZ, W, Werner}</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Created: 22 March 2004</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Last modyfication: 26 March 2004</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} PTranspose(state, targv)</font>
+<font color="#0000ff">## Function @code{PTranspose} returns density matrix obtained</font>
+<font color="#0000ff">## from matrix @var{state} by performing transposintion on </font>
+<font color="#0000ff">## subspaces of qubits listed in @var{targv}.</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## PTranspose(State(GHZ),[1,2])</font>
+<font color="#0000ff">##  @result{} </font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.50000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.50000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.50000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.50000</font>
+<font color="#0000ff">##</font>              <font color="#0000ff"> </font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {ProductGate, PTrace, Entropy, GHZ, W, Werner}</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Created: 22 March 2004</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Last modyfication: 26 March 2004</font>
 
-<font color="#ffff00">function</font> ret = PTranspose<font color="#00ffff">(</font>state,tqidx<font color="#00ffff">)</font>
-<font color="#ffff00">if</font> <font color="#00ffff">(</font><font color="#00ffff">nargin</font> <font color="#ffff00">!=</font> <font color="#ff6060">2</font><font color="#00ffff">)</font>
-    usage <font color="#00ffff">(</font><font color="#ff6060">&quot;PTranspose (state, qubits_vector)&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>function</b></font> ret = PTranspose<font color="#008b8b">(</font>state,tqidx<font color="#008b8b">)</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font><font color="#008b8b">nargin</font> <font color="#a52a2a"><b>!=</b></font> <font color="#ff00ff">2</font><font color="#008b8b">)</font>
+    usage <font color="#008b8b">(</font><font color="#ff00ff">&quot;PTranspose (state, qubits_vector)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#8080ff"># calculate some parameters</font>
-ss = size<font color="#00ffff">(</font>state<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>; <font color="#8080ff"># dimension of matrix state - always power of 2</font>
-sq = log2<font color="#00ffff">(</font>ss<font color="#00ffff">)</font>; <font color="#8080ff"># numer of qubits in matrix state</font>
+<font color="#0000ff"># calculate some parameters</font>
+ss = size<font color="#008b8b">(</font>state<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>; <font color="#0000ff"># dimension of matrix state - always power of 2</font>
+sq = log2<font color="#008b8b">(</font>ss<font color="#008b8b">)</font>; <font color="#0000ff"># numer of qubits in matrix state</font>
 
-tq = size<font color="#00ffff">(</font>tqidx<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>; <font color="#8080ff"># number of qubits to transpose</font>
-ts = <font color="#ff6060">2</font><font color="#ffff00">^</font>tq; <font color="#8080ff"># dimension of space to transpose</font>
+tq = size<font color="#008b8b">(</font>tqidx<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>; <font color="#0000ff"># number of qubits to transpose</font>
+ts = <font color="#ff00ff">2</font><font color="#a52a2a"><b>^</b></font>tq; <font color="#0000ff"># dimension of space to transpose</font>
 
-rq = sq <font color="#ffff00">-</font> tq; <font color="#8080ff"># number of qubits which are not filipped</font>
+rq = sq <font color="#a52a2a"><b>-</b></font> tq; <font color="#0000ff"># number of qubits which are not filipped</font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> rq <font color="#ffff00">&lt;</font> <font color="#ff6060">0</font> <font color="#00ffff">)</font>
-    error <font color="#00ffff">(</font><font color="#ff6060">&quot;To many qubits in transposition vector!&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> rq <font color="#a52a2a"><b>&lt;</b></font> <font color="#ff00ff">0</font> <font color="#008b8b">)</font>
+    error <font color="#008b8b">(</font><font color="#ff00ff">&quot;To many qubits in transposition vector!&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> max<font color="#00ffff">(</font>tqidx<font color="#00ffff">)</font> <font color="#ffff00">&gt;</font> sq <font color="#ffff00">||</font> min<font color="#00ffff">(</font>tqidx<font color="#00ffff">)</font> <font color="#ffff00">&lt;</font> <font color="#ff6060">1</font> <font color="#00ffff">)</font>
-    error <font color="#00ffff">(</font><font color="#ff6060">&quot;Transposition index is out of bound!&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> max<font color="#008b8b">(</font>tqidx<font color="#008b8b">)</font> <font color="#a52a2a"><b>&gt;</b></font> sq <font color="#a52a2a"><b>||</b></font> min<font color="#008b8b">(</font>tqidx<font color="#008b8b">)</font> <font color="#a52a2a"><b>&lt;</b></font> <font color="#ff00ff">1</font> <font color="#008b8b">)</font>
+    error <font color="#008b8b">(</font><font color="#ff00ff">&quot;Transposition index is out of bound!&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#8080ff"># where to flip elements</font>
-mask = zeros<font color="#00ffff">(</font>sq,<font color="#ff6060">1</font><font color="#00ffff">)</font>;
-<font color="#ffff00">for</font> mi = <font color="#ff6060">1</font>:tq
-    mask<font color="#00ffff">(</font>tqidx<font color="#00ffff">(</font>mi<font color="#00ffff">))</font> = <font color="#ff6060">1</font>;
-<font color="#ffff00">endfor</font>
+<font color="#0000ff"># where to flip elements</font>
+mask = zeros<font color="#008b8b">(</font>sq,<font color="#ff00ff">1</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>for</b></font> mi = <font color="#ff00ff">1</font>:tq
+    mask<font color="#008b8b">(</font>tqidx<font color="#008b8b">(</font>mi<font color="#008b8b">))</font> = <font color="#ff00ff">1</font>;
+<font color="#a52a2a"><b>endfor</b></font>
 
-ret = zeros <font color="#00ffff">(</font>ss<font color="#00ffff">)</font>; <font color="#8080ff"># inicialize returned density matrix</font>
+ret = zeros <font color="#008b8b">(</font>ss<font color="#008b8b">)</font>; <font color="#0000ff"># inicialize returned density matrix</font>
 
-<font color="#8080ff"># loop over every matrix emelent of returned density matrix</font>
-<font color="#ffff00">for</font> i = <font color="#ff6060">1</font>:ss
-    <font color="#ffff00">for</font> j = <font color="#ff6060">1</font>:ss
-        bi = Dec2BinVec<font color="#00ffff">(</font>i <font color="#ffff00">-</font> <font color="#ff6060">1</font>, sq<font color="#00ffff">)</font>;
-        bj = Dec2BinVec<font color="#00ffff">(</font>j <font color="#ffff00">-</font> <font color="#ff6060">1</font>, sq<font color="#00ffff">)</font>;
-        <font color="#8080ff"># loop over flips mask</font>
+<font color="#0000ff"># loop over every matrix emelent of returned density matrix</font>
+<font color="#a52a2a"><b>for</b></font> i = <font color="#ff00ff">1</font>:ss
+    <font color="#a52a2a"><b>for</b></font> j = <font color="#ff00ff">1</font>:ss
+        bi = Dec2BinVec<font color="#008b8b">(</font>i <font color="#a52a2a"><b>-</b></font> <font color="#ff00ff">1</font>, sq<font color="#008b8b">)</font>;
+        bj = Dec2BinVec<font color="#008b8b">(</font>j <font color="#a52a2a"><b>-</b></font> <font color="#ff00ff">1</font>, sq<font color="#008b8b">)</font>;
+        <font color="#0000ff"># loop over flips mask</font>
         rbi = bi;
         rbj = bj;
-        <font color="#ffff00">for</font> ii = <font color="#ff6060">1</font>:sq
-            <font color="#ffff00">if</font> <font color="#00ffff">(</font> mask<font color="#00ffff">(</font>ii<font color="#00ffff">)</font> <font color="#ffff00">==</font> <font color="#ff6060">1</font><font color="#00ffff">)</font>
-                <font color="#8080ff"># flip bits</font>
-                rbi<font color="#00ffff">(</font>ii<font color="#00ffff">)</font> = bj<font color="#00ffff">(</font>ii<font color="#00ffff">)</font>;
-                rbj<font color="#00ffff">(</font>ii<font color="#00ffff">)</font> = bi<font color="#00ffff">(</font>ii<font color="#00ffff">)</font>;
-            <font color="#ffff00">endif</font>
-        <font color="#ffff00">endfor</font>
-        ri = BinVec2Dec<font color="#00ffff">(</font>rbi<font color="#00ffff">)</font> <font color="#ffff00">+</font> <font color="#ff6060">1</font>;
-        rj = BinVec2Dec<font color="#00ffff">(</font>rbj<font color="#00ffff">)</font> <font color="#ffff00">+</font> <font color="#ff6060">1</font>;
-        ret<font color="#00ffff">(</font>i,j<font color="#00ffff">)</font> = state<font color="#00ffff">(</font>ri,rj<font color="#00ffff">)</font>;
-    <font color="#ffff00">endfor</font>
-<font color="#ffff00">endfor</font>
-<font color="#ffff00">endfunction</font>
+        <font color="#a52a2a"><b>for</b></font> ii = <font color="#ff00ff">1</font>:sq
+            <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> mask<font color="#008b8b">(</font>ii<font color="#008b8b">)</font> <font color="#a52a2a"><b>==</b></font> <font color="#ff00ff">1</font><font color="#008b8b">)</font>
+                <font color="#0000ff"># flip bits</font>
+                rbi<font color="#008b8b">(</font>ii<font color="#008b8b">)</font> = bj<font color="#008b8b">(</font>ii<font color="#008b8b">)</font>;
+                rbj<font color="#008b8b">(</font>ii<font color="#008b8b">)</font> = bi<font color="#008b8b">(</font>ii<font color="#008b8b">)</font>;
+            <font color="#a52a2a"><b>endif</b></font>
+        <font color="#a52a2a"><b>endfor</b></font>
+        ri = BinVec2Dec<font color="#008b8b">(</font>rbi<font color="#008b8b">)</font> <font color="#a52a2a"><b>+</b></font> <font color="#ff00ff">1</font>;
+        rj = BinVec2Dec<font color="#008b8b">(</font>rbj<font color="#008b8b">)</font> <font color="#a52a2a"><b>+</b></font> <font color="#ff00ff">1</font>;
+        ret<font color="#008b8b">(</font>i,j<font color="#008b8b">)</font> = state<font color="#008b8b">(</font>ri,rj<font color="#008b8b">)</font>;
+    <font color="#a52a2a"><b>endfor</b></font>
+<font color="#a52a2a"><b>endfor</b></font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

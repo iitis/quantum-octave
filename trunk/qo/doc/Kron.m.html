@@ -6,31 +6,31 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function File} {} Kron (@var{matrix}, @dots{})</font>
-<font color="#8080ff">## The @code{Ket} function generates vertical complex vector from any</font>
-<font color="#8080ff">## number of @var{binary_vector}s.</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @example</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso{ State, Not, Id, H}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">## Created: 25 November 2003</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function File} {} Kron (@var{matrix}, @dots{})</font>
+<span class="Commen">## The @code{Ket} function generates vertical complex vector from any</span>
+t<font color="#0000ff">## number of @var{binary_vector}s.</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @example</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso{ State, Not, Id, H}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">## Created: 25 November 2003</font>
 
-<font color="#ffff00">function</font> ret = Kron<font color="#00ffff">(</font>varargin<font color="#00ffff">)</font>
+<font color="#a52a2a"><b>function</b></font> ret = Kron<font color="#008b8b">(</font>varargin<font color="#008b8b">)</font>
 
-NARGIN = <font color="#00ffff">nargin</font>;
+NARGIN = <font color="#008b8b">nargin</font>;
 
-ret = <font color="#ff6060">1</font>;
-<font color="#ffff00">while</font> <font color="#00ffff">(</font>NARGIN<font color="#00ffff">)</font>
-    ret = kron<font color="#00ffff">(</font>varargin{NARGIN<font color="#ffff00">--</font>},ret<font color="#00ffff">)</font>;
-<font color="#ffff00">endwhile</font>
+ret = <font color="#ff00ff">1</font>;
+<font color="#a52a2a"><b>while</b></font> <font color="#008b8b">(</font>NARGIN<font color="#008b8b">)</font>
+    ret = kron<font color="#008b8b">(</font>varargin{NARGIN<font color="#a52a2a"><b>--</b></font>},ret<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endwhile</b></font>
 
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

@@ -6,84 +6,84 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} BuildBinaryVector(@var{indx},@var{binvec},@var{binnum},@var{qubits})</font>
-<font color="#8080ff">## Function @code{BuildBinaryVector} returns a  @code{Ket} base vector  in @var{qubits}-qubits Hilbert </font>
-<font color="#8080ff">## space labeled with number constructed as follows. Every bit of this number which is listed in @var{indx}</font>
-<font color="#8080ff">## is sert according with @var{binnum}, other bits are complemented using @var{binnum}.</font>
-<font color="#8080ff">## Note: @var{binvec} and @var{binnum} must be binary vectors such that </font>
-<font color="#8080ff">## @code{length of binvec + length of binnum = qubits}.</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## BuildBinaryVector([1,2],[1,0],[1,1],4)</font>
-<font color="#8080ff">##  @result{} </font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  1</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">##  0</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {Id, Not}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
-<font color="#8080ff">## Created: 8 March 2005,</font>
-<font color="#8080ff">## Last modyfication: 16 March 2004.</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} BuildBinaryVector(@var{indx},@var{binvec},@var{binnum},@var{qubits})</font>
+<font color="#0000ff">## Function @code{BuildBinaryVector} returns a  @code{Ket} base vector  in @var{qubits}-qubits Hilbert </font>
+<font color="#0000ff">## space labeled with number constructed as follows. Every bit of this number which is listed in @var{indx}</font>
+<font color="#0000ff">## is sert according with @var{binnum}, other bits are complemented using @var{binnum}.</font>
+<font color="#0000ff">## Note: @var{binvec} and @var{binnum} must be binary vectors such that </font>
+<font color="#0000ff">## @code{length of binvec + length of binnum = qubits}.</font>
+<font color="#0000ff">## </font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## BuildBinaryVector([1,2],[1,0],[1,1],4)</font>
+<font color="#0000ff">##  @result{} </font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  1</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">##  0</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<span class="Comment">## @end deftypefn</spa>
+n<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {Id, Not}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
+<font color="#0000ff">## Created: 8 March 2005,</font>
+<font color="#0000ff">## Last modyfication: 16 March 2004.</font>
 
-<font color="#ffff00">function</font> ret = BuildBinaryVector<font color="#00ffff">(</font>qidx, binvec, binnum, qubits<font color="#00ffff">)</font>
-indx = sort<font color="#00ffff">(</font>qidx<font color="#00ffff">)</font>;
+<font color="#a52a2a"><b>function</b></font> ret = BuildBinaryVector<font color="#008b8b">(</font>qidx, binvec, binnum, qubits<font color="#008b8b">)</font>
+indx = sort<font color="#008b8b">(</font>qidx<font color="#008b8b">)</font>;
 
-is = size<font color="#00ffff">(</font>indx<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>; <font color="#8080ff"># number of bits for substitution</font>
-bs = size<font color="#00ffff">(</font>binvec<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>; <font color="#8080ff"># number of bits in substuitution list</font>
-ns = size<font color="#00ffff">(</font>binnum<font color="#00ffff">)(</font><font color="#ff6060">2</font><font color="#00ffff">)</font>; <font color="#8080ff">#number of bits in complementation</font>
+is = size<font color="#008b8b">(</font>indx<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>; <font color="#0000ff"># number of bits for substitution</font>
+bs = size<font color="#008b8b">(</font>binvec<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>; <font color="#0000ff"># number of bits in substuitution list</font>
+ns = size<font color="#008b8b">(</font>binnum<font color="#008b8b">)(</font><font color="#ff00ff">2</font><font color="#008b8b">)</font>; <font color="#0000ff">#number of bits in complementation</font>
 
-<font color="#8080ff"># test validity of call</font>
+<font color="#0000ff"># test validity of call</font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> is <font color="#ffff00">!=</font> bs <font color="#00ffff">)</font>
-    error<font color="#00ffff">(</font><font color="#ff6060">&quot;Size of first (=%d) and second argument (=%d) do not match!&quot;</font>,is, bs<font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> is <font color="#a52a2a"><b>!=</b></font> bs <font color="#008b8b">)</font>
+    error<font color="#008b8b">(</font><font color="#ff00ff">&quot;Size of first (=%d) and second argument (=%d) do not match!&quot;</font>,is, bs<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> bs <font color="#ffff00">+</font> ns <font color="#ffff00">!=</font> qubits <font color="#00ffff">)</font>
-    error<font color="#00ffff">(</font><font color="#ff6060">&quot;Wrong number of qubits: size of binvec  = %d, size of binnum = %d, qubits = %d&quot;</font>, bs, ns, qubits <font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> bs <font color="#a52a2a"><b>+</b></font> ns <font color="#a52a2a"><b>!=</b></font> qubits <font color="#008b8b">)</font>
+    error<font color="#008b8b">(</font><font color="#ff00ff">&quot;Wrong number of qubits: size of binvec  = %d, size of binnum = %d, qubits = %d&quot;</font>, bs, ns, qubits <font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> indx<font color="#00ffff">(</font>is<font color="#00ffff">)</font> <font color="#ffff00">&gt;</font> qubits <font color="#00ffff">)</font>
-    error<font color="#00ffff">(</font><font color="#ff6060">&quot;Too large qubit index (=%d) in first argument!&quot;</font>, indx<font color="#00ffff">(</font>is<font color="#00ffff">))</font>;
-<font color="#ffff00">endif</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> indx<font color="#008b8b">(</font>is<font color="#008b8b">)</font> <font color="#a52a2a"><b>&gt;</b></font> qubits <font color="#008b8b">)</font>
+    error<font color="#008b8b">(</font><font color="#ff00ff">&quot;Too large qubit index (=%d) in first argument!&quot;</font>, indx<font color="#008b8b">(</font>is<font color="#008b8b">))</font>;
+<font color="#a52a2a"><b>endif</b></font>
 
-<font color="#8080ff"># local variables for looping over binvec and binnum lists</font>
-qi = <font color="#ff6060">1</font>;
-bi = <font color="#ff6060">1</font>;
+<font color="#0000ff"># local variables for looping over binvec and binnum lists</font>
+qi = <font color="#ff00ff">1</font>;
+bi = <font color="#ff00ff">1</font>;
 
-<font color="#8080ff"># build temporary vector</font>
-temp  = zeros<font color="#00ffff">(</font><font color="#ff6060">1</font>,qubits<font color="#00ffff">)</font>;
+<font color="#0000ff"># build temporary vector</font>
+temp  = zeros<font color="#008b8b">(</font><font color="#ff00ff">1</font>,qubits<font color="#008b8b">)</font>;
 
-<font color="#ffff00">for</font> i=<font color="#ff6060">1</font>:qubits
-    <font color="#ffff00">if</font> <font color="#00ffff">(</font> qi <font color="#ffff00">&lt;=</font> is <font color="#ffff00">&amp;&amp;</font> i <font color="#ffff00">==</font> indx<font color="#00ffff">(</font>qi<font color="#00ffff">)</font> <font color="#00ffff">)</font>
-        temp<font color="#00ffff">(</font>i<font color="#00ffff">)</font> = binvec<font color="#00ffff">(</font>qi<font color="#00ffff">)</font>;
-        qi<font color="#ffff00">++</font>;
-    <font color="#ffff00">elseif</font> <font color="#00ffff">(</font> bi <font color="#ffff00">&lt;=</font> ns <font color="#00ffff">)</font>
-        temp<font color="#00ffff">(</font>i<font color="#00ffff">)</font> = binnum<font color="#00ffff">(</font>bi<font color="#00ffff">)</font>;
-        bi<font color="#ffff00">++</font>;
-    <font color="#ffff00">endif</font>
-<font color="#ffff00">endfor</font>
-ret = Ket<font color="#00ffff">(</font>temp<font color="#00ffff">)</font>;
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>for</b></font> i=<font color="#ff00ff">1</font>:qubits
+    <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> qi <font color="#a52a2a"><b>&lt;=</b></font> is <font color="#a52a2a"><b>&amp;&amp;</b></font> i <font color="#a52a2a"><b>==</b></font> indx<font color="#008b8b">(</font>qi<font color="#008b8b">)</font> <font color="#008b8b">)</font>
+        temp<font color="#008b8b">(</font>i<font color="#008b8b">)</font> = binvec<font color="#008b8b">(</font>qi<font color="#008b8b">)</font>;
+        qi<font color="#a52a2a"><b>++</b></font>;
+    <font color="#a52a2a"><b>elseif</b></font> <font color="#008b8b">(</font> bi <font color="#a52a2a"><b>&lt;=</b></font> ns <font color="#008b8b">)</font>
+        temp<font color="#008b8b">(</font>i<font color="#008b8b">)</font> = binnum<font color="#008b8b">(</font>bi<font color="#008b8b">)</font>;
+        bi<font color="#a52a2a"><b>++</b></font>;
+    <font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a"><b>endfor</b></font>
+ret = Ket<font color="#008b8b">(</font>temp<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endfunction</b></font>
 
 </pre>
 </body>

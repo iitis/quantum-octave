@@ -6,51 +6,51 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} Entropy(s)</font>
-<font color="#8080ff">## Function @code{H} calculates entropy of mixed (or pure) state</font>
-<font color="#8080ff">## @var{s} acording to the rule </font>
-<font color="#8080ff">## @code{Entropy(s)=-sum(eig(s)log2(eig(2))}</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## Entropy(MixState(State(Ket([0,0,1]),State(Ket([1,0,0]))))</font>
-<font color="#8080ff">##  @result{} </font>
-<font color="#8080ff">##</font>  <font color="#8080ff">1</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## Entropy(MaxMix(2))</font>
-<font color="#8080ff">##</font>  <font color="#8080ff">@result{}</font>
-<font color="#8080ff">##</font>  <font color="#8080ff">2</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {PTrace, PTranspose, Evolve, Negativity}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">## Created: 22 March 2004</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} Entropy(s)</font>
+<font color="#0000ff">## Function @code{H} calculates entropy of mixed (or pure) state</font>
+<font color="#0000ff">## @var{s} acording to the rule </font>
+<font color="#0000ff">## @code{Entropy(s)=-sum(eig(s)log2(eig(2))}</font>
+<font color="#0000ff">## </font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## Entropy(MixState(State(Ket([0,0,1]),State(Ket([1,0,0]))))</font>
+<font color="#0000ff">##  @result{} </font>
+<font color="#0000ff">##</font>  <font color="#0000ff">1</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## Entropy(MaxMix(2))</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">@result{}</font>
+<font color="#0000ff">##</font>  <font color="#0000ff">2</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {PTrace, PTranspose, Evolve, Negativity}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">## Created: 22 March 2004</font>
 
-<font color="#ffff00">function</font> ret = Entropy<font color="#00ffff">(</font>state<font color="#00ffff">)</font>
-ret = <font color="#ff6060">0</font>;
-tmp = <font color="#ff6060">0</font>;
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> <font color="#00ffff">nargin</font> <font color="#ffff00">!=</font> <font color="#ff6060">1</font> <font color="#00ffff">)</font>
-    usage <font color="#00ffff">(</font><font color="#ff6060">&quot;Entropy (state)&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">else</font>
-    ev = eig<font color="#00ffff">(</font>state<font color="#00ffff">)</font>; <font color="#8080ff"># eigenvalues of density matrix</font>
-    nb = size<font color="#00ffff">(</font>ev<font color="#00ffff">)(</font><font color="#ff6060">1</font><font color="#00ffff">)</font>; <font color="#8080ff"># number of eigenvalues</font>
-    <font color="#ffff00">for</font>  i = <font color="#ff6060">1</font>:nb
-        <font color="#ffff00">if</font> <font color="#00ffff">(</font> ev<font color="#00ffff">(</font>i<font color="#00ffff">)</font> <font color="#ffff00">==</font> <font color="#ff6060">0.0</font> <font color="#00ffff">)</font>
-            ret <font color="#ffff00">-</font>= <font color="#ff6060">0</font>;
-        <font color="#ffff00">else</font>
-            ret <font color="#ffff00">-</font>= ev<font color="#00ffff">(</font>i<font color="#00ffff">)</font><font color="#ffff00">*</font>log2<font color="#00ffff">(</font>ev<font color="#00ffff">(</font>i<font color="#00ffff">))</font>;
-        <font color="#ffff00">endif</font>
-    <font color="#ffff00">endfor</font>
-<font color="#ffff00">endif</font>
-<font color="#ffff00">if</font> <font color="#00ffff">(</font>ret <font color="#ffff00">&lt;</font> <font color="#ff6060">10e-15</font><font color="#00ffff">)</font>
-    ret = <font color="#ff6060">0.0</font>;
-<font color="#ffff00">endif</font>
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>function</b></font> ret = Entropy<font color="#008b8b">(</font>state<font color="#008b8b">)</font>
+ret = <font color="#ff00ff">0</font>;
+tmp = <font color="#ff00ff">0</font>;
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> <font color="#008b8b">nargin</font> <font color="#a52a2a"><b>!=</b></font> <font color="#ff00ff">1</font> <font color="#008b8b">)</font>
+    usage <font color="#008b8b">(</font><font color="#ff00ff">&quot;Entropy (state)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>else</b></font>
+    ev = eig<font color="#008b8b">(</font>state<font color="#008b8b">)</font>; <font color="#0000ff"># eigenvalues of density matrix</font>
+    nb = size<font color="#008b8b">(</font>ev<font color="#008b8b">)(</font><font color="#ff00ff">1</font><font color="#008b8b">)</font>; <font color="#0000ff"># number of eigenvalues</font>
+    <font color="#a52a2a"><b>for</b></font>  i = <font color="#ff00ff">1</font>:nb
+        <font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> ev<font color="#008b8b">(</font>i<font color="#008b8b">)</font> <font color="#a52a2a"><b>==</b></font> <font color="#ff00ff">0.0</font> <font color="#008b8b">)</font>
+            ret <font color="#a52a2a"><b>-</b></font>= <font color="#ff00ff">0</font>;
+        <font color="#a52a2a"><b>else</b></font>
+            ret <font color="#a52a2a"><b>-</b></font>= ev<font color="#008b8b">(</font>i<font color="#008b8b">)</font><font color="#a52a2a"><b>*</b></font>log2<font color="#008b8b">(</font>ev<font color="#008b8b">(</font>i<font color="#008b8b">))</font>;
+        <font color="#a52a2a"><b>endif</b></font>
+    <font color="#a52a2a"><b>endfor</b></font>
+<font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font>ret <font color="#a52a2a"><b>&lt;</b></font> <font color="#ff00ff">10e-15</font><font color="#008b8b">)</font>
+    ret = <font color="#ff00ff">0.0</font>;
+<font color="#a52a2a"><b>endif</b></font>
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

@@ -51,8 +51,8 @@ ret = zeros <font color="#008b8b">(</font>rs<font color="#008b8b">)</font>; <fon
 <font color="#a52a2a"><b>for</b></font> i = <font color="#ff00ff">1</font>:rs
     <font color="#a52a2a"><b>for</b></font> j = <font color="#ff00ff">1</font>:rs
         bi = ReverseVec<font color="#008b8b">((</font>Dec2BinVec<font color="#008b8b">(</font>i<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>,rq<font color="#008b8b">)))</font>; <font color="#0000ff"># those have to be row vectors</font>
-        <span clas="">bj = ReverseVec</span><font color="#008b8b">(</font>Dec2BinVec<font color="#008b8b">(</font>j<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>,rq<font color="#008b8b">))</font>;
-s
+        bj = ReverseVec<font color="#008b8b">(</font>Dec2BinVec<font color="#008b8b">(</font>j<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>,rq<font color="#008b8b">))</font>;
+
     <font color="#0000ff"># sum loop over elements of targv list</font>
         <font color="#a52a2a"><b>for</b></font> k = <font color="#ff00ff">0</font>:ts<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>
             bk = Dec2BinVec<font color="#008b8b">(</font>k,tq<font color="#008b8b">)</font>;

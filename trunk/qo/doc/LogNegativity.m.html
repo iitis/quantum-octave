@@ -6,34 +6,34 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn {Function file} {} LogNegativity(@var{state},@var{qlist})</font>
-<font color="#8080ff">## Function @code{LogNegativity} returns negativity defined for state</font>
-<font color="#8080ff">## @var{state} as @code{LogNegativity(state,qlist) = 1/2*(TrNorm(PTranspose(state,qlist) - 1)}. </font>
-<font color="#8080ff">## Partial transposition is performed over qubits listed in @var{qlist}.</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## LogNegativity(State(Ket([0,0,0]),[1,2])</font>
-<font color="#8080ff">##  @result{} </font>
-<font color="#8080ff">##</font>  <font color="#8080ff">0</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @seealso {Negativity, Entropy, PTrace, PTranspose, Entropy, TrNorm}</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## Created: 05 April 2004</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn {Function file} {} LogNegativity(@var{state},@var{qlist})</font>
+<font color="#0000ff">## Function @code{LogNegativity} returns negativity defined for state</font>
+<font color="#0000ff">## @var{state} as @code{LogNegativity(state,qlist) = 1/2*(TrNorm(PTranspose(state,qlist) - 1)}. </font>
+<span class="Commen">## Partial transposition is performed over qubits listed in @var{qlist}.</span>
+t<font color="#0000ff">## </font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## LogNegativity(State(Ket([0,0,0]),[1,2])</font>
+<font color="#0000ff">##  @result{} </font>
+<font color="#0000ff">##</font>  <font color="#0000ff">0</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @seealso {Negativity, Entropy, PTrace, PTranspose, Entropy, TrNorm}</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## Created: 05 April 2004</font>
 
-<font color="#ffff00">function</font> ret = LogNegativity<font color="#00ffff">(</font>state, qlist<font color="#00ffff">)</font>;
-<font color="#ffff00">if</font> <font color="#00ffff">(</font> <font color="#00ffff">nargin</font> =<font color="#ffff00">!</font> <font color="#ff6060">2</font><font color="#00ffff">)</font>
-    usage <font color="#00ffff">(</font><font color="#ff6060">&quot;Negativity (state, qubits)&quot;</font><font color="#00ffff">)</font>;
-<font color="#ffff00">endif</font>
-    ret = log2<font color="#00ffff">(</font>TrNorm<font color="#00ffff">(</font>PTranspose<font color="#00ffff">(</font>state,qlist<font color="#00ffff">)))</font>;
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>function</b></font> ret = LogNegativity<font color="#008b8b">(</font>state, qlist<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> <font color="#008b8b">nargin</font> =<font color="#a52a2a"><b>!</b></font> <font color="#ff00ff">2</font><font color="#008b8b">)</font>
+    usage <font color="#008b8b">(</font><font color="#ff00ff">&quot;Negativity (state, qubits)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
+    ret = log2<font color="#008b8b">(</font>TrNorm<font color="#008b8b">(</font>PTranspose<font color="#008b8b">(</font>state,qlist<font color="#008b8b">)))</font>;
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>

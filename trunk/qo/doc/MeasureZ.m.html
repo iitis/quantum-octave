@@ -6,50 +6,51 @@
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <pre>
-<font color="#8080ff">## -*- texinfo -*-</font>
-<font color="#8080ff">## @deftypefn{Function file} {} Measure(@var{state})</font>
-<font color="#8080ff">## Function @code{Measure} performs ortogonal measurment on state @var{state}. Function returns a probability distribution of results. </font>
-<font color="#8080ff">## @example </font>
-<font color="#8080ff">## @group</font>
-<font color="#8080ff">## Measure(State(Ket([1,0,1])))</font>
-<font color="#8080ff">##  @result{}</font>
-<font color="#8080ff">## 0  0</font>
-<font color="#8080ff">## 1  0</font>
-<font color="#8080ff">## 2  0</font>
-<font color="#8080ff">## 3  0</font>
-<font color="#8080ff">## 4  0</font>
-<font color="#8080ff">## 5  1</font>
-<font color="#8080ff">## 6  0</font>
-<font color="#8080ff">## 7  0</font>
-<font color="#8080ff">##</font>
-<font color="#8080ff">## @end group</font>
-<font color="#8080ff">## @end example</font>
-<font color="#8080ff">## @end deftypefn</font>
-<font color="#8080ff">## @seealso {Id, Not, H, Pase}</font>
-<font color="#8080ff">## </font>
-<font color="#8080ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
-<font color="#8080ff">## Created: 12 December 2003.</font>
-<font color="#8080ff">## Last modyfication: 10 February 2004.</font>
+<font color="#0000ff">## -*- texinfo -*-</font>
+<font color="#0000ff">## @deftypefn{Function file} {} MeasureZ(@var{state})</font>
+<font color="#0000ff">## Function @code{MeasureZ} performs ortogonal measurment on state @var{state}. Function returns a probability distribution of results. </font>
+<font color="#0000ff">## @example </font>
+<font color="#0000ff">## @group</font>
+<font color="#0000ff">## MeasureZ(State(Ket([1,0,1])))</font>
+<font color="#0000ff">##  @result{}</font>
+<font color="#0000ff">## 0  0</font>
+<font color="#0000ff">## 1  0</font>
+<font color="#0000ff">## 2  0</font>
+<font color="#0000ff">## 3  0</font>
+<font color="#0000ff">## 4  0</font>
+<font color="#0000ff">## 5  1</font>
+<font color="#0000ff">## 6  0</font>
+<font color="#0000ff">## 7  0</font>
+<font color="#0000ff">##</font>
+<font color="#0000ff">## @end group</font>
+<font color="#0000ff">## @end example</font>
+<font color="#0000ff">## @end deftypefn</font>
+<font color="#0000ff">## @seealso {Measure, Evolve, Id, Not, H, Pase}</font>
+<font color="#0000ff">## </font>
+<font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak.</font>
+<font color="#0000ff">## Created: 12 December 2003.</font>
+<font color="#0000ff">## Last modyfication: 9 July 2004.</font>
 
-<font color="#ffff00">function</font> ret = MeasureZ<font color="#00ffff">(</font>state<font color="#00ffff">)</font>
-  state_size = size<font color="#00ffff">(</font>state<font color="#00ffff">)(</font><font color="#ff6060">1</font><font color="#00ffff">)</font>;
-<font color="#8080ff">#  qubit_count = log2(state_size)</font>
+<font color="#a52a2a"><b>function</b></font> ret = MeasureZ<font color="#008b8b">(</font>state<font color="#008b8b">)</font>
+<font color="#a52a2a"><b>if</b></font> <font color="#008b8b">(</font> <font color="#008b8b">nargin</font> <font color="#a52a2a"><b>!=</b></font> <font color="#ff00ff">1</font> <font color="#008b8b">)</font>
+    usage <font color="#008b8b">(</font><font color="#ff00ff">&quot;MeasureZ (state)&quot;</font><font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endif</b></font>
+state_size = size<font color="#008b8b">(</font>state<font color="#008b8b">)(</font><font color="#ff00ff">1</font><font color="#008b8b">)</font>;
+<font color="#0000ff">#  qubit_count = log2(state_size)</font>
 
-  ret = zeros<font color="#00ffff">(</font><font color="#ff6060">2</font>,state_size<font color="#00ffff">)</font>;
-  ret<font color="#00ffff">(</font><font color="#ff6060">1</font>,:<font color="#00ffff">)</font> = <font color="#ff6060">0</font>:state_size<font color="#ffff00">-</font><font color="#ff6060">1</font>;
-  temp = zeros<font color="#00ffff">(</font>state_size<font color="#00ffff">)</font>;
+ret = zeros<font color="#008b8b">(</font><font color="#ff00ff">2</font>,state_size<font color="#008b8b">)</font>;
+ret<font color="#008b8b">(</font><font color="#ff00ff">1</font>,:<font color="#008b8b">)</font> = <font color="#ff00ff">0</font>:state_size<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>;
+temp = zeros<font color="#008b8b">(</font>state_size<font color="#008b8b">)</font>;
+temp<font color="#008b8b">(</font><font color="#ff00ff">1</font>,<font color="#ff00ff">1</font><font color="#008b8b">)</font>=<font color="#ff00ff">1</font>;
+ret<font color="#008b8b">(</font><font color="#ff00ff">2</font>,<font color="#ff00ff">1</font><font color="#008b8b">)</font>=trace<font color="#008b8b">(</font>temp<font color="#a52a2a"><b>*</b></font>state<font color="#008b8b">)</font>;
 
-  temp<font color="#00ffff">(</font><font color="#ff6060">1</font>,<font color="#ff6060">1</font><font color="#00ffff">)</font>=<font color="#ff6060">1</font>;
-  ret<font color="#00ffff">(</font><font color="#ff6060">2</font>,<font color="#ff6060">1</font><font color="#00ffff">)</font>=trace<font color="#00ffff">(</font>temp<font color="#ffff00">*</font>state<font color="#00ffff">)</font>;
-
-  <font color="#ffff00">for</font> i=<font color="#ff6060">2</font>:state_size
-  temp<font color="#00ffff">(</font>i<font color="#ffff00">-</font><font color="#ff6060">1</font>,i<font color="#ffff00">-</font><font color="#ff6060">1</font><font color="#00ffff">)</font>=<font color="#ff6060">0</font>;
-  temp<font color="#00ffff">(</font>i,i<font color="#00ffff">)</font>=<font color="#ff6060">1</font>;
-
-  ret<font color="#00ffff">(</font><font color="#ff6060">2</font>,i<font color="#00ffff">)</font>=trace<font color="#00ffff">(</font>temp<font color="#ffff00">*</font>state<font color="#00ffff">)</font>;
-  <font color="#ffff00">endfor</font>
- ret = ret<font color="#ffff00">'</font>;
-<font color="#ffff00">endfunction</font>
+<font color="#a52a2a"><b>for</b></font> i=<font color="#ff00ff">2</font>:state_size
+    temp<font color="#008b8b">(</font>i<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font>,i<font color="#a52a2a"><b>-</b></font><font color="#ff00ff">1</font><font color="#008b8b">)</font>=<font color="#ff00ff">0</font>;
+    temp<font color="#008b8b">(</font>i,i<font color="#008b8b">)</font>=<font color="#ff00ff">1</font>;
+    ret<font color="#008b8b">(</font><font color="#ff00ff">2</font>,i<font color="#008b8b">)</font>=trace<font color="#008b8b">(</font>temp<font color="#a52a2a"><b>*</b></font>state<font color="#008b8b">)</font>;
+<font color="#a52a2a"><b>endfor</b></font>
+ret = ret<font color="#a52a2a"><b>'</b></font>;
+<font color="#a52a2a"><b>endfunction</b></font>
 </pre>
 </body>
 </html>
