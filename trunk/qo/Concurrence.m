@@ -1,7 +1,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} Concurrence(@var{rho})
-## Function @code{Concurrence} returns concurrence of the state
-## @var{rho}
+## Function @code{Concurrence} returns concurrence of the two qubit 
+## state @var{rho}.
 ##
 ## @end deftypefn
 ##
