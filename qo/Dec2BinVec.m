@@ -36,7 +36,7 @@ temp = dec2bin([number,2^len-1])(1,:);
 ret = zeros(1,len);
 # fill it!
 for i=1:len
-	ret(len + 1 - i) = str2num(temp(i));
+	ret(i) = str2num(temp(i));
 endfor
 
 endfunction
