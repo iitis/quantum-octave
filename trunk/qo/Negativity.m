@@ -8,7 +8,7 @@
 ## 
 ## @example 
 ## @group
-## Negativity(State(Ket([0,0,0]))
+## Negativity(State(Ket([0,0,0]),1)
 ##  @result{} 
 ##	0
 ## @end group
