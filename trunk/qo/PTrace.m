@@ -39,8 +39,8 @@ for i = 1:rs
 	for j = 1:rs
 #*		printf("(%d,%d) ",i,j);
 #*		printf("[%d], [%d]\n",Dec2BinVec(i-1,rq),Dec2BinVec(j-1,rq));
-		bi = Dec2BinVec(i-1,rq);
-		bj = Dec2BinVec(j-1,rq);
+		bi = ReverseVec(Dec2BinVec(i-1,rq));
+		bj = ReverseVec(Dec2BinVec(j-1,rq));
 	
 	# sum loop over elements of targv list
 		for k = 0:ts-1
