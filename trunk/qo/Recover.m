@@ -47,20 +47,20 @@ if (flag==0) # bitflip
 
 	lstate=state;
 	
-	lstate = Evolve(ControledGate(3,Not,[1],[2]), lstate);
+	lstate = Evolve(ControlledGate(3,Not,[1],[2]), lstate);
 
 	outcome = Measure(lstate,"IZI"); # measure first syndrome
 	lstate = outcome.state; # evolution
-	eigval1 = outcome.eigval([2]); # 1st measurment outcome
+	eigval1 = outcome.eigval # 1st measurment outcome
 
-	lstate = Evolve(ControledGate(3,Not,[1],[3]), lstate);
+	lstate = Evolve(ControlledGate(3,Not,[1],[3]), lstate);
 
-	outcome = Measure(lstate,"ZII"); # measure second syndrome
+	outcome = Measure(lstate,"IIZ"); # measure second syndrome
 	lstate = outcome.state; # evolution
-	eigval2 = outcome.eigval([1]); # 2nd measurment outcome
+	eigval2 = outcome.eigval # 2nd measurment outcome
 	
-	syn(1) = eigval1*2; # calculate syndroms
-	syn(2) = eigval2*2;
+	syn(1) = eigval1([2])*2; # calculate syndroms
+	syn(2) = eigval2([3])*2;
 
 	syn=syn' # we want horizontal vector
 
@@ -75,8 +75,8 @@ if (flag==0) # bitflip
 		lstate = Evolve(g,lstate); # so correct him
 	endif
 
-	lstate = Evolve(ControledGate(3,Not,[1],[2]), lstate);
-	lstate = Evolve(ControledGate(3,Not,[1],[3]), lstate);
+	lstate = Evolve(ControlledGate(3,Not,[1],[2]), lstate);
+	lstate = Evolve(ControlledGate(3,Not,[1],[3]), lstate);
 
 	ret = lstate;
 
