@@ -20,7 +20,6 @@
 ## Created: 23 March 2004
 
 function ret = Recover(state, code)
-# TODO right now code argument is skipped
 
 flag = -1; # 0-bitflip, 1-faseflip, 2-shor
 
@@ -51,32 +50,37 @@ if (flag==0) # bitflip
 
 	outcome = Measure(lstate,"IZI"); # measure first syndrome
 	lstate = outcome.state; # evolution
+
+GetPureState(lstate)
 	eigval1 = outcome.eigval; # 1st measurment outcome
 
 	lstate = Evolve(ControlledGate(3,Not,[1],[3]), lstate);
 
 	outcome = Measure(lstate,"IIZ"); # measure second syndrome
 	lstate = outcome.state; # evolution
+
+GetPureState(lstate)
 	eigval2 = outcome.eigval; # 2nd measurment outcome
+
 	
 	syn(1) = eigval1([2])*2; # calculate syndroms
 	syn(2) = eigval2([3])*2;
 
 	syn=syn'; # we want horizontal vector
 
-	if(syn==[-1,-1]) # qubit 1 fliped
+	if(syn==[1,1]) # qubit 1 fliped
 		g = ProductGate(3,Not,[1]);
 		lstate = Evolve(g,lstate); # so correct him
-	elseif (syn==[1,-1])  # qubit 2 fliped
+	elseif (syn==[-1,1])  # qubit 2 fliped
 		g = ProductGate(3,Not,[2]);  
 		lstate = Evolve(g,lstate); # so correct him
-	elseif (syn==[-1,1]) # qubit 3 fliped
+	elseif (syn==[1,-1]) # qubit 3 fliped
 		g = ProductGate(3,Not,[3]);  
 		lstate = Evolve(g,lstate); # so correct him
 	endif
+#		g = ProductGate(3,Not,[1,2,3]);
+#		lstate = Evolve(g,lstate); # so correct him
 
-	lstate = Evolve(ControlledGate(3,Not,[1],[2]), lstate);
-	lstate = Evolve(ControlledGate(3,Not,[1],[3]), lstate);
 
 	ret = lstate;
 

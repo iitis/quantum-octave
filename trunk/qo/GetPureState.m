@@ -23,7 +23,7 @@ if ( nargin != 1 )
 endif
 	[v,l] = eig(state);
 	sl = size(l)(2);
-	if( l(sl, sl) - 1 < 0.000)
+	if( l(sl, sl) - 1 < 0.0001)
 		ret = v(:,size(v)(2));
 	else
 		ret = NaN;	

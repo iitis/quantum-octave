@@ -43,8 +43,8 @@ if (flag==0) # bitflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
 	endif
-        g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # decoding gate
-        ret = Evolve(g, state);
+	# it is not nedded
+        ret = state;
 elseif(flag==1) # faseflip
 	if (qs!=3)
 	        error("state should be density matrix of 3 qubit system")
