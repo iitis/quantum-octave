@@ -31,10 +31,12 @@ if ( size(binvec)(1) != 1 )
 	error("Error in input vector!");
 endif
 num = 0;
-for i = 1: size(binvec)(2)
-	temp = binvec(i);
+s = size(binvec)(2);
+
+for i = 1:s
+	temp = binvec(s+1 - i);
 	if (temp == 0 || temp ==1)
-		num += (2^(i-1))*binvec(i);
+		num += (2^(i-1))*temp;
 	else
 		error("Number %d found in input vector!",temp);
 	endif

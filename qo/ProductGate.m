@@ -32,21 +32,21 @@ if(nargin!=3)
 	usage("ProductGate(size,gate,targetv)");
 endif
 if(!is_scalar(size))
-	error("1st parameter should be scalar");
+	error("1st parameter should be scalar!");
 endif
 if(is_square(gate)!=2)
-	error("2nd parameter should be matrix 2x2");
+	error("2nd parameter should be matrix 2x2!");
 endif
 if(size < max(targetv))
-	error("Operator acts on %d qubits, max target index is %d", size, max(targetv));
+	error("Operator acts on %d qubits, max target index is %d!", size, max(targetv));
 endif
 if (min(targetv)<1)
-	error("Qubit index less than 0");
+	error("Qubit index less than 0!");
 endif
 
 idx = 1;
-sort(targetv);
-if (targetv(1) == 1)
+lv = sort(targetv);
+if (lv(1) == 1)
 	tmp = gate;
 	idx++;
 else
@@ -54,7 +54,7 @@ else
 endif
 
 for i = 2:size
-if((idx <= length(targetv)) && (targetv(idx) == i))
+if((idx <= length(lv)) && (lv(idx) == i))
 	tmp = kron(tmp,gate);
 	idx++;
 else

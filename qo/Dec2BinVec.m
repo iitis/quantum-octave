@@ -6,10 +6,10 @@
 ## 
 ## @example 
 ## @group
-## Dev2BinVec(4,3)
+## Dec2BinVec(4,3)
 ##  @result{} 
 ##	1 0 0
-## Dev2BinVec(4,4)
+## Dec2BinVec(4,4)
 ##  @result{} 
 ##	0 1 0 0
 ## @end group

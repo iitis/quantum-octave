@@ -24,7 +24,7 @@ function ret = Decode(state, code)
 flag = -1; # 0-bitflip, 1-faseflip, 2-shor
 
 if(nargin!=2)
-        usage("Encode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
+        usage("Decode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
 endif
 
 if(strcmp(code,"bitflip"))
@@ -34,7 +34,7 @@ elseif(strcmp(code,"phaseflip"))
 elseif(strcmp(code,"shor"))
         flag=2;
 else
-        usage("Encode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
+        usage("Decode(state, \"biflip\"|\"phaseflip\"|\"shor\")");
 endif
 
 qs = log2(size(state)(2)); # number of qubits in the input state
