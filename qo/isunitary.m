@@ -1,6 +1,6 @@
 function ret = isunitary(matrix)
-matrix*conj(matrix)
-norm((matrix*conj(matrix))-eye(size(matrix)),"fro")
+#matrix*conj(matrix)
+#norm((matrix*conj(matrix))-eye(size(matrix)),"fro")
 	if(size(matrix)(1)!=size(matrix)(2))
 		ret = 0;
 		return;
@@ -11,5 +11,4 @@ norm((matrix*conj(matrix))-eye(size(matrix)),"fro")
 		ret = 0;
 		return;
 	endif
-
 endfunction
