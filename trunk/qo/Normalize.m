@@ -1,5 +1,5 @@
 ## -*- texinfo -*-
-## @deftypefn {Function File} Normalize (@var{Ket})
+## @deftypefn {Function File} Normalize (@var{Ket}, ...)
 ## The @code{Normalize} function generates normalized Ket vector from any
 ## number of @var{Ket}s. 
 ## @example
@@ -18,11 +18,11 @@
 ## @seealso{State, Evolve}
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
-## Last modification: 25 March 2004
+## Last modification: 25 May 2004
 
 function ret = Normalize(varargin)
 if (nargin < 1 )
-	usage ("Normalize (ket)");
+	usage ("Normalize (Ket[, ...])");
 endif
 ret = [0];
 NARGIN = nargin;
@@ -42,6 +42,6 @@ while (NARGIN)
 endwhile
 
 ret = sum(temp,2); # sum verticaly
-norm = sqrt(ret'*ret);
+norm = sqrt(ret'*ret); # normalize
 ret = ret./norm;
 endfunction
