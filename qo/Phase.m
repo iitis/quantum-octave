@@ -21,7 +21,7 @@
 
 function ret = Phase(phi0,phi1)
 if (nargin!=2)
-	usage("Phase(phi0,phi1)");
+	usage("Phase (phi0,phi1)");
 endif
 	ret =  [e^(i*phi0), 0; 0, e^(i*phi1)];
 endfunction
