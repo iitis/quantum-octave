@@ -1,4 +1,4 @@
-function ret = isunitary(matrix)
+function ret = IsUnitary(matrix)
 	if(size(matrix)(1)!=size(matrix)(2))
 		ret = 0;
 		return;

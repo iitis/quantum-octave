@@ -49,7 +49,7 @@ if (flag==0) # bitflip
 	newstate = Kron(state, State(Ket([0,0])));
 	ret = Evolve(g, newstate);
 elseif(flag==1) # faseflip
-	g = ControlledGate(3,Not,[1],[2])*ControlledGate(3,Not,[1],[3]); # encoding gate
+	g = ControlledGate(3,Not,[1],[3])*ControlledGate(3,Not,[1],[2]); # encoding gate
 	g*= ProductGate(3,H,[1,2,3]);
 	newstate = Kron(state, State(Ket([0,0])));
 	ret = Evolve(g, newstate);

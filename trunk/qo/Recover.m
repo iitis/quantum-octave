@@ -43,59 +43,36 @@ if (flag==0) # bitflip
         if (qs!=3)
                 error("state should be density matrix of 3 qubit system")
         endif
-
 	lstate=state;
 	
-	lstate = Evolve(ControlledGate(3,Not,[1],[2]), lstate);
-
-	outcome = Measure(lstate,"IZI"); # measure first syndrome
-	lstate = outcome.state; # evolution
-
-GetPureState(lstate)
-	eigval1 = outcome.eigval; # 1st measurment outcome
-
-	lstate = Evolve(ControlledGate(3,Not,[1],[3]), lstate);
-
-	outcome = Measure(lstate,"IIZ"); # measure second syndrome
-	lstate = outcome.state; # evolution
-
-GetPureState(lstate)
-	eigval2 = outcome.eigval; # 2nd measurment outcome
-
+	lstate = Evolve(ControlledGate(3,Not,[2,3],[1]), lstate);
 	
-	syn(1) = eigval1([2])*2; # calculate syndroms
-	syn(2) = eigval2([3])*2;
-
-	syn=syn'; # we want horizontal vector
-
-	if(syn==[1,1]) # qubit 1 fliped
-		g = ProductGate(3,Not,[1]);
-		lstate = Evolve(g,lstate); # so correct him
-	elseif (syn==[-1,1])  # qubit 2 fliped
-		g = ProductGate(3,Not,[2]);  
-		lstate = Evolve(g,lstate); # so correct him
-	elseif (syn==[1,-1]) # qubit 3 fliped
-		g = ProductGate(3,Not,[3]);  
-		lstate = Evolve(g,lstate); # so correct him
-	endif
-#		g = ProductGate(3,Not,[1,2,3]);
-#		lstate = Evolve(g,lstate); # so correct him
-
-
-	ret = lstate;
+	outcome = Measure(lstate,"IZZ"); # measure second syndrome
+	lstate = outcome.state; # evolution
+	
+	newstate = PTrace(lstate, [2:3]);
+	
+	ret = newstate;
 
 elseif(flag==1) # phaseflip
         if (qs!=3)
                 error("state should be density matrix of 3 qubit system")
         endif
-
+	lstate=state;
+	
+	lstate = Evolve(ControlledGate(3,Not,[2,3],[1]), lstate);
+	
+	outcome = Measure(lstate,"IZZ"); # measure second syndrome
+	lstate = outcome.state; # evolution
+	
+	newstate = PTrace(lstate, [2:3]);
+	
+	ret = newstate;
 
 elseif(flag==2) # shor
         if (qs!=9)
                 error("state should be density matrix of 9 qubit system")
         endif
 endif
-
-
 
 endfunction
