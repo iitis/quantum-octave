@@ -1,29 +1,31 @@
 ## -*- texinfo -*-
-## @deftypefn {Function File} {} Not () 
-## The @code{Not()} function returns matrix 
-## which represents Not operation.
+## @deftypefn {Function File} {} GetPureState(@var{state})
+## The @code{GetPureState} function returns pure state coresponding 
+## to density matrix @var{state}. If @var{state} cannot be decompose
+## in unique way, it returns @code{NaN}.
 ##
 ## @example
 ## @group
-## Not()
+## GetPureState(MaxMix(2))
 ## @result{}	
-##	0  1
-##	1  0
+##	NaN
 ## @end group
 ## @end example
 ## @end deftypefn
-## @seealso{Id, H, Phase, RotX, RotY, RotZ}
+## @seealso{Entropy, Id, H, Phase}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
+## Created: 26 March 2004
 
 function ret = GetPureState(state)
-	[v,l]=eig(state);
-	
-	if(size(v)!=1)
+if ( nargin != 1 )
+	usage("GetPureState (mixed_state)");
+endif
+	[v,l] = eig(state);
+	sl = size(l)(2);
+	if( l(sl, sl) - 1 < 0.000)
+		ret = v(:,size(v)(2));
+	else
 		ret = NaN;	
 	endif
-	ret = v(:,size(v)(2));
-
-
 endfunction
