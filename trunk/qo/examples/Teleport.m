@@ -1,5 +1,5 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Name([@var{size}] )
+## @deftypefn{Function file} {} Teleport(@var{state})
 ## 
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 04 April 2004
@@ -7,13 +7,13 @@
 function ret = Teleport(st)
 
 if(nargin!=1)
-	usage("Teleport(state)");
+	usage("Teleport (state)");
 endif
 
 qs = log2(size(st)(2)); # number of qubits in the input state
 
 if(qs!=1)
-	error("state should be density matrix of 1 qubit system")
+	error("State should be density matrix of 1 qubit system!")
 endif
 lstate = kron(st, State(Ket([0,0]))); # preparation of bigger state
 
@@ -40,5 +40,5 @@ if (outcome(1)==-0.5) # if first qubit is 1 then, perform Z on teleported state
 	lstate = Evolve(Sz, lstate);
 endif
 	ret = lstate;
-#teleportation done
+printf("Teleportation done.\n");
 endfunction
