@@ -28,6 +28,9 @@ function ret = Measure(state, observables, str)
 
 flag=-1; # 0 - return measured state (default); 1 - return structure
 
+lobservables = ReverseVec(observables);
+
+
 if(nargin==2)
 	flag=0;
 elseif(nargin==3)
@@ -42,6 +45,13 @@ else
 	usage("Measure(state, observables[, {\"state\"|\"struct\"}])");
 endif
 
+qs = log2(size(state)(2)); # number of qubits in state
+
+if (size(lobservables)(2)!=qs)
+	error("Observables description and state size do not match");
+endif
+
+
 chosestate=false; # true if we want to return state vector
 if (flag==0) 
 	chosestate=true;
@@ -49,18 +59,17 @@ else
 	chosestate=false;
 endif
 
-lo = length(observables);
+lo = length(lobservables);
 
 listobs = {};
 for i=lo+1-[1:lo]
-	if (observables(i)=="X")
+	if (lobservables(i)=="X")
 		listobs(i)=Observable(0.5*Sx);
-	elseif (observables(i)=="Y")
+	elseif (lobservables(i)=="Y")
 		listobs(i)=Observable(0.5*Sy);
-	elseif (observables(i)=="Z")
+	elseif (lobservables(i)=="Z")
 		listobs(i)=Observable(0.5*Sz);	
-	elseif (observables(i)=="I")
-		#listobs(i)=Observable(Id);
+	elseif (lobservables(i)=="I")
 		temp(1).l = 1;
 		temp(2).l = 1;
 		temp(1).proj = Id(1);
@@ -72,13 +81,14 @@ for i=lo+1-[1:lo]
 endfor
 
 random = rand();	# used during chosing of random output state
-cumprob = 0; # cumulative probability
+cumprob = 0; 		# cumulative probability
 
 prob.out=0; 	# eigenvalue
 prob.p=0;	# probability	
 
 retstate = zeros(size(state)(2)); # state we return
 rettemp=1;
+reteigval=-1;
 
 for j=0:2^lo-1 # for every possible projection
 	projection=[1]; # projection operator obtained by spectral decomposition
@@ -87,6 +97,7 @@ for j=0:2^lo-1 # for every possible projection
 	for i=1:lo
 		projection = kron(projection,nth(listobs,i)(indexes(i)).proj);
 		prob(j+1).out(i)=nth(listobs,i)(indexes(i)).l;
+		prob(j+1).out=ReverseVec(prob(j+1).out);
 	endfor
 #*	projection
 	p = trace(state*projection); # compute probability 
@@ -99,10 +110,12 @@ for j=0:2^lo-1 # for every possible projection
 		chosestate = false;
 		rettemp = (projection*state*projection)/p;
 		retstate = rettemp;
+		reteigval = prob(j+1).out;
 	endif
 endfor
 if(flag==0)
-	ret = retstate;
+	ret.state = retstate;
+	ret.eigval = reteigval;
 elseif(flag==1)
 	ret = prob;
 else

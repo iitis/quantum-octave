@@ -21,9 +21,9 @@ function ret = ReverseVec(vec)
 if (nargin =! 1 )
 	usage ("ReverseVec (vector)");
 endif
-if ( !isvector(vec) )
-	error ("Single vector expected as argument!");
-endif
+#if ( !isvector(vec) )
+#	error ("Single vector expected as argument!");
+#endif
 vs = size(vec)(2);
 for i = 1:vs
 	ret(i) = vec(vs+1 -i);

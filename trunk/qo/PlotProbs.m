@@ -33,6 +33,8 @@ if(size(probs)(2)==1)
 elseif(size(probs)(2)==2)
 	plot(probs(:,1),probs(:,2),"^;Probabilities;");
 #else it's an error
+elseif(IsState(probs))
+	PlotProbs(MeasureZ(probs)); # Obvious and very ugly hack!
 else
 	error("Wrong input");
 endif

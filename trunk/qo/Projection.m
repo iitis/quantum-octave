@@ -21,6 +21,8 @@
 ## Created: 12 December 2003
 
 function ret = Projection(vec)
-#should test if valid binary vector
-  ret = State(Ket(vec));
+if(!IsBinVec(vec))
+	error("Binary vector expected!");
+endif
+	ret = Ket(vec)*Ket(vec)';
 endfunction

@@ -28,12 +28,11 @@ if(nargin==1)
 elseif(nargin==2)
 	lsize = size;
 else
-	error("KetN takes no more than 2 parameters");
+	error("KetN takes no more than 2 parameters!");
 endif
 
-
-if(number>2^lsize)
-	error("Number too big to fit into vector space");
+if(number>=2^lsize)
+	error("Number too big to fit into vector space!");
 endif
 
 ret = zeros(2^lsize,1);
