@@ -15,7 +15,7 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {ProductGate, PartialTranspose}
+## @seealso {ProductGate, PTranspose}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 15 March 2004
