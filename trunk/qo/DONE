@@ -1,6 +1,9 @@
 * 6 November 2003
-- analysis of amplitudes
-- basic support for mixed states
+- analysis of amplitudes,
+- basic support for mixed states.
 
+* January 2004
+- Measurment added,
+- Example of Grover algorithm.
 
-Email: jarekadam (at) users.sourceforge.net
+e-mail: jarekadam (at) users.sourceforge.net

@@ -1,23 +1,23 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {} MixStates (@var{state}, @dots{})
-##This function allow to represent a mixture of mixed states.
-##The argument is a list of density matrices (for example returned
-##by function State). Every density matrix can be preceded by a
-##(complex) number. If no number is specifed the default
-##value 1 is used. If a numbe is specified then it is
-##normalied so that the result would be vaild density matrix.
-##For example:
-##@example
-##@group
-##MixState(State(Ket([0,1])), 0.5, State(Ket([1,0])))
-##	@result{}
-##	0.00000  0.00000  0.00000  0.00000
-##	0.00000  0.66667  0.00000  0.00000
-##  	0.00000  0.00000  0.33333  0.00000
-##  	0.00000  0.00000  0.00000  0.00000
-##@end group
-##@end example
-##@end deftypefn
+## This function allow to represent a mixture of mixed states.
+## The argument is a list of density matrices (for example returned
+## by function State). Every density matrix can be preceded by a
+## (complex) number. If no number is specifed the default
+## value 1 is used. If a numbe is specified then it is
+## normalied so that the result would be vaild density matrix.
+## For example:
+## @example
+## @group
+## MixState(State(Ket([0,1])), 0.5, State(Ket([1,0])))
+##  @result{}
+## 0.00000  0.00000  0.00000  0.00000
+## 0.00000  0.66667  0.00000  0.00000
+## 0.00000  0.00000  0.33333  0.00000
+## 0.00000  0.00000  0.00000  0.00000
+## @end group
+## @end example
+## @end deftypefn
 
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
