@@ -28,7 +28,7 @@ if (nargin==1)
 	if(!isvector(temp))
 		error("Argument should be ket vector");
 	else
-		plot([0:length(temp)-1],real(temp),"^");
+		plot([0:length(temp)-1],real(temp),"^;Amplitudes;");
 	endif
 elseif (nargin==2)
 	temp = va_arg();
