@@ -1,6 +1,6 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} PTranspose(state, targv)
-## Function @code{PTrace} returns density matrix obtained
+## Function @code{PTranspose} returns density matrix obtained
 ## from matrix @var{state} by performing transposintion on 
 ## subspaces of qubits listed in @var{targv}.
 ##
@@ -8,7 +8,15 @@
 ## @group
 ## PTranspose(State(GHZ),[1,2])
 ##  @result{} 
-##	0.50000
+##	0.50000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.50000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.50000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000
+##	0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.50000
+##				 
 ## @end group
 ## @end example
 ##
