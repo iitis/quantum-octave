@@ -3,25 +3,27 @@
 ## Function @code{Measure} performs ortogonal measurment on state @var{state}. Function returns a probability distribution of results. 
 ## @example 
 ## @group
-## Measure(State(Ket([1,0,1])))
+## Measure(State(Ket([0,1])), "XX")
 ##  @result{}
-## 0  0
-## 1  0
-## 2  0
-## 3  0
-## 4  0
-## 5  1
-## 6  0
-## 7  0
+##	ans =
+##	{
+##  	eigval =
+##		-0.50000   0.50000
+##		
+##		state =
+##		0.25000   0.25000  -0.25000  -0.25000	
+##		0.25000   0.25000  -0.25000  -0.25000
+##		-0.25000  -0.25000  0.25000  0.25000
+##		-0.25000  -0.25000  0.25000  0.25000
 ##
 ## @end group
 ## @end example
 ## @end deftypefn
-## @seealso {Id, Not, H, Pase}
+## @seealso {MeasureZ}
 ## 
 ## Author: Piotr Gawron, Jaroslaw Miszczak.
 ## Created: 12 December 2003.
-## Last modyfication: 10 February 2004.
+## Last modyfication: 15 November 2004.
 
 function ret = Measure(state, observables, str)
 #TODO test if state is valid state and if observables are in form "XYZZYXI"
