@@ -1,52 +1,56 @@
 <html>
 <head>
 <title>~/quantum-octave/Dec2BinVec.m.html</title>
-<meta name="Generator" content="Vim/6.1">
+<meta name="Generator" content="Vim/6.2">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
 </head>
-<body bgcolor="#e5e5e5" text="#000000">
+<body bgcolor="#e0e4e0" text="#000000">
 <pre>
-<font color="#a52a2a"> 1</font>  <font color="#0000ff">## -*- texinfo -*-</font>
-<font color="#a52a2a"> 2</font>  <font color="#0000ff">## @deftypefn {Function file} {} Dec2BinVec(@var{number},@var{length})</font>
-<font color="#a52a2a"> 3</font>  <font color="#0000ff">## Function @code{Dec2BinVec} returns binary vector representing</font>
-<font color="#a52a2a"> 4</font>  <font color="#0000ff">## @var{LENGTH}-bit representation of number @var{number}. This</font>
-<font color="#a52a2a"> 5</font>  <font color="#0000ff">## number must be nonegative ang less then 2^@var{len}.</font>
-<font color="#a52a2a"> 6</font>  <font color="#0000ff">## </font>
-<font color="#a52a2a"> 7</font>  <font color="#0000ff">## @example </font>
-<font color="#a52a2a"> 8</font>  <font color="#0000ff">## @group</font>
-<font color="#a52a2a"> 9</font>  <font color="#0000ff">## Dev2BinVec(4,3)</font>
-<font color="#a52a2a">10</font>  <font color="#0000ff">##  @result{} </font>
-<font color="#a52a2a">11</font>  <font color="#0000ff">##</font>  <font color="#0000ff">1 0 1</font>
-<font color="#a52a2a">12</font>  <font color="#0000ff">## Dev2BinVec(4,4)</font>
-<font color="#a52a2a">13</font>  <font color="#0000ff">##  @result{} </font>
-<font color="#a52a2a">14</font>  <font color="#0000ff">##</font>  <font color="#0000ff">1 0 1 0</font>
-<font color="#a52a2a">15</font>  <font color="#0000ff">## @end group</font>
-<font color="#a52a2a">16</font>  <font color="#0000ff">## @end example</font>
-<font color="#a52a2a">17</font>  <font color="#0000ff">##</font>
-<font color="#a52a2a">18</font>  <font color="#0000ff">## @end deftypefn</font>
-<font color="#a52a2a">19</font>  <font color="#0000ff">##</font>
-<font color="#a52a2a">20</font>  <font color="#0000ff">## @seealso {dec2bin, BuildBinaryVector}</font>
-<font color="#a52a2a">21</font>  <font color="#0000ff">##</font>
-<font color="#a52a2a">22</font>  <font color="#0000ff">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
-<font color="#a52a2a">23</font>  <font color="#0000ff">## Created: 8 March 2004</font>
-<font color="#a52a2a">24</font>  <font color="#0000ff">## Last modyfication: 15 March 2004</font>
-<font color="#a52a2a">25</font>
-<font color="#a52a2a">26</font>  <font color="#a52a2a"><b>function</b></font> ret = Dec2BinVec<font color="#008b8b">(</font>number, len<font color="#008b8b">)</font>
-<font color="#a52a2a">27</font>  <font color="#0000ff"># number must be nonegative</font>
-<font color="#a52a2a">28</font>  <font color="#a52a2a"><b>if</b></font><font color="#008b8b">(</font> number <font color="#a52a2a"><b>&gt;</b></font> <span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#a52a2a"><b>^</b></font>len <font color="#008b8b">)</font>
-<font color="#a52a2a">29</font>      error<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">&quot;Number %d is to big to fit length %d!&quot;</font></span>, number, len<font color="#008b8b">)</font>;
-<font color="#a52a2a">30</font>  <font color="#a52a2a"><b>endif</b></font>
-<font color="#a52a2a">31</font>
-<font color="#a52a2a">32</font>  <font color="#0000ff"># get number as a string</font>
-<font color="#a52a2a">33</font>  temp = dec2bin<font color="#008b8b">([</font>number,<span style="background-color: #f2f2f2"><font color="#ff00ff">2</font></span><font color="#a52a2a"><b>^</b></font>len<font color="#a52a2a"><b>-</b></font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span><font color="#008b8b">])(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span>,:<font color="#008b8b">)</font>;
-<font color="#a52a2a">34</font>
-<font color="#a52a2a">35</font>  <font color="#0000ff"># build binary vector based on number</font>
-<font color="#a52a2a">36</font>  ret = zeros<font color="#008b8b">(</font><span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span>,len<font color="#008b8b">)</font>;
-<font color="#a52a2a">37</font>  <font color="#0000ff"># fill it!</font>
-<font color="#a52a2a">38</font>  <font color="#a52a2a"><b>for</b></font> i=<span style="background-color: #f2f2f2"><font color="#ff00ff">1</font></span>:len
-<font color="#a52a2a">39</font>      ret<font color="#008b8b">(</font>i<font color="#008b8b">)</font> = str2num<font color="#008b8b">(</font>temp<font color="#008b8b">(</font>i<font color="#008b8b">))</font>;
-<font color="#a52a2a">40</font>  <font color="#a52a2a"><b>endfor</b></font>
-<font color="#a52a2a">41</font>
-<font color="#a52a2a">42</font>  <font color="#a52a2a"><b>endfunction</b></font>
+<font color="#a02828"> 1</font>  <font color="#0000f8">## -*- texinfo -*-</font>
+<font color="#a02828"> 2</font>  <font color="#0000f8">## @deftypefn {Function file} {} Dec2BinVec(@var{number},@var{length})</font>
+<font color="#a02828"> 3</font>  <font color="#0000f8">## Function @code{Dec2BinVec} returns binary vector representing</font>
+<font color="#a02828"> 4</font>  <font color="#0000f8">## @var{LENGTH}-bit representation of number @var{number}. This</font>
+<font color="#a02828"> 5</font>  <font color="#0000f8">## number must be nonegative ang less then 2^@var{len}.</font>
+<font color="#a02828"> 6</font>  <font color="#0000f8">## </font>
+<font color="#a02828"> 7</font>  <font color="#0000f8">## @example </font>
+<font color="#a02828"> 8</font>  <font color="#0000f8">## @group</font>
+<font color="#a02828"> 9</font>  <font color="#0000f8">## Dev2BinVec(4,3)</font>
+<font color="#a02828">10</font>  <font color="#0000f8">##  @result{} </font>
+<font color="#a02828">11</font>  <font color="#0000f8">##</font>  <font color="#0000f8">1 0 0</font>
+<font color="#a02828">12</font>  <font color="#0000f8">## Dev2BinVec(4,4)</font>
+<font color="#a02828">13</font>  <font color="#0000f8">##  @result{} </font>
+<font color="#a02828">14</font>  <font color="#0000f8">##</font>  <font color="#0000f8">0 1 0 0</font>
+<font color="#a02828">15</font>  <font color="#0000f8">## @end group</font>
+<font color="#a02828">16</font>  <font color="#0000f8">## @end example</font>
+<font color="#a02828">17</font>  <font color="#0000f8">##</font>
+<font color="#a02828">18</font>  <font color="#0000f8">## @end deftypefn</font>
+<font color="#a02828">19</font>  <font color="#0000f8">##</font>
+<font color="#a02828">20</font>  <font color="#0000f8">## @seealso {dec2bin, BuildBinaryVector}</font>
+<font color="#a02828">21</font>  <font color="#0000f8">##</font>
+<font color="#a02828">22</font>  <font color="#0000f8">## Author: Piotr Gawron, Jaroslaw Miszczak</font>
+<font color="#a02828">23</font>  <font color="#0000f8">## Created: 8 March 2004</font>
+<font color="#a02828">24</font>  <font color="#0000f8">## Last modyfication: 15 March 2004</font>
+<font color="#a02828">25</font>
+<font color="#a02828">26</font>  <font color="#a02828"><b>function</b></font> ret = Dec2BinVec<font color="#008888">(</font>number, len<font color="#008888">)</font>
+<font color="#a02828">27</font>  <font color="#a02828"><b>if</b></font> <font color="#008888">(</font><font color="#008888">nargin</font> <font color="#a02828"><b>!=</b></font> <span style="background-color: #f0f0f0"><font color="#f800f8">2</font></span><font color="#008888">)</font>
+<font color="#a02828">28</font>      error<font color="#008888">(</font><span style="background-color: #f0f0f0"><font color="#f800f8">&quot;Two numbers required!&quot;</font></span><font color="#008888">)</font>;
+<font color="#a02828">29</font>  <font color="#a02828"><b>endif</b></font>
+<font color="#a02828">30</font>  <font color="#0000f8"># number must be nonegative</font>
+<font color="#a02828">31</font>  <font color="#a02828"><b>if</b></font><font color="#008888">(</font> number <font color="#a02828"><b>&gt;</b></font> <span style="background-color: #f0f0f0"><font color="#f800f8">2</font></span><font color="#a02828"><b>^</b></font>len <font color="#008888">)</font>
+<font color="#a02828">32</font>      error<font color="#008888">(</font><span style="background-color: #f0f0f0"><font color="#f800f8">&quot;Number %d is to big to fit length %d!&quot;</font></span>, number, len<font color="#008888">)</font>;
+<font color="#a02828">33</font>  <font color="#a02828"><b>endif</b></font>
+<font color="#a02828">34</font>
+<font color="#a02828">35</font>  <font color="#0000f8"># get number as a string</font>
+<font color="#a02828">36</font>  temp = dec2bin<font color="#008888">([</font>number,<span style="background-color: #f0f0f0"><font color="#f800f8">2</font></span><font color="#a02828"><b>^</b></font>len<font color="#a02828"><b>-</b></font><span style="background-color: #f0f0f0"><font color="#f800f8">1</font></span><font color="#008888">])(</font><span style="background-color: #f0f0f0"><font color="#f800f8">1</font></span>,:<font color="#008888">)</font>;
+<font color="#a02828">37</font>
+<font color="#a02828">38</font>  <font color="#0000f8"># build binary vector based on number</font>
+<font color="#a02828">39</font>  ret = zeros<font color="#008888">(</font><span style="background-color: #f0f0f0"><font color="#f800f8">1</font></span>,len<font color="#008888">)</font>;
+<font color="#a02828">40</font>  <font color="#0000f8"># fill it!</font>
+<font color="#a02828">41</font>  <font color="#a02828"><b>for</b></font> i=<span style="background-color: #f0f0f0"><font color="#f800f8">1</font></span>:len
+<font color="#a02828">42</font>      ret<font color="#008888">(</font>i<font color="#008888">)</font> = str2num<font color="#008888">(</font>temp<font color="#008888">(</font>i<font color="#008888">))</font>;
+<font color="#a02828">43</font>  <font color="#a02828"><b>endfor</b></font>
+<font color="#a02828">44</font>
+<font color="#a02828">45</font>  <font color="#a02828"><b>endfunction</b></font>
 </pre>
 </body>
 </html>
