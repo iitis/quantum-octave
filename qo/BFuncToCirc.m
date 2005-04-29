@@ -8,6 +8,8 @@
 ## Created: 9 June 2004.
 
 function ret = BFuncToCirc(sizea, sizev, values)
+error("Function in alpha stage - does not return apropriate value");
+
 if(nargin!=3)
 	usage("BFuncToCirc(sizea, sizev, values)");
 endif
