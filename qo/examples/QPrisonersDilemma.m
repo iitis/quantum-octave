@@ -27,7 +27,8 @@ function ret = strategy(t,f)
 endfunction
 
 function ret = mJ(l)
-  D = 0.5*l*i*Kron(Sx,Sx);
-  ret = expm(D);
+	D = [0,1;-1,0];
+  X = 0.5*l*i*Kron(D,D);
+  ret = expm(X);
 endfunction
 
