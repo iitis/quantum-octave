@@ -36,10 +36,6 @@ if ( !isscalar (param) )
 	error ("First argument should be scalar!");
 endif
 
-#if ( param <= 1/3 || param > 1 )
-#	warning ("First paramater should be > 1/3 and <=1, found param %d = ",  param);
-#endif
-
 # returned state for two qubits
 ret = 0.25 * (1 - param) * [1,0,0,0;0,1,0,0;0,0,1,0;0,0,0,1] + param * [.5,0,0,.5;0,0,0,0;0,0,0,0;.5,0,0,.5];
 
