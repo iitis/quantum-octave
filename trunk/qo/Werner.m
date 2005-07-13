@@ -1,7 +1,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} Werner(@var{param},@var{dim})
 ## Function @code{Werner} returns density matrix for Werner state 
-## in @code{dxd} Hilbert space with parameter @var{param}. 
+## in @code{dxd} Hilbert space with mixing parameter @var{param}.
 ## If second argument is ommited it returns Werner state for two qubits.
 ## 
 ## @example 
@@ -17,10 +17,13 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {GHZ, W, Phip, PhiM, PsiP, PsiM, Id, Not}
+## @seealso {WernerSinglet, GHZ, W, Phip, PhiM, PsiP, PsiM}
 ##
-## Author: Piotr Gawron, Jarosrlaw Miszczak
+## Author: Piotr Gawron, Jarosław Miszczak
+##
 ## Created: 26 March 2004
+##
+## Last modification: 13 July 2005
 
 function ret = Werner(param, dim)
 if ( nargin < 1 || nargin > 2 )
