@@ -18,8 +18,13 @@
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 22 March 2004
+## Last modyfication: 14 July 2005
 
 function ret = IsState(mtx, verb)
+if ( nargin != 1 && nargin != 2 )
+  usage ("IsState (mtx, [ verb = 0 | 1 ])");
+else
+
 norm = false;
 sadj = false;
 posi = false;
@@ -48,14 +53,15 @@ else
 	else
 		posi = true;
 	endif
-endif
-
-if ( norm && sadj &&posi )
-	ret = true;
-elseif	( nargin == 2 && verb == 1 )
-	printf("This matrix is not vaild state: is %s %s %s\n",why1,why2,why3);
-	ret =  false;
-else
+	endif
+	
+	if ( norm && sadj && posi )
+		ret = true;
+el	seif	( nargin == 2 && verb == 1 )
+		printf("This matrix is not vaild state: is %s %s %s\n",why1,why2,why3);
+		ret =  false;
+	else
 	ret = false;
+endif
 endif
 endfunction
