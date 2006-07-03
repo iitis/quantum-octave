@@ -17,7 +17,7 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {dec2bin, BinVec2Dec, BuildBinaryVector}
+## @seealso {dec2bin, BinVec2Dec, BinVec}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 8 March 2004

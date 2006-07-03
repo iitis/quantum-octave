@@ -20,11 +20,12 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {dec2bin, BinVec2Dec, BuildBinaryVector}
+## @seealso {dec2bin, BinVec2Dec, BinVec}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 8 March 2004
-## Last modyfication: 22 March 2004
+## Last modification: 3 July 2006
+
 function ret = BinVec2Dec (binvec)
 if (nargin != 1)
 	usage ("BinVec2Dec (binary_vector)");
