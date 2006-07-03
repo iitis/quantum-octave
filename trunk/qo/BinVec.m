@@ -11,23 +11,9 @@
 ## @example 
 ## @group
 ## BinVec([1,2],[1,0],[1,1],4)
-##  @result{} 
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  0
-##  1
-##  0
-##  0
+## @result{}  
+##  1 0 1 1
+##
 ## @end group
 ## @end example
 ##
@@ -69,22 +55,23 @@ endif
 
 # it seems so...
 
-# local variables for looping over binvec and binnum lists
+# iterators for looping over binvec and binnum lists
 qi = 1;
 bi = 1;
 
 # build temporary vector
 temp  = zeros(1,qubits);
 
+# fill the output vector
 for i=1:qubits
 	if ( qi <= is && i == indx(qi) )
 		temp(i) = binvec(qi);
 		qi++;
 	elseif ( bi <= ns )
 		temp(i) = binnum(bi);
-      	bi++;
+		bi++;
 	endif
 endfor
-ret = Ket(temp);
+ret = temp;
 endfunction
 
