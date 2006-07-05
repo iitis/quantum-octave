@@ -12,7 +12,7 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {Dec2BinVec, BinVec2Dec, Ket, BuildBinaryVector}
+## @seealso {Dec2BinVec, BinVec2Dec, Ket, BinVec}
 ##
 ## Author: Piotr Gawron, Jaroslaw Miszczak
 ## Created: 25 November 2003
