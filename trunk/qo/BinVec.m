@@ -72,6 +72,8 @@ for i=1:qubits
 		bi++;
 	endif
 endfor
+
 ret = temp;
+
 endfunction
 
