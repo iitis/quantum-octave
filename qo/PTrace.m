@@ -3,8 +3,6 @@
 ## Function @code{PTrace} returns density matrix obtained
 ## from matrix @var{state} by tracing out subspace of qubits
 ## listed in @var{targv}.
-## WARNING: this function uses matrix multiplication! This is 
-## not optimal!
 ##
 ## @example 
 ## @group
