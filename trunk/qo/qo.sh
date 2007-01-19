@@ -3,10 +3,10 @@
 # under terms of GNU General Public License. More information on web 
 # page http://quantum-octave.sourceforge.net/.
 #
-# (c) 2004 Jarek Miszczak
-# Last modyfication: Tue Mar 23 12:19:51 UTC 2004
+# (c) 2004-2007 Jarek Miszczak
+# Last modyfication: Fri Jan 19 09:43:49 CET 2007
 
-# Changing this variable if you want to copy this file to other 
+# Change this variable if you want to copy this file to other 
 # directory, for example in your PATH.
 PWD_PATH=$(dirname $0);
 
@@ -19,4 +19,4 @@ export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples:${QO_PATH}/tests
 
 export WARN_ASSIGN_AS_TRUTH_VALUE=0
 
-/usr/local/Programs/Octave/2.9.6/bin/octave
+octave
