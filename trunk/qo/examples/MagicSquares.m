@@ -1,4 +1,4 @@
-function ret =  MagicSquares(a,b,error_gate,error_idx)
+function ret =  MagicSquares(a,b,error_gate)
 
 	if (a>3 || a<1 || b>3 || b<1)
 		error ("Only integer arguments between 1 and 3");
@@ -28,17 +28,17 @@ function ret =  MagicSquares(a,b,error_gate,error_idx)
 	endswitch 
 
 	s = Evolve(gameMtx,State(inState));
-	s1= Evolve(ProductGate(4,error_gate,error_idx),s);
+	s1= Evolve(error_gate,s);
 
 	s2=Measure(s1,"ZZZZ");
-	a1=PTrace(s2.state,[3,4]);
-	b1=PTrace(s2.state,[1,2]);
+	a1=PTraceMul(s2.state,[3,4]);
+	b1=PTraceMul(s2.state,[1,2]);
 	
 
 	alices_bits=0;
 	bobs_bits=0;
 	
-	
+	a_orig=a1
 	a1=abs(a1);
 	if a1==State(Ket([0,0]))
 		alices_bits=[0,0,0];
@@ -50,6 +50,7 @@ function ret =  MagicSquares(a,b,error_gate,error_idx)
 		alices_bits=[1,1,0];
 	else
 		a1			
+		a_orig
 		error("Matrix a1 is not a projective operator")	
 	endif	
 
