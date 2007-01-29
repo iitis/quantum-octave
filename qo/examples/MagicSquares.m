@@ -38,7 +38,7 @@ function ret =  MagicSquares(a,b,error_gate)
 	alices_bits=0;
 	bobs_bits=0;
 	
-	a_orig=a1
+	a_orig=a1;
 	a1=abs(a1);
 	if a1==State(Ket([0,0]))
 		alices_bits=[0,0,0];
