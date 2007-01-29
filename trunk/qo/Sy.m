@@ -6,8 +6,6 @@
 ##
 ## @seealso {Sx, Sz, Id, Not, H}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 17 March 2004
 
 function ret = Sy
 	ret = [0,-i;i,0];
