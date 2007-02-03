@@ -18,9 +18,6 @@
 ## @end example
 ## @end deftypefn
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modyfication: 07 May 2004
 
 function ret = MixStates(varargin)
 argc =  nargin;
