@@ -1,4 +1,4 @@
-function ret =  MagicSquares(a,b,error_gate)
+function ret =  MagicSquares(a,b,error_prob)
 
 	if (a>3 || a<1 || b>3 || b<1)
 		error ("Only integer arguments between 1 and 3");
@@ -27,14 +27,30 @@ function ret =  MagicSquares(a,b,error_gate)
 		case { 3 } gameMtx = Kron(gameMtx,B3);
 	endswitch 
 
-	s = Evolve(gameMtx,State(inState));
-	s1= Evolve(error_gate,s);
+## EVOLUTION ##
 
-	s2=Measure(s1,"ZZZZ");
+	s0 = State(inState);
+	s0_noisy_prim = error_prob*Id(4)/16+(1-error_prob)*s0
+	p=error_prob;
+	ad1=[1 0; 0 sqrt(p)];
+	ad2=[0 0; 0 sqrt(1-p)];
+	dc1=sqrt(1-3*p/4)*Id(1);
+	dc2=sqrt(p/4)*Sx;
+	dc3=sqrt(p/4)*Sy;
+	dc4=sqrt(p/4)*Sz;
+#	noise={sqrt(p)*Id(1),sqrt(1-p)*Sz};
+#	noise={ad1, ad2};
+	noise={dc1, dc2, dc3, dc4};
+	s0_noisy = Channel(s0,noise)
+	fid=TrNorm(s0_noisy - s0_noisy_prim)
+	s1_noisy = Evolve(gameMtx,s0_noisy);
+
+## END OF EVOLUTION ##
+
+	s2=Measure(s1_noisy,"ZZZZ");
 	a1=PTraceMul(s2.state,[3,4]);
 	b1=PTraceMul(s2.state,[1,2]);
 	
-
 	alices_bits=0;
 	bobs_bits=0;
 	
