@@ -13,42 +13,41 @@
 
 function ret = Channel(state,elements,targv)
 	if (nargin>3)
-		usage("Channel (state, elements_list [,targv])");
+		usage("Channel (state, elements_cell_arr [,targv])");
 	end
-	if (!islist(elements) )
-		error("Second argument must be a list!");
+	if (!iscell(elements) )
+		error("Second argument must be a cellarray!");
 	end
 	
 	# dimension of the state
-	dim = size(state(1));
-	qDim = log2(size(state)(1));
+	dim = size(state)(1);
+	qDim = log2(dim);
 	noEl = size(elements)(2);
 	ret  = zeros(dim);
 
-	if (nargin=2)
+	if (nargin==2)
 		targv = 1:qDim;
 	end 
 
-	isTarget=zeros(1,qDim)
-	for k=targv
-		isTarget(k)=1;
+	isTarget=zeros(1,qDim);
+
+	for k = targv
+		isTarget(k) = 1;
 	end
-	
-	for i=0:noEl^qDim-1 
+
+	for i=0:noEl^qDim-1
 		strPos = dec2base(i,noEl,qDim);
 		mtx = 1;
 		for l=1:qDim
 			idx = str2num(strPos(l))+1;
 			if (isTarget(l))
-				mtx = Kron(mtx,nth(elements,idx));
-				targv(l)
-				mtx
+				mtx = Kron(mtx,elements{idx});
 			else
 				mtx = kron(mtx,Id);
 			end
 		end
-		tmp = mtx*state*mtx;
-		ret = ret + tmp;
+		tmp = mtx*state*mtx';
+		ret += tmp;
 	end
-
+ 
 end

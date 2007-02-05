@@ -22,10 +22,9 @@ else
 		error("First parameter must be state vector or density matrix!")
 	endif
 
-	sqrtrho = sqrtm(lrho);
+	[sqrtrho,res] = sqrtm(lrho);
 	temp = sqrtrho*sigma*sqrtrho;
-	temp = sqrtm(temp);
+	[temp, res] = sqrtm(temp);
 	ret = trace(temp);
 endif
-
 endfunction
