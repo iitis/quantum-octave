@@ -25,6 +25,6 @@ else
 	[sqrtrho,res] = sqrtm(lrho);
 	temp = sqrtrho*sigma*sqrtrho;
 	[temp, res] = sqrtm(temp);
-	ret = trace(temp);
+	ret = sqrt(trace(temp));
 endif
 endfunction
