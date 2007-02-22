@@ -21,9 +21,6 @@
 ## @end deftypefn
 ## @seealso {MeasureZ}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak.
-## Created: 12 December 2003.
-## Last modyfication: 15 November 2004.
 
 function ret = Measure(state, observables, str)
 #TODO test if state is valid state and if observables are in form "XYZZYXI"

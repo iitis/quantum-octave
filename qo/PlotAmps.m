@@ -1,7 +1,12 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} PlotAmps(@var{ket},@var{type})
-## Function @code{PlotAmps} plots amplitude of @var{ket} vector in standard base. Second argument describes which part of amplitude is plotted. "Re" - only real part, "Im" - only imaginary part, "RI" - real and imaginary part with diffrent colors. If the second is ommited it is assumed to be "Re".
-## Try this:
+## Function @code{PlotAmps} plots amplitude of @var{ket} vector 
+## in standard base. Second argument describes which part of 
+## amplitude is plotted. "Re" - only real part, "Im" - only 
+## imaginary part, "RI" - real and imaginary part with diffrent 
+## colors. If the second is ommited it is assumed to be "Re".
+##
+## Example:
 ## @example 
 ##  @group
 ## PlotAmps(Ket([1,1,0]))
@@ -14,8 +19,6 @@
 ##
 ## @seealso {PlotProbs, Measure}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 4 February 2004
 
 function PlotAmps(varargin)
 

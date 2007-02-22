@@ -15,9 +15,6 @@
 ##
 ## @seealso {Id, H, Not}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modyfication: 17 May 2004
 
 function ret = Commutator(A,B)
 if (nargin!=2)

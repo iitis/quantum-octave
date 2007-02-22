@@ -17,11 +17,6 @@
 ##
 ## @seealso {Id, Not, H, RotX, RotY, RotZ}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-##
-## Created: 25 November 2003
-##
-## Last modification : 10 February 2004
 
 function ret = ControlledGate(gatesize,gate,contrv,targetv)
 

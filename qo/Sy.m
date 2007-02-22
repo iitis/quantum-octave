@@ -9,4 +9,4 @@
 
 function ret = Sy
 	ret = [0,-i;i,0];
-endfunction
+end

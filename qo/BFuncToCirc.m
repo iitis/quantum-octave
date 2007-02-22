@@ -4,8 +4,6 @@
 ## @end deftypefn
 ## @seealso {}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak.
-## Created: 9 June 2004.
 
 function ret = BFuncToCirc(sizea, sizev, values)
 error("Function in alpha stage - does not return apropriate value");

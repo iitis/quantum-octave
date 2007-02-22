@@ -22,9 +22,6 @@
 ##
 ## @seealso{ State, Not, Id, H}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modyfication: 18 March 2004
 
 function ret = Ket (binvec)
 if (nargin != 1 )

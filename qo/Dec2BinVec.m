@@ -19,9 +19,6 @@
 ##
 ## @seealso {dec2bin, BinVec2Dec, BinVec}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 8 March 2004
-## Last modyfication: 22 March 2004
 
 function ret = Dec2BinVec(number, len)
 if (nargin != 2)

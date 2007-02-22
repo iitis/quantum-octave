@@ -14,8 +14,6 @@
 ## @end deftypefn
 ## @seealso {Not, H, Pase, Id}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 22 March 2004
 
 function ret = MaxMix(varargin)
 	if( nargin == 1)

@@ -16,9 +16,6 @@
 ##
 ## @seealso {Negativity, Entropy, PTrace, PTranspose, Entropy, TrNorm}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-##
-## Created: 05 April 2004
 
 function ret = LogNegativity(state, qlist);
 if ( nargin =! 2)

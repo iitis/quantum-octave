@@ -7,8 +7,6 @@
 ## @end deftypefn
 ## @seealso {ProductGate, ControlledGate, Encode, Decode, Recover}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 27 March 2004
 
 function ret = CheckTag(state, gate)
 if (nargin != 2)

@@ -19,9 +19,6 @@
 ##
 ## @seealso{Ket, State, Not, Id, H}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 05 March 2004
-## Last modyfication: 06 May 2004
 
 function ret = KetN (number, size)
 

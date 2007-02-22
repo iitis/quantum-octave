@@ -1,7 +1,6 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {} Circuit (@var{gate}, @dots{})
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 05 April 2004
+## 
 
 function ret = Circuit(varargin)
 

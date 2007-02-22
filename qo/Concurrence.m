@@ -8,8 +8,6 @@
 ##
 ## @seealso {Negativity, Entropy, TrNorm}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 05 May 2004
 
 function ret = Concurrence (state)
 if ( nargin != 1)

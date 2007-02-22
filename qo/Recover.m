@@ -16,8 +16,6 @@
 ## @end deftypefn
 ## @seealso {Id, Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 23 March 2004
 
 function ret = Recover(state, code)
 

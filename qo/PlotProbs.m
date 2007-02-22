@@ -15,8 +15,6 @@
 ## @end deftypefn
 ## @seealso {PrintAmps, PlotAmps, PrintProbs}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak.
-## Created: 4 January 2004.
 
 function PlotProbs(probs)
 # TODO need checking if probs are valid

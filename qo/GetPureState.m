@@ -14,8 +14,6 @@
 ## @end deftypefn
 ## @seealso{Entropy, Id, H, Phase}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 26 March 2004
 
 function ret = GetPureState(state)
 error("FUNCTION IS BROKEN");

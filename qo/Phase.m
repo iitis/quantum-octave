@@ -15,9 +15,6 @@
 ##
 ## @seealso {Id, Not, H, RotX, RotY, RotZ}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Modified: 3 June 2004
 
 function ret = Phase(phi0,phi1)
 if (nargin!=2)

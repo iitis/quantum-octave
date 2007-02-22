@@ -10,4 +10,4 @@
 
 function ret = Sx
 	ret = [0,1;1,0];
-endfunction
+end

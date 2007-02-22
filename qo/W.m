@@ -7,9 +7,7 @@
 ##
 ## @seealso {Ket, GHZ, Phip, PhiM, PsiP, PsiM}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 26 March 2004 
 
 function ret = W
 	ret = 1/sqrt(3)*[0,1,0,1,0,1,0,0]';
-endfunction	
+end	

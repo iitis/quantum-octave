@@ -18,9 +18,6 @@
 ##
 ## @seealso {PTrace, PTranspose, Entropy, TrNorm}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-##
-## Created: 26 March 2004
 
 function ret = Negativity(state, qlist);
 if ( nargin != 2)

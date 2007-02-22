@@ -20,8 +20,8 @@
 ## Created: 26 March 2004
 
 function ret = TrNorm(mtx)
-if ( nargin != 1) 
-	usage("TrNorm (mtx)");
-endif
+	if ( nargin != 1) 
+		usage("TrNorm (mtx)");
+	end
 	ret =  trace(sqrtm(mtx'*mtx));
-endfunction
+end

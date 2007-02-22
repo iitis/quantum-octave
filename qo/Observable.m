@@ -9,8 +9,6 @@
 ##
 ## @seealso {Id, Not}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 19 March 2004
 
 function ret = Observable(obs, str) 
 # TODO check if obs is hermietian and of size 2x2
