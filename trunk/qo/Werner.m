@@ -19,11 +19,6 @@
 ##
 ## @seealso {WernerSinglet, GHZ, W, Phip, PhiM, PsiP, PsiM}
 ##
-## Author: Piotr Gawron, Jarosław Miszczak
-##
-## Created: 26 March 2004
-##
-## Last modification: 13 July 2005
 
 function ret = Werner(param, dim)
 if ( nargin < 1 || nargin > 2 )

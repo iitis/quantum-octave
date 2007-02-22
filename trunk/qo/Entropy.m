@@ -14,6 +14,7 @@
 ## @end deftypefn
 ##
 ## @seealso {PTrace, PTranspose, Evolve, Negativity}
+##
 
 function ret = Entropy(state)
 	ret = 0;

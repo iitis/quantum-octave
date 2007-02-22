@@ -7,8 +7,6 @@
 ##
 ## @seealso {Ket, PhiM, PsiP, PsiM, GHZ, W, Werner}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 26 March 2004 
 
 function ret = PhiP 
 	ret = 1/sqrt(2)*[1,0,0,1]';

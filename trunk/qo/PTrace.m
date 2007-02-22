@@ -17,15 +17,13 @@
 ##
 ## @seealso {ProductGate, PTranspose}
 ##
-## Created: 22 June 2006
-## Last modification: 2 July 2006
 
 function ret = PTrace(state,tqidx)
 if ( nargin != 2 )
 	error ("Wrong number of arguments!")
 	usage ("PTrace (state, trace_qubits)");
 	ret = -1
-endif
+end
 
 targv = sort(tqidx); # must be sorted!
 
@@ -57,7 +55,7 @@ for i = 1:rs
 			idx1 = BinVec2Dec(BinVec(targv,bk,bi,sq)) + 1;
 			idx2 = BinVec2Dec(BinVec(targv,bk,bj,sq)) + 1;
 			ret(i,j) += state (idx1,idx2);
-		endfor
-	endfor
-endfor
-endfunction
+		end
+	end
+end
+end

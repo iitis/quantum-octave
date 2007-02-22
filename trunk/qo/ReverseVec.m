@@ -14,9 +14,6 @@
 ##
 ## @seealso {Dec2BinVec, BinVec2Dec, Ket, BinVec}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modification: 05 July 2006
 
 function ret = ReverseVec(vec)
 

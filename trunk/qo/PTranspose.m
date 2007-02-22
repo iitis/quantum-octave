@@ -23,11 +23,7 @@
 ## @end deftypefn
 ##
 ## @seealso {ProductGate, PTrace, Entropy, GHZ, W, Werner}
-## Author: Piotr Gawron, Jaroslaw Miszczak
 ##
-## Created: 22 March 2004
-##
-## Last modyfication: 26 March 2004
 
 function ret = PTranspose(state,tqidx)
 if (nargin != 2)

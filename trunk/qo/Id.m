@@ -17,8 +17,6 @@
 ## @end deftypefn
 ## @seealso {Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
 
 function ret = Id(arg)
 	if(nargin==1)

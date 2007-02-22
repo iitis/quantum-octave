@@ -7,8 +7,6 @@
 ##
 ## @seealso {H, Id, ProductGate}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 May 2004
 
 function ret = QFT(qubits)
 if (nargin!=1)

@@ -17,11 +17,6 @@
 ##
 ## @seealso {Not, ControledGate}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-##
-## Created: 23 February 2003
-##
-## Last modification : 25 March 2004
 
 function ret = CNot(size,contrv,targetv)
 if (nargin != 3) 

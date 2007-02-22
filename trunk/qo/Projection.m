@@ -1,5 +1,6 @@
 ## -*- texinfo -*-
-## @deftypefn{Function file} {} Projection(@var{vec}) returns projection operator defined as |@var{vec}><@var{vec}|.
+## @deftypefn{Function file} {} Projection(@var{vec}) returns projection 
+## operator defined as |@var{vec}><@var{vec}|.
 ## @example 
 ## @group
 ## Projection([1,0,1])
@@ -17,12 +18,11 @@
 ## @end deftypefn
 ## @seealso {Id, Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 12 December 2003
 
 function ret = Projection(vec)
-if(!IsBinVec(vec))
-	error("Binary vector expected!");
-endif
+	if(!IsBinVec(vec))
+		error("Binary vector expected!");
+	end
+	
 	ret = Ket(vec)*Ket(vec)';
-endfunction
+end

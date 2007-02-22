@@ -15,8 +15,6 @@
 ##
 ## @seealso {State, MixStates, PTranspose, IsPPT}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 26 March 2004
 
 function ret = IsPositive(mtx)
 ret = false;

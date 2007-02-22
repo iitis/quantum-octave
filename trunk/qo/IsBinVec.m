@@ -16,8 +16,6 @@
 ##
 ## @seealso {Dec2BinVec, dec2bin}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 23 March 2004
 
 function ret = IsBinVec(vec)
 ret = false;

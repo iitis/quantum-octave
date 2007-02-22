@@ -21,9 +21,6 @@
 ##
 ## @seealso {Id, Not}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak.
-## Created: 8 March 2005.
-## Last modyfication: 22 June 2006.
 
 function ret = BinVec(qidx, binvec, binnum, qubits)
 

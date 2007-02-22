@@ -16,9 +16,6 @@
 ##
 ## @seealso {State, MixStates}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 22 March 2004
-## Last modyfication: 14 July 2005
 
 function ret = IsState(mtx, verb)
 if ( nargin != 1 && nargin != 2 )

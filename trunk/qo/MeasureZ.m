@@ -19,9 +19,6 @@
 ## @end deftypefn
 ## @seealso {Measure, Evolve, Id, Not, H, Pase}
 ## 
-## Author: Piotr Gawron, Jaroslaw Miszczak.
-## Created: 12 December 2003.
-## Last modyfication: 9 July 2004.
 
 function ret = MeasureZ(state)
 if ( nargin != 1 )

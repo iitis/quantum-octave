@@ -11,4 +11,4 @@
 
 function ret = Sz
 	ret = [1,0;0,-1];
-endfunction
+end

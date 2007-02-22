@@ -6,9 +6,6 @@
 ##
 ## @seealso {Phase, ControledGate, CNot}
 ##
-## Author: Piotr Gawron, Jaroslaw Miszczak
-##
-## Created: 01 June 2004
 
 function ret = CPhase(s,phase,contrv,targetv)
 if ( nargin != 4 ) 

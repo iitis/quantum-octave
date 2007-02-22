@@ -16,9 +16,7 @@
 ## @end example
 ## @end deftypefn
 ## @seealso{State, Evolve}
-## Author: Piotr Gawron, Jaroslaw Miszczak
-## Created: 25 November 2003
-## Last modification: 25 May 2004
+## 
 
 function ret = Normalize(varargin)
 if (nargin < 1 )

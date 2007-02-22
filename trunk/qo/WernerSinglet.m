@@ -1,7 +1,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} WernerSinglet(@var{param},@var{dim})
-## Function @code{Werner} returns density matrix for Werner state, which
-## consists of admixture of maximaly mixed state to singlet state
+## Function @code{WernerSinglet} returns density matrix for Werner state, 
+## which consists of admixture of maximaly mixed state to singlet state
 ## in @code{dxd} Hilbert space with parameter @var{param}. 
 ## If second argument is ommited it returns Werner state for two qubits.
 ## 
@@ -20,9 +20,6 @@
 ##
 ## @seealso {Werner, GHZ, W, Phip, PhiM, PsiP, PsiM}
 ##
-## Author: Jaroslaw Miszczak
-## Created: 13 July 2005
-## Last modification: 05 July 2006
 
 function ret = WernerSinglet(param, dim)
 if ( nargin < 1 || nargin > 2 )

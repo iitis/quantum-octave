@@ -18,12 +18,11 @@
 ##
 ## @seealso {ProductGate, PTranspose}
 ##
-## Author: Jaroslaw Miszczak
 
 function ret = PTraceMul(state,tqidx)
 if ( nargin != 2 )
 	usage ("PTraceMul (state, trace_qubits)");
-endif
+end
 
 targv = sort(tqidx); # must be sorted!
 
@@ -52,7 +51,7 @@ for i = 1:rs
 			temp = BRA*(state*KET);
 			ret(i,j) +=  temp;
 
-		endfor
-	endfor
-endfor
-endfunction
+		end
+	end
+end
+end
