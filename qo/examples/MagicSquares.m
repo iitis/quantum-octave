@@ -29,21 +29,13 @@ function ret =  MagicSquares(a,b,error_prob)
 
 ## EVOLUTION ##
 
+	
+
 	s0 = State(inState);
-	s0_noisy_prim = error_prob*Id(4)/16+(1-error_prob)*s0
-	p=error_prob;
-	ad1=[1 0; 0 sqrt(p)];
-	ad2=[0 0; 0 sqrt(1-p)];
-	dc1=sqrt(1-3*p/4)*Id(1);
-	dc2=sqrt(p/4)*Sx;
-	dc3=sqrt(p/4)*Sy;
-	dc4=sqrt(p/4)*Sz;
-#	noise={sqrt(p)*Id(1),sqrt(1-p)*Sz};
-#	noise={ad1, ad2};
-	noise={dc1, dc2, dc3, dc4};
-	s0_noisy = Channel(s0,noise)
-	fid=TrNorm(s0_noisy - s0_noisy_prim)
+#	s0_noisy = error_prob*Id(4)/16+(1-error_prob)*s0
+	s0_noisy = Channel(s0, {sqrt(error_prob)*Id(1), sqrt(1-error_prob)*Sy});
 	s1_noisy = Evolve(gameMtx,s0_noisy);
+
 
 ## END OF EVOLUTION ##
 
