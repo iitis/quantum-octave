@@ -1,7 +1,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function file} {} Negativity(@var{state},@var{qlist})
 ## Function @code{Negativity} returns negativity defined for state
-## @var{state} as @code{Negativity(state) = 1/2*(TrNorm(PTranspose(state,qlist) - 1)}. 
+## @var{state} as @code{Negativity(state) = 1/2*(TrNorm(PTranspose(state,qlist)) - 1)}. 
 ## Partial transposition is performed over qubits listed in @var{qlist}.
 ## This quantity is one of tools implemented in quantum-octave 
 ## for entanglment analysis.

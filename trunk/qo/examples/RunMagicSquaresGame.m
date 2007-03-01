@@ -10,7 +10,7 @@ function ret=RunMagicSquaresGame(game,noRates,expType)
 				error_probZ=pz/noRates;
 				outcome=MagicSquaresMeasure(game(1),game(2), error_probX, 0, expType);
 				ret(px+1,pz+1)=outcome;
-			endfor
-		endfor
-	endif
-endfunction
+			end
+		end
+	end
+end

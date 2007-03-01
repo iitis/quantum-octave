@@ -30,13 +30,13 @@ function ret =  MagicSquaresMeasure(a,b,error_probX,error_probZ,measure)
 		case { 1 } gameMtx = A1;
 		case { 2 } gameMtx = A2;
 		case { 3 } gameMtx = A3;
-	endswitch 
+	end
 
 	switch b
 		case { 1 } gameMtx = Kron(gameMtx,B1);
 		case { 2 } gameMtx = Kron(gameMtx,B2);
 		case { 3 } gameMtx = Kron(gameMtx,B3);
-	endswitch 
+	end
 	
 
 ## EVOLUTION ##
@@ -62,12 +62,14 @@ function ret =  MagicSquaresMeasure(a,b,error_probX,error_probZ,measure)
 	#quantum_operators={Dc1, Dc2, Dc3};
 
 	s0_noisy = Channel(s0, quantum_operators);
+#	s0_noisy = error_probX*Id(4)+(1-error_probX)*s0;
 	s1_noisy = Evolve(gameMtx,s0_noisy);
-	
+
 ## END OF EVOLUTION ##
+	
 	if (nargin<4)
 		measure="fid"
-	endif	
+	end	
 	ret=0;
 	if (measure=="fid")
 		ret=Fidelity(s1,s1_noisy);
@@ -78,10 +80,10 @@ function ret =  MagicSquaresMeasure(a,b,error_probX,error_probZ,measure)
 			ret=TrNorm(s1-s1_noisy);
 		endif
 	elseif (measure=="ent")
-		m=PTraceMul(s1_noisy, [1,2]);
+		m=PTraceMul(s0_noisy, [1,2]);
 		ret=Entropy(m);
 	elseif (measure=="neg")
-		ret=Negativity(s1_noisy, [3,4]);
+		ret=Negativity(s0_noisy, [1,2]);
 	elseif (measure=="prb")
 		m=Measure(s1_noisy,"ZZZZ","struct");
 		p=0;
