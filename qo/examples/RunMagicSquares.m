@@ -1,7 +1,7 @@
 function RunMagicSquares
 
-	measure="prb";
-  	error_name="dep";
+	measure="neg";
+  error_name="dep";
 	
 	for ga=[1:1]#3
 		for gb=[1:1]#3
@@ -13,7 +13,7 @@ function RunMagicSquares
 			save ("-text", name, "out");
 			#mesh(out);
 			plot(out(:,1),out(:,2));
-		endfor
-	endfor
+		end
+	end
 	
-endfunction
+end
