@@ -43,7 +43,7 @@ function ret = Channel(state,elements,targv)
 			if (isTarget(l))
 				mtx = Kron(mtx,elements{idx});
 			else
-				mtx = kron(mtx,Id);
+				mtx = Kron(mtx,Id);
 			end
 		end
 		tmp = mtx*state*mtx';
