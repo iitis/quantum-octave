@@ -37,28 +37,28 @@ else
 		norm = true;
 	else
 		why1 = "not normalize";
-	endif
+	end
 	# test if mtx = mtx'
 	if ( mtx == mtx')
 		sadj = true;
 	else
 		why2 = "not selfadjoint";
-	endif
+	end
 	# test if matrix is ppositive
 	if ( min(eig(mtx)) < 0 )
 		why3 = "not positive definde";
 	else
 		posi = true;
-	endif
-	endif
+	end
+	end
 	
 	if ( norm && sadj && posi )
 		ret = true;
-el	seif	( nargin == 2 && verb == 1 )
+ elseif	( nargin == 2 && verb == 1 )
 		printf("This matrix is not vaild state: is %s %s %s\n",why1,why2,why3);
 		ret =  false;
 	else
 	ret = false;
-endif
-endif
-endfunction
+end
+end
+end
