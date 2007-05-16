@@ -23,7 +23,7 @@ if (nargin < 1 )
 	usage ('Normalize (Ket[, ...])');
 end
 
-ret = [0];
+ret = 0;
 NARGIN = nargin;
 
 vek = varargin{1};

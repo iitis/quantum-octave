@@ -1,25 +1,25 @@
-## -*- texinfo -*-
-## @deftypefn{Function file} {} Measure(@var{state})
-## Function @code{channel} generalized quantum evolution on the state @var{state}.
-## @example
-## @group
-## Channel(State(Ket([0,1])), { sqrt(0.5)*Id(),1-sqrt(0.5)*Sz })
-##  @result{}
-##
-## @end group
-## @end example
-## @end deftypefn
-## @seealso {MeasureZ}
+%% -*- texinfo -*-
+%% @deftypefn{Function file} {} Measure(@var{state})
+%% Function @code{channel} generalized quantum evolution on the state @var{state}.
+%% @example
+%% @group
+%% Channel(State(Ket([0,1])), { sqrt(0.5)*Id(),1-sqrt(0.5)*Sz })
+%%  @result{}
+%%
+%% @end group
+%% @end example
+%% @end deftypefn
+%% @seealso {MeasureZ}
 
 function ret = Channel(state,elements,targv)
 	if (nargin>3)
-		usage("Channel (state, elements_cell_arr [,targv])");
+		usage('Channel (state, elements_cell_arr [,targv])');
 	end
 	if (!iscell(elements) )
-		error("Second argument must be a cellarray!");
+		error('Second argument must be a cellarray!');
 	end
 	
-	# dimension of the state
+	% dimension of the state
 	dim = size(state)(1);
 	qDim = log2(dim);
 	noEl = size(elements)(2);

@@ -1,13 +1,13 @@
 %% -*- texinfo -*-
 %% @deftypefn {Function file} {} IsState(@var{mtx},@var{verb})
-%% Function @code{IsPPT} returns @code{1} if matrix @var{mtx} is 
-%% vailid density matrix and @code{0} if it is not. 
+%% Function @code{IsState} returns @code{1} if matrix @var{mtx} 
+%% is vailid density matrix and @code{0} if it is not. 
 %% If the second argument  @code{verb} is set to 1, then
 %% function will inform why the entered matrix is not a state.
 %% 
 %% @example 
 %% @group
-%% IsPPT(State(Ket([0,0,0])))
+%% IsState(State(Ket([0,0,0])))
 %%  @result{} 
 %%	1
 %% @end group

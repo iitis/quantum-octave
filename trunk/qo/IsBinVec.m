@@ -18,21 +18,21 @@
 %%
 
 function ret = IsBinVec(vec)
-ret = false;
+    ret = false;
 
-if ( nargin ~= 1 )
-	usage ('IsBinVec (vector)');
-end
-
-if ( isvector(vec))
-	vs = size(vec,2);
-	for i = 1:vs
-		if ( (vec(i) ~= 1) && (vec(i) ~= 0) )
-			ret = false;
-			return;
-        end
+    if ( nargin ~= 1 )
+        usage ('IsBinVec (vector)');
     end
-	ret = true;
-end
+
+    if ( isvector(vec))
+        vs = size(vec,2);
+        for i = 1:vs
+            if ( (vec(i) ~= 1) && (vec(i) ~= 0) )
+                ret = false;
+                return;
+            end
+        end
+        ret = true;
+    end
 
 end

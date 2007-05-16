@@ -14,10 +14,10 @@
 function ret = Kron(varargin)
 
 NARGIN = nargin;
-
 ret = 1;
+
 while (NARGIN)
-	ret = kron(varargin{NARGIN},ret);
+    ret = kron(varargin{NARGIN},ret);
     NARGIN = NARGIN - 1;
 end
 
