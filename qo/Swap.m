@@ -20,6 +20,7 @@
 %%
 %% @seealso {CNot, ControlledGate}
 %%
+
 function ret = Swap(s, qubits)
 if (nargin ~=2)
 	usage('Swap(size, qubits)');

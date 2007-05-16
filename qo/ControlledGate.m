@@ -34,8 +34,6 @@ if(gatesize < max(max(contrv),max(targetv)))
 	error('Operator acts on %d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
 end
 
-
-
 proj0 = [1,0;0,0];
 proj1 = [0,0;0,1];
 

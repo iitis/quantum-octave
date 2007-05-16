@@ -10,7 +10,8 @@ end
 
 ret = eye(size(varargin{1}));
 	
-	for i=1:nargin
-		ret = ret * varargin{nargin+1 - i};
-    end
+for i=1:nargin
+    ret = ret * varargin{nargin+1 - i};
+end
+
 end

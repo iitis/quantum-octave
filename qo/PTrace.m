@@ -52,5 +52,5 @@ for i = 1:rs
 		end
 	end
 end
-save "state.dat" state
+
 end
