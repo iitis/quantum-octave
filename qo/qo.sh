@@ -10,7 +10,7 @@
 # directory, for example in your PATH.
 PWD_PATH=$(dirname $0);
 
-if [ ${PWD_PATH} == "." ]; then
+if [ ${PWD_PATH} = "." ]; then
 	QO_PATH=$(pwd);
 else
 	QO_PATH=${PWD_PATH};
