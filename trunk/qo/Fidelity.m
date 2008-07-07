@@ -14,13 +14,13 @@ if (nargin~=2)
 else 
 	sr = size(rho);
 	lrho = 0;
-	if(2.^ceil(log2(sr))==sr && sr(1)==sr(2)) % it is state
+%	if(2.^ceil(log2(sr))==sr && sr(1)==sr(2)) % it is state
 		lrho = rho;
-	elseif(2.^ceil(log2(sr))==sr && sr(1)==1) % it is state vector
-		lrho = State(rho);
-	else
-		error('First parameter must be state vector or density matrix!')
-    end
+%	elseif(2.^ceil(log2(sr))==sr && sr(1)==1) % it is state vector
+%		lrho = State(rho);
+%	else
+%		error('First parameter must be state vector or density matrix!')
+%    end
 
 	[sqrtrho,res] = sqrtm(lrho);
 	temp = sqrtrho*sigma*sqrtrho;
