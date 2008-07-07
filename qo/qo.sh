@@ -19,4 +19,6 @@ export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples:${QO_PATH}/tests
 
 export WARN_ASSIGN_AS_TRUTH_VALUE=0
 
+#~/src/octave/run-octave -p $OCTAVE_PATH
+
 octave -p $OCTAVE_PATH
