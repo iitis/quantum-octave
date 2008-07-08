@@ -9,4 +9,4 @@
 
 function ret = sz
 	ret = [1,0;0,-1];
-end
+endfunction

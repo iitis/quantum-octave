@@ -19,4 +19,4 @@
 
 function ret = state(ket)
     ret = ket*ket';
-end
+endfunction
