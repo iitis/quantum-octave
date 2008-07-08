@@ -15,7 +15,7 @@
 ## 
 
 function ret = rotz(th)
-	if (nargin!=1)
+	if (nargin!=1 || !is_scalar(th))
 		usage ("rotz(th)");
 	else
     ret = [exp(-i*th/2),0;0,exp(i*th/2)];

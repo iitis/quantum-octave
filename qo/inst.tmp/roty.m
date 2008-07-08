@@ -15,7 +15,7 @@
 ## 
 
 function ret = roty(th)
-	if (nargin!=1)
+	if (nargin!=1 || !is_scalar(th))
 		usage ("roty(th)");
 	else
     ret = [cos(th/2),-sin(th/2);sin(th/2),cos(th/2)];
