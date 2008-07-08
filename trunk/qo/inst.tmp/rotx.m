@@ -15,8 +15,8 @@
 ## 
 
 function ret = rotx(th)
-	if (nargin!=1)
-		usage ("rotx(th)");
+	if (nargin!=1 || !is_scalar(th))
+		usage ("rotx(th), th - real");
 	else
     ret = [cos(th/2),-i*sin(th/2);-i*sin(th/2),cos(th/2)];
 	endif
