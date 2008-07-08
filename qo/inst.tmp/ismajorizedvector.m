@@ -18,13 +18,13 @@
 ##
 
 function ret = ismajorizedvector(v1, v2, precision)
-	if (nargin !=2 || nargin !=3)
-		usage('ismajorizedvector(v1, v2[, epsilon]));
+	if (~(nargin==2 || nargin==3))
+		usage("ismajorizedvector(v1, v2[, epsilon])");
 	elseif ( size(v1,2) ~= size(v2,2) )
 		error ('Arguments of different size in ismajorizedvector()!');
 	else
 	if (nargin=2)
-		precision=10e-20
+		precision=10e-20;
 	endif
 		s1 = sort(v1);
 		s2 = sort(v2);
@@ -34,7 +34,7 @@ function ret = ismajorizedvector(v1, v2, precision)
 				ret = false;
 				return
 			endif
-		endif
+		endfor
 		ret = true;
 	endif
 endfunction

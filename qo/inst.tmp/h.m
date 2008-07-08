@@ -1,10 +1,10 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} H()
-## Function @code{H} returns 2x2 Hadamard matrix, that is
+## @deftypefn {Function file} {} h()
+## Function @code{h} returns 2x2 Hadamard matrix, that is
 ## 
 ## @example 
 ## @group
-## H()
+## h()
 ##  @result{} 
 ##	0.70711   0.70711
 ##	0.70711  -0.70711
@@ -13,8 +13,8 @@
 ##
 ## @end deftypefn
 ##
-## @seealso {Id, Not}
+## @seealso {id, not}
 
-function ret = H
+function ret = h
 	ret = 1/sqrt(2) * [1,1;1,-1];
 endfunction
