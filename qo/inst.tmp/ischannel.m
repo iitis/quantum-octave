@@ -3,7 +3,7 @@
 ## Function @code{applychannel} generalized quantum evolution on the state @var{state}.
 ## @example
 ## @group
-## applychannel(state(ket([0,1])), { sqrt(0.5)*Id(),(1-sqrt(0.5))*sz })
+## applychannel(state(ket([0,1])), { sqrt(0.5)*id(),(sqrt(1-0.5))*sz })
 ##  @result{}
 ##
 ## @end group
@@ -11,21 +11,22 @@
 ## @end deftypefn
 ## @seealso {}
 
-function ret = applychannel(state,elements)
-warning("function applychannel is broken")
-	if (nargin>2)
-		usage('applychannel (state, elements_cell_arr)');
+function ret = ischannel(elements)
+	if (nargin>1)
+		usage('applychannel (elements_cell_arr,state)');
 	end
 	if (!iscell(elements) )
-		error('Second argument must be a cellarray!');
+		error('First argument must be a cellarray!');
 	end
 	
 	# dimension of the state
 	noEl = size(elements)(2);
 
-	for i=[1:noEl]
-		tmp = elements{idx}*state*elements{idx}';
-		ret += tmp;
+	ret=zeros(size(elements{1}));
+
+	for idx=[1:noEl]
+		tmp = elements{idx}'*elements{idx};
+		ret = ret+tmp;
 	end
  
 end
