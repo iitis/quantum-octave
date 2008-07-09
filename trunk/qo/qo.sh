@@ -15,7 +15,7 @@ if [ ${PWD_PATH} = "." ]; then
 else
 	QO_PATH=${PWD_PATH};
 fi
-export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples:${QO_PATH}/tests
+export OCTAVE_PATH=$OCTAVE_PATH:${QO_PATH}:${QO_PATH}/examples:${QO_PATH}/inst.tmp
 
 export WARN_ASSIGN_AS_TRUTH_VALUE=0
 
