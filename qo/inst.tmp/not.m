@@ -17,4 +17,4 @@
 
 function ret = not()
 	ret = [0,1;1,0];
-end
+endfunction

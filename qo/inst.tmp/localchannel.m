@@ -42,10 +42,10 @@ endif
 		a=1;
 		for k=[1:_size]
 			if (target(k)==1)
-				op=kron(op,kraus{idx(a)});
+				op=__kron(op,kraus{idx(a)});
 				a=a+1;
 			else
-				op=kron(op,Id);
+				op=__kron(op,id);
 			endif
 		endfor
 		ret{i+1}=op;

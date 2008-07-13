@@ -13,11 +13,12 @@
 
 function ret = ischannel(elements)
 	if (nargin>1)
-		usage('applychannel (elements_cell_arr,state)');
-	end
+		help ischannel;
+		return;
+	endif
 	if (!iscell(elements) )
-		error('First argument must be a cellarray!');
-	end
+		error('ischannel: First argument must be a cellarray!');
+	endif
 	
 	# dimension of the state
 	noEl = size(elements)(2);
@@ -27,6 +28,6 @@ function ret = ischannel(elements)
 	for idx=[1:noEl]
 		tmp = elements{idx}'*elements{idx};
 		ret = ret+tmp;
-	end
+	endfor
  
-end
+endfunction

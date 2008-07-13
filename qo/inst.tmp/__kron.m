@@ -16,7 +16,7 @@ function ret = __kron(a,b)
 		help __kron
 	else
 		if (exist("quantum_octave_sparse") && quantum_octave_sparse==true)
-			ret = spkron(sparse(a),sparse(b));
+			ret = spkron(a,b);
 		else
 			ret = kron(a,b);
 		endif

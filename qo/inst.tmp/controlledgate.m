@@ -64,11 +64,11 @@ function ret = controlledgate(gatesize,gate,contrv,targetv)
 	
 	for i = 1:gatesize
 		if (flags(i) == 1)
-			tmp = kron(tmp,proj1);
+			tmp = __kron(tmp,proj1);
 		elseif (flags(i) == 2)
-			tmp = kron(tmp,gate);
+			tmp = __kron(tmp,gate);
 		elseif (flags(i) == 0)
-			tmp = kron(tmp,id(1));
+			tmp = __kron(tmp,id(1));
 		else
 			error('Internal error occured, it should never happen :-(!');
 		endif
@@ -86,17 +86,17 @@ function ret = controlledgate(gatesize,gate,contrv,targetv)
 			if (flags(i) == 1) # it is control 
 				if(perm(pi)==0)
 					pi=pi+1;
-					tmp = kron(tmp,proj0);
+					tmp = __kron(tmp,proj0);
 				elseif(perm(pi)==1)
 					pi=pi+1;
-					tmp = kron(tmp,proj1);
+					tmp = __kron(tmp,proj1);
 				else
 					error('Internal error occured, it should never happen :-(!');				
 				endif
 			elseif (flags(i) == 2) # it is target, then put id
-				tmp = kron(tmp,id(1));
+				tmp = __kron(tmp,id(1));
 			elseif (flags(i) == 0)
-				tmp = kron(tmp,id(1));
+				tmp = __kron(tmp,id(1));
 			else
 				error('Internal error occured, it should never happen :-(!');
 			endif
