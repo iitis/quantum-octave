@@ -1,7 +1,5 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {} kronp (@var{matrix}, @dots{})
-## The @code{Ket} function generates vertical complex vector from any
-## number of @var{binary_vector}s.
 ##
 ## @example
 ## @end example
@@ -12,10 +10,10 @@
 ##
 
 function ret = kronp(varargin)
-n = n;
+n = length(varargin);
 ret = 1;
 	while (n)
-			ret = kronp(varargin{n},ret);
+			ret = __kron(varargin{n},ret);
 			n = n - 1;
 	endwhile
 endfunction
