@@ -18,8 +18,9 @@
 ##
 
 function ret = evolve(evolution, state)
-if ( nargin ~= 2 )
-	usage ('evolve (untiary, state)');
-end
+	if ( nargin != 2 )
+		help evolve;
+		return;
+	endif
 	ret = evolution*state*evolution';
-end
+endfunction

@@ -14,10 +14,10 @@
 function ret = applychannel(elements, state)
 	if (nargin>2)
 		usage('applychannel (elements_cell_arr,state)');
-	end
+	endif
 	if (!iscell(elements) )
 		error('First argument must be a cellarray!');
-	end
+	endif
 	
 	# dimension of the state
 	noEl = size(elements)(2);
@@ -27,6 +27,6 @@ function ret = applychannel(elements, state)
 	for idx=[1:noEl]
 		tmp = elements{idx}*state*elements{idx}';
 		ret = ret+tmp;
-	end
+	endfor
  
-end
+endfunction
