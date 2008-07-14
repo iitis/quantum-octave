@@ -22,14 +22,14 @@ function ret = controlledgate(gatesize,gate,contrv,targetv)
 	if(nargin~=4)
 		usage('controlledgate(gatesize,gate,contrv,targetv)');
 	endif
-	if(~isscalar(gatesize))
-		error('1st parameter should be scalar!');
+	if(!isscalar(gatesize))
+		error('controlledgate: 1st parameter should be scalar!');
 	endif
 	if(size(gate)~=[2,2])
-		error('2nd parameter should be matrix 2x2!');
+		error('controlledgate: 2nd parameter should be matrix 2x2!');
 	endif
 	if(gatesize < max(max(contrv),max(targetv)))
-		error('Operator acts on #d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
+		error('controlledgate: Operator acts on %d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
 	endif
 	
 	proj0 = [1,0;0,0];

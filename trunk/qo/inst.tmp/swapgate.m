@@ -1,13 +1,13 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} swap(size, qubits)
-## Function @code{swap} returns swap operation on 
+## @deftypefn {Function file} {} swapgate(size, qubits)
+## Function @code{swapgate} returns swapgate operation on 
 ## @var{size} qubits exchanging qubits specified in 
 ## @var{qubits}. Note that exacly two qubits must be
 ## specified.
 ##
 ## @example 
 ## @group
-## swap(2,[1,2])
+## swapgate(2,[1,2])
 ##  @result{} 
 ## 1   0   0   0
 ## 0   0   1   0
@@ -21,12 +21,12 @@
 ## @seealso {cnot, controlledgate}
 ##
 
-function ret = swap(s, qubits)
+function ret = swapgate(s, qubits)
 if (nargin !=2)
-	usage('swap(size, qubits)');
+	usage('swapgate(size, qubits)');
 endif
 if (size(qubits,2)~=2)
-	error('Only exactly 2 qubits can be swaped!');
+	error('Only exactly 2 qubits can be swapgateed!');
 endif
 
 if ( ( qubits(1) > s || qubits(2) > s ))
