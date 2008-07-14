@@ -24,7 +24,7 @@ function ret = ismajorizedvector(v1, v2, precision)
 		error ('Arguments of different size in ismajorizedvector()!');
 	else
 	if (nargin=2)
-		precision=10e-20;
+		precision=10*eps;
 	endif
 		s1 = sort(v1);
 		s2 = sort(v2);

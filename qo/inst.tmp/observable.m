@@ -1,6 +1,6 @@
 %% -*- texinfo -*-
-%% @deftypefn {Function file} {} Observable(obs)
-%% Function @code{Observable} returns spectral measure 
+%% @deftypefn {Function file} {} observable(obs)
+%% Function @code{observable} returns spectral measure 
 %% for given 1 qubit observabvle
 %% 
 %% @example 
@@ -10,7 +10,7 @@
 %% @seealso {Id, Not}
 %%
 
-function ret = Observable(obs, str)
+function [_l,_vec] = observable(obs, str)
 %
 % TODO check if obs is hermietian and of size 2x2
 %
@@ -23,21 +23,21 @@ elseif (nargin == 2)
 	elseif(strcmp(str,'proj'))
 		flag=1;	
 	else
-		usage('Observable(obs[, {proj|vec}])');
+		usage('observable(obs[, {proj|vec}])');
     end
 end
 
 [V,l]=eig(obs);
 
-ret(1).l = l(1,1);
-ret(2).l = l(2,2);
+_l{1} = l(1,1);
+_l{2} = l(2,2);
 
 if(flag==1)
-	ret(1).proj = V(:,1)*V(:,1)';
-	ret(2).proj = V(:,2)*V(:,2)';
+	_vec{1} = V(:,1)*V(:,1)';
+	_vec{2}.proj = V(:,2)*V(:,2)';
 elseif(flag==0)
-	ret(1).vec = V(:,1);
-	ret(2).vec = V(:,2);
+	_vec{1}.vec = V(:,1);
+	_vec{1}.vec = V(:,2);
 else
 	error('Proble with input parameters!')
 end
