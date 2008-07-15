@@ -39,4 +39,4 @@ function ret = dec2binvec(number, len)
 	for i=1:len
 		ret(i) = str2num(temp(i));
 	endfor
-endfuncion
+endfunction
