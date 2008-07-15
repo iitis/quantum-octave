@@ -80,7 +80,7 @@ function ret = controlledgate(gatesize,gate,contrv,targetv)
 	tmp=1;
 	for j = 0:2^(size(lc,2))-2 # for each control qubit
 	#genereate permutation of 0 and 1
-	perm = Dec2BinVec(j,size(lc,2));
+	perm = dec2binvec(j,size(lc,2));
 	pi=1; # permutation index
 		for i = 1:gatesize
 			if (flags(i) == 1) # it is control 
