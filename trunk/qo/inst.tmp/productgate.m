@@ -1,6 +1,6 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} productgate(@var{size},@var{gate},@var{targetv})
-## Function @code{productgate} generates operator of size equal 2^@var{size}.
+## @deftypefn {Function file} {} productgate(@var{gatesize},@var{gate},@var{targetv})
+## Function @code{productgate} generates operator of size equal 2^@var{gatesize}.
 ## Parameter @var{gate} is 2x2 basic operator (ex. Not). Paramter
 ## @var{targetv} is list of indices of target qubits.
 ##
@@ -25,12 +25,12 @@
 ## @seealso {controlledgate, id, sx, h, phase}
 ##
 
-function ret = productgate(size,gate,targetv)
+function ret = productgate(gatesize,gate,targetv)
 	if(nargin~=3)
 		help productgate;
 		return;
 	endif
-	if(~is_scalar(size))
+	if(!is_scalar(gatesize))
 			error('productgate: 1st parameter should be scalar!');
 	endif
 	
@@ -38,8 +38,8 @@ function ret = productgate(size,gate,targetv)
 			error('productgate: 2nd parameter should be matrix 2x2!');
 	endif
 	
-	if(size < max(targetv))
-			error('productgate: Operator acts on %d qubits, max target index is %d!', size, max(targetv));
+	if(gatesize < max(targetv))
+			error('productgate: Operator acts on %d qubits, max target index is %d!', gatesize, max(targetv));
 	endif
 	if (min(targetv)<1)
 			error('productgate: Qubit index less than 0!');
@@ -54,14 +54,14 @@ function ret = productgate(size,gate,targetv)
 			tmp = id(1);
 	endif
 	
-	for i = 2:size
+	for i = 2:gatesize
 			if((idx <= length(lv)) && (lv(idx) == i))
 					tmp = __kron(tmp,gate);
 					idx=idx+1;
 			else
 					tmp = __kron(tmp,id(1));
 			endif
-	endif
+	endfor
 	
 	ret = tmp;
 	
