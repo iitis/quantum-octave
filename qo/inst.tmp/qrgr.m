@@ -18,12 +18,11 @@
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
 
-function ret = qrls(register,integer)
+function ret = qrgr(register,integer)
  	if(nargin!=2)
- 		usage('qrle(register,integer)');
+ 		usage('qrgr(register,integer)');
 		return;
  	endif
 
-	r=min([integer-1,2^length(register)-1]);
-	ret=qrin(register,[0:r]);
+	ret=qrin(register,[integer+1:2^length(register)-1]);
 endfunction
