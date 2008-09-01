@@ -14,7 +14,7 @@
 function set_quantum_octave_sparse(bool)
 	global quantum_octave_sparse;
 	if nargin!=1
-		help set_quantum_octave_sparse;
+		usage("set_quantum_octave_sparse(bool)");
 		return;
 	else
 		quantum_octave_sparse=bool;
