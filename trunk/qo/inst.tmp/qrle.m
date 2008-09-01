@@ -24,14 +24,6 @@ function ret = qrle(register,integer)
 		return;
  	endif
 
-	ret{1}=[];
-	ret{2}=[];
 	r=min([integer,2^length(register)-1]);
-	for i=[0:r] 
-# 		ret.ifpart{i+1}=setdiff(dec2binvec(i,length(register)).*register,0);
-		ret{1}(i+1)=i;
-	endfor
-	for i=[r+1:2^length(register)-1] 
-		ret{2}(i-r)=i;
-	endfor
+	ret=qrin(register,[0:r]);
 endfunction

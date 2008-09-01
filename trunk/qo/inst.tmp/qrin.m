@@ -18,12 +18,20 @@
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
 
-function ret = qrls(register,integer)
+function ret = qrin(register,intset)
  	if(nargin!=2)
- 		usage('qrle(register,integer)');
+ 		usage('qrin(register,intset)');
 		return;
  	endif
-
-	r=min([integer-1,2^length(register)-1]);
-	ret=qrin(register,[0:r]);
+	
+	ret={};
+	ret.t={};
+	ret.f={};
+	for i=[1:length(intset)]
+		ret.t{i}=setdiff(dec2binvec(intset(i),length(register)).*register,0);
+	endfor
+	cointset=complement(intset,[0:2^length(register)-1]);
+	for i=[1:length(cointset)]
+		ret.f{i}=setdiff(dec2binvec(cointset(i),length(register)).*register,0);
+	endfor	
 endfunction
