@@ -13,7 +13,7 @@
 function ret = __kron(a,b)
 	global quantum_octave_sparse;
 	if nargin!=2
-		help __kron
+		usage("__kron(a,b)");
 	else
 		if (exist("quantum_octave_sparse") && quantum_octave_sparse==true)
 			ret = spkron(a,b);
