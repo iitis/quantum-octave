@@ -20,10 +20,10 @@
 
 function ret = qrlt(register,integer)
  	if(nargin!=2)
- 		usage('qrle(register,integer)');
+ 		usage('qrlt(register,integer)');
 		return;
  	endif
 
-	r=min([integer,2^length(register)-1]);
+	r=min([integer-1,2^length(register)-1]);
 	ret=qrin(register,[0:r]);
 endfunction

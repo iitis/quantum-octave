@@ -33,5 +33,8 @@ function ret = qrin(register,intset)
 	cointset=complement(intset,[0:2^length(register)-1]);
 	for i=[1:length(cointset)]
 		ret.f{i}=setdiff(dec2binvec(cointset(i),length(register)).*register,0);
-	endfor	
+	endfor
+	ret.register=register;
+# 	ret.t=intset;
+# 	ret.f=cointset;
 endfunction
