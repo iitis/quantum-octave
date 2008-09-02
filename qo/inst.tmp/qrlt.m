@@ -18,7 +18,7 @@
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
 
-function ret = qrle(register,integer)
+function ret = qrlt(register,integer)
  	if(nargin!=2)
  		usage('qrle(register,integer)');
 		return;
