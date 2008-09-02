@@ -17,10 +17,10 @@
 ##
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
-
-function ret = qif(gatesize,contrv,ifpart,elsepart)
+#### qif(4,qrlt([1,2],5),{sx,3},{sy,4})
+function ret = qif(gatesize,contrexp,ifpart,elsepart)
  	if(nargin<3 || nargin>4)
- 		usage('qif(gatesize,contrv,ifpart,elsepart)');
+ 		usage('qif(gatesize,contrexp,ifpart,elsepart)');
 # 	endif
 # 	if(!isscalar(gatesize))
 # 		error('controlledgate: 1st parameter should be scalar!');
@@ -32,15 +32,23 @@ function ret = qif(gatesize,contrv,ifpart,elsepart)
 # 		error('controlledgate: Operator acts on %d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
  	endif
 
-	cir=controlledgate(gatesize,ifpart{1},contrv,ifpart{2});
+	cir=id(gatesize);
+	for i=[1:length(contrexp.t)]
+		if (length(contrexp.t{i})!=0)
+			cir=circuit(cir,productgate(gatesize,sx,contrexp.t{i}));
+			cir=controlledgate(gatesize,ifpart{1},contrexp.register,ifpart{2});
+			cir=circuit(cir,productgate(gatesize,sx,contrexp.t{i}));
+		endif
+	endfor
+
 	if (nargin==4)
-		for i=[1:length(contrv)] # iterate over all combinations of contrv
-			v=combs(contrv,i);
-			for j=[1:size(v)(1)]
- 				cir=circuit(cir,productgate(gatesize,sx,v(j,:)));
-			endfor
+		for i=[1:length(contrexp.f)] 
+			if (length(contrexp.f{i})!=0)
+				cir=circuit(cir,productgate(gatesize,sx,contrexp.f{i}));
+				cir=circuit(cir,controlledgate(gatesize,elsepart{1},contrexp.register,elsepart{2}));
+				cir=circuit(cir,productgate(gatesize,sx,contrexp.f{i}));
+			endif
 		endfor
-	cir=circuit(cir,controlledgate(gatesize,elsepart{1},contrv,elsepart{2}));
 	endif
  	ret=cir;
 endfunction
