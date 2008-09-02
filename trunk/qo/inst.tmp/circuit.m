@@ -16,5 +16,6 @@ function ret = circuit(varargin)
 
 	for i=1:nargin
 			ret = ret * varargin{nargin+1 - i};
+# 	varargin{nargin+1 - i}
 	endfor
 endfunction
