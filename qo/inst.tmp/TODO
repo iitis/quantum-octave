@@ -1,0 +1,6 @@
+1. Partial trace
+2. clearregister ?
+3. controlled gate with n-qubit target
+4. change evolve(gate);
+5. write registersetto(reg1,3);
+6. write collapse(reg1);
