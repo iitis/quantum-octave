@@ -1,5 +1,5 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} controlledgate(@var{size},@var{gate},@var{contrv},@var{targetv})
+## @deftypefn {Function file} {} controlledgate(@var{gate},@var{contrv},@var{targetv},@var{size},)
 ## Function @code{controlledgate} returns controled operation @var{gate} on qubits @var{targetv} 
 ## controled by @var{contrv}. Size of the result gate is given by @var{size}.
 ## @example 
@@ -18,9 +18,12 @@
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
 
-function ret = controlledgate(gatesize,gate,contrv,targetv)
-	if(nargin~=4)
-		usage('controlledgate(gatesize,gate,contrv,targetv)');
+function ret = controlledgate(gate,contrv,targetv,gatesize)
+	if nargin==3
+		gatesize=max(max(contrv, targetv))-min(min(contrv, targetv))+1;
+	endif
+	if(nargin<3)
+		usage('controlledgate(gate,contrv,targetv[,gatesize])');
 	endif
 	if(!isscalar(gatesize))
 		error('controlledgate: 1st parameter should be scalar!');
@@ -31,7 +34,8 @@ function ret = controlledgate(gatesize,gate,contrv,targetv)
 	if(gatesize < max(max(contrv),max(targetv)))
 		error('controlledgate: Operator acts on %d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
 	endif
-	
+		
+
 	proj0 = [1,0;0,0];
 	proj1 = [0,0;0,1];
 	

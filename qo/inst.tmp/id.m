@@ -26,7 +26,7 @@ function ret = id(arg)
 	if(nargin==1)
 		di = arg;
 	elseif(nargin==0)
-		di = 2;
+		di = 1;
   endif
 	
 	global quantum_octave_sparse;

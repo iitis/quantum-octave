@@ -6,7 +6,7 @@
 ##
 ## @example 
 ## @group
-## productgate(3,Not,[1,2])
+## productgate(Not,[1,2],gatesize)
 ##  @result{}
 ## 0  0  0  0  0  0  1  0
 ## 0  0  0  0  0  0  0  1
@@ -25,10 +25,13 @@
 ## @seealso {controlledgate, id, sx, h, phase}
 ##
 
-function ret = productgate(gatesize,gate,targetv)
-	if(nargin~=3)
-		help productgate;
-		return;
+function ret = productgate(gate,targetv,gatesize)
+	if nargin==2
+		gatesize=max(targetv);
+	endif
+
+	if(nargin<2)
+		usage("productgate(gate,targetv,gatesize)")
 	endif
 	if(!is_scalar(gatesize))
 			error('productgate: 1st parameter should be scalar!');
