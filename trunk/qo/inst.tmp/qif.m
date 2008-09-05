@@ -17,7 +17,7 @@
 ##
 ## @seealso {id, sx, h, rotx, roty, rotz}
 ##
-#### qif(4,qrlt([1,2],5),{sx,3},{sy,4})
+#### qif(qrlt([1,2],5),{sx,3},{sy,4})
 function ret = qif(contrexp,ifpart,elsepart,gatesize)
 	if nargin==3
 		gatesize=max(max([contrexp.register, ifpart{2}, elsepart{2}]))-min(min([contrexp.register, ifpart{2}, elsepart{2}]))+1;
@@ -39,17 +39,17 @@ function ret = qif(contrexp,ifpart,elsepart,gatesize)
 	cir=id(gatesize);
 	for i=[1:length(contrexp.t)]
 		if (length(contrexp.t{i})!=0)
-			cir=circuit(cir,productgate(gatesize,sx,contrexp.t{i}));
+			cir=circuit(cir,productgate(sx,contrexp.t{i},gatesize));
 			cir=circuit(cir,controlledgate(ifpart{1},contrexp.register,ifpart{2},gatesize));
-			cir=circuit(cir,productgate(gatesize,sx,contrexp.t{i}));
+			cir=circuit(cir,productgate(sx,contrexp.t{i},gatesize));
 		endif
 	endfor
 
 	for i=[1:length(contrexp.f)] 
 		if (length(contrexp.f{i})!=0)
-			cir=circuit(cir,productgate(gatesize,sx,contrexp.f{i}));
+			cir=circuit(cir,productgate(sx,contrexp.f{i},gatesize));
 			cir=circuit(cir,controlledgate(elsepart{1},contrexp.register,elsepart{2},gatesize));
-			cir=circuit(cir,productgate(gatesize,sx,contrexp.f{i}));
+			cir=circuit(cir,productgate(sx,contrexp.f{i},gatesize));
 		endif
 	endfor
  	ret=cir;

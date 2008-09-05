@@ -1,5 +1,5 @@
 1. Partial trace
-2. clearregister ?
+2. clearregister - done
 3. controlled gate with n-qubit target
 4. change evolve(gate);
 5. write registersetto(reg1,3);
