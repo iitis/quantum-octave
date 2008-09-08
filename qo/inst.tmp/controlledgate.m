@@ -20,7 +20,8 @@
 
 function ret = controlledgate(gate,contrv,targetv,gatesize)
 	if (nargin==3 || isempty(gatesize))
-		gatesize=length(quantum_register_allocated);
+		global quantum_octave_state;
+		gatesize=log2(size(quantum_octave_state,1));
 	endif
 	if(nargin<3 || nargin>4)
 		usage('controlledgate(gate,contrv,targetv[,gatesize])');
