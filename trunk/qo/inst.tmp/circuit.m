@@ -14,8 +14,7 @@ function ret = circuit(varargin)
 		ret = eye(size(varargin{1}));
 	endif
 
-	for i=1:nargin
+	for i=[1:nargin]
 			ret = ret * varargin{nargin+1 - i};
-# 	varargin{nargin+1 - i}
 	endfor
 endfunction

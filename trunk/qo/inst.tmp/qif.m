@@ -19,11 +19,11 @@
 ##
 #### qif(qrlt([1,2],5),{sx,3},{sy,4})
 function ret = qif(contrexp,ifpart,elsepart,gatesize)
-	if nargin==3
-		gatesize=max(max([contrexp.register, ifpart{2}, elsepart{2}]))-min(min([contrexp.register, ifpart{2}, elsepart{2}]))+1;
+	if (nargin==3 || isempty(gatesize))
+		gatesize=length(quantum_register_allocated));
 	endif
 
- 	if(nargin<3)
+ 	if(nargin<3 || nargin>4)
  		usage('qif(contrexp,ifpart,elsepart[,gatesize])');
 # 	endif
 # 	if(!isscalar(gatesize))

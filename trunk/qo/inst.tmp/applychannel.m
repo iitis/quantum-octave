@@ -20,7 +20,7 @@ function ret = applychannel(elements, state)
 	endif
 	
 	# dimension of the state
-	noEl = size(elements)(2);
+	noEl = size(elements,2);
 
 	ret=zeros(size(state));
 
@@ -28,5 +28,15 @@ function ret = applychannel(elements, state)
 		tmp = elements{idx}*state*elements{idx}';
 		ret = ret+tmp;
 	endfor
- 
+
+	if ( nargin < 1 || nargin > 3)
+		usage("evolve(evolution[, state])")
+	endif
+	if (nargin==2)
+		ret = evolution*state*evolution';
+	else
+		global quantum_octave_state;
+		quantum_octave_state = evolution*quantum_octave_state*evolution';
+	endif
+
 endfunction

@@ -1,5 +1,6 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {} evolve (@var{gate},@var{state})
+## @deftypefnx {Function File} {} evolve (@var{gate}})
 ## This function performs unitary evolution described by gate @var{gate} on the state @var{state}.
 ## 
 ## For example:
@@ -18,9 +19,13 @@
 ##
 
 function ret = evolve(evolution, state)
-	if ( nargin != 2 )
-		help evolve;
-		return;
+	if ( nargin < 1 || nargin > 3)
+		usage("evolve(evolution[, state])")
 	endif
-	ret = evolution*state*evolution';
+	if (nargin==2)
+		ret = evolution*state*evolution';
+	else
+		global quantum_octave_state;
+		quantum_octave_state = evolution*quantum_octave_state*evolution';
+	endif
 endfunction
