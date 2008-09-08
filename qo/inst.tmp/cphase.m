@@ -1,5 +1,5 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} cphase(@var{phase},@var{contrv},@var{targetv}.@var{size},)
+## @deftypefn {Function file} {} cphase(@var{phase},@var{contrv},@var{targetv},@var{size})
 ## Function @code{cphase} returns controled phase rotation by @var{phase} on qubits @var{targetv} 
 ## controled by @var{contrv}. Size of the result gate is given by @var{size}.
 ## @end deftypefn

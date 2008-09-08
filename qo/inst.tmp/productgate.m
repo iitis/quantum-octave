@@ -26,19 +26,19 @@
 ##
 
 function ret = productgate(gate,targetv,gatesize)
-	if nargin==2
-		gatesize=max(targetv);
+	if (nargin==2 || isempty(gatesize))
+		gatesize=length(quantum_register_allocated);
 	endif
 
-	if(nargin<2)
+	if(nargin<2 || nargin>3)
 		usage("productgate(gate,targetv,gatesize)")
 	endif
 	if(!is_scalar(gatesize))
-			error('productgate: 1st parameter should be scalar!');
+			error('productgate: last parameter should be scalar!');
 	endif
 	
 	if(is_square(gate)!=2)
-			error('productgate: 2nd parameter should be matrix 2x2!');
+			error('productgate: first parameter should be matrix 2x2!');
 	endif
 	
 	if(gatesize < max(targetv))

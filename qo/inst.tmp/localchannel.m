@@ -19,19 +19,19 @@
 ##
 ## TODO: doc!
 
-function ret = localchannel(_size, kraus, targetv)
-if ( nargin < 2 )
-	usage ('localchannel(size, kraus_cell_arr, [, targetv])');
-endif
-if ( nargin == 2 )
-	targetv=[1:_size];
-endif
+function ret = localchannel(kraus, targetv, chsize)
+	if (nargin==2 || isempty(chsize))
+		chsize=length(quantum_register_allocated));
+	endif
+	if ( nargin < 2 || nargin > 3)
+		usage ('localchannel(size, kraus_cell_arr, [, targetv])');
+	endif
 
-	ret_size=2^_size;
+	retchsize=2^chsize;
 	retcount=length(kraus)^length(targetv);
 
 	ret={};
-	target=zeros(1,_size);
+	target=zeros(1,chsize);
 	for k=targetv
 		target(k)=1;
 	endfor
@@ -40,7 +40,7 @@ endif
 		idx=dec2basevec(i,length(kraus),length(targetv))+1;
 		op=1;
 		a=1;
-		for k=[1:_size]
+		for k=[1:chsize]
 			if (target(k)==1)
 				op=__kron(op,kraus{idx(a)});
 				a=a+1;

@@ -18,9 +18,9 @@
 ## @seealso {sx, controlledgate}
 ##
 
-function ret = cnot(size,contrv,targetv)
-	if (nargin ~= 3) 
-		usage ('cnot (size, controls, targets)');
+function ret = cnot(contrv,targetv,gatesize)
+	if (nargin != 3) 
+		usage ('cnot (controls, targets,gatesize)');
 	endif
-	ret = controlledgate(size, sx, contrv, targetv);
+	ret = controlledgate(sx, contrv, targetv,gatesize);
 endfunction

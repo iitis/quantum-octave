@@ -21,24 +21,24 @@
 ## @seealso {cnot, controlledgate}
 ##
 
-function ret = swapgate(s, qubits)
+function ret = swapgate(qubits, gatesize)
 if (nargin !=2)
-	usage('swapgate(size, qubits)');
+	usage('swapgate(qubits, gatesize)');
 endif
 if (size(qubits,2)~=2)
-	error('Only exactly 2 qubits can be swapgateed!');
+	error('swapgate: Only exactly 2 qubits can be swapgateed!');
 endif
 
-if ( ( qubits(1) > s || qubits(2) > s ))
-	error('Qubit index out of bound!');
+if ( ( qubits(1) > gatesize || qubits(2) > gatesize ))
+	error('swapgate: Qubit index out of bound!');
 endif
 
 if (qubits(1)==qubits(2))
-	ret = id(s);
+	ret = id(gatesize);
 else
-	g1 = cnot(s, qubits(1), qubits(2));
-	g2 = cnot(s, qubits(2), qubits(1));
-	g3 = cnot(s, qubits(1), qubits(2));
+	g1 = cnot(qubits(1), qubits(2),gatesize);
+	g2 = cnot(qubits(2), qubits(1),gatesize);
+	g3 = cnot(qubits(1), qubits(2),gatesize);
 
 	ret = circuit(g1,g2,g3);
 endif

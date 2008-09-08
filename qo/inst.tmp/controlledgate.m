@@ -19,10 +19,10 @@
 ##
 
 function ret = controlledgate(gate,contrv,targetv,gatesize)
-	if nargin==3
-		gatesize=max(max(contrv, targetv))-min(min(contrv, targetv))+1;
+	if (nargin==3 || isempty(gatesize))
+		gatesize=length(quantum_register_allocated);
 	endif
-	if(nargin<3)
+	if(nargin<3 || nargin>4)
 		usage('controlledgate(gate,contrv,targetv[,gatesize])');
 	endif
 	if(!isscalar(gatesize))
