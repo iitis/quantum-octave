@@ -27,7 +27,8 @@
 
 function ret = productgate(gate,targetv,gatesize)
 	if (nargin==2 || isempty(gatesize))
-		gatesize=length(quantum_register_allocated);
+		global quantum_octave_state;
+		gatesize=log2(size(quantum_octave_state,1));
 	endif
 
 	if(nargin<2 || nargin>3)
