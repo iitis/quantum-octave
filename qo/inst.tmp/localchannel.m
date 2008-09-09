@@ -21,10 +21,11 @@
 
 function ret = localchannel(kraus, targetv, chsize)
 	if (nargin==2 || isempty(chsize))
-		chsize=length(quantum_register_allocated));
+		global quantum_octave_state;
+		chsize=log2(size(quantum_octave_state,1));
 	endif
 	if ( nargin < 2 || nargin > 3)
-		usage ('localchannel(size, kraus_cell_arr, [, targetv])');
+		usage ('localchannel(kraus_cell_arr, targetv[, chsize])');
 	endif
 
 	retchsize=2^chsize;

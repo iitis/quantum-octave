@@ -2,7 +2,7 @@
 ## @deftypefn{Function file} {} id([@var{size}])
 ## Function @code{id(@var{size})} returns 2^@var{size} x 2^@var{size} 
 ## unitary matrix - that is matrix accting on @var{size} qubits.
-## Argument is optional, if not suplied is set to 1.
+## qubitsument is optional, if not suplied is set to 1.
 ## 
 ## @example 
 ## @group
@@ -18,13 +18,12 @@
 ## @seealso {Not, H, Pase}
 ## 
 
-function ret = id(arg)
+function ret = id(qubits)
 	if(nargin>1)
-		help id;
-		return;
+		usage("id(qubits)");
 	endif
 	if(nargin==1)
-		di = arg;
+		di = qubits;
 	elseif(nargin==0)
 		di = 1;
   endif
