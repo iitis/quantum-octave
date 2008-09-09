@@ -4,12 +4,7 @@ function ret=qubitpermutation(permutation)
 		error("qubitpermutation: argument has to be vector containing uniq instatnces of 1 ... N")
 	endif
 
-	global quantum_octave_sparse;
-	if (exist("quantum_octave_sparse") && quantum_octave_sparse==true)
-		ret= sparse(2^N,2^N);
-	else
-		ret= zeros(2^N);
-	endif
+	ret=qzeros(2^N);
 	for i=[0:2^N-1]
 		old=dec2binvec(i,N);
 		new=zeros(1,N);

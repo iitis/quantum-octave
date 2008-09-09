@@ -1,7 +1,7 @@
 ## -*- texinfo -*-
-## @deftypefn {Function file} {} PTrace(state, targv)
+## @deftypefn {Function file} {} ptrace(state, targv)
 ## Function @code{PTrace} returns density matrix obtained
-## from matrix @var{state} by tracing out subspace of qubits
+## from matrix @var{state} by tracing out subspace of targv
 ## listed in @var{targv}. This function uses matrix 
 ## multiplication.
 ##
@@ -19,38 +19,32 @@
 ## @seealso {ProductGate, PTranspose}
 ##
 
-function ret = ptrace(state,tqidx)
-if ( nargin ~= 2 )
-	usage ('PTraceMul (state, trace_qubits)');
-end
-
-targv = sort(tqidx); # must be sorted!
-
-ss = size(state,2); # dimension of matrix state - always power of 2
-sq = log2(ss); # number of qubits in matrix state
-
-tq = size(targv,2); # number of qubits to trace-out
-ts = 2^tq; # dimension of space to trace out
-
-rq = sq - tq; # calculate number of qubits in returned density matrix
-rs = 2^rq; # calculate size of returned density matrix
-
-ret = zeros (rs); # initialise returned density matrix
-
-# loop over every matrix emelent of returned density matrix
-for i = 1:rs
-	for j = 1:rs
-		bi = dec2binvec(i-1,rq); # those have to be row vectors
-		bj = dec2binvec(j-1,rq);
-
-	# sum loop over elements of targv list
-		for k = 0:ts-1
-			bk = dec2binvec(k,tq);
-			BRA = ket(binvec(targv,bk,bi,sq))';
-			KET = ket(binvec(targv,bk,bj,sq));
-			ret(i,j) = ret(i,j) + BRA*(state*KET);
-		end
+function ret = ptrace(state,targv)
+	if ( nargin ~= 2 )
+		usage ('ptrace(state,targv)');
 	end
-end
 
-end
+	dimb=2^length(targv);
+	dima=size(state,2)/(dimb);
+
+	ntargv=log2(size(state,2));
+	perm=[complement(targv,[1:ntargv]) targv];
+	
+	pm=qubitpermutation(perm);
+	
+	state=evolve(pm,state);
+	
+	ret=qzeros(dima);
+	
+	for i=[1:dima]
+		for j=[1:dimb]
+			for k=[1:dima]
+				l=j;
+				x=(i-1)*dimb+j;
+				y=(k-1)*dimb+l;
+				ret(i,k)=ret(i,k)+state(x,y);
+			endfor
+		endfor
+	endfor
+
+endfunction
