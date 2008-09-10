@@ -8,19 +8,22 @@ function ret=noisyrandomwalk(walkersize,steps,channelname,p)
 	# initialization
 	ret=zeros(2^walkersize,steps);
 	if (nargin==2)
-		for i=[1:steps]
-			ret(:,i)=measurecompbasis(ptrace(st,[1]));
+		ret(:,1)=measurecompbasis(ptrace(st,[1]));
+		for i=[2:steps]
 			st=evolve(productgate(h,1,walkersize+1),st);
 			st=evolve(W,st);
+			ret(:,i)=measurecompbasis(ptrace(st,[1]));
 		endfor
 	endif
 
 	if (nargin==4)
-		for i=[1:steps]
-			st=applychannel(localchannel(channel(channelname,p),[1],walkersize+1), st);
-			ret(:,i)=measurecompbasis(ptrace(st,[1]));
+		ret(:,1)=measurecompbasis(ptrace(st,[1]));
+		for i=[2:steps]
 			st=evolve(productgate(h,1,walkersize+1),st);
 			st=evolve(W,st);
+			st=applychannel(localchannel(channel(channelname,p),[1],walkersize+1), st);
+			ret(:,i)=measurecompbasis(ptrace(st,[1]));
 		endfor
 	endif
+	ret=abs(ret);
 endfunction
