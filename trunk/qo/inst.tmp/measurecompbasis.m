@@ -21,9 +21,14 @@
 ## 
 
 function ret = measurecompbasis(state)
-	if ( nargin != 1 )
+	if ( nargin > 1 )
 		usage ('measurecompbasis(state)');
 	endif
+	if ( nargin == 0 )
+		global quantum_octave_state;
+		state = quantum_octave_state;
+	endif
+
 	if(issquare(state))
 		ret=diag(state);
 	elseif(isvector(state))

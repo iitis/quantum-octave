@@ -19,10 +19,6 @@
 ##
 #### qif(qrlt([1,2],5),{sx,3},{sy,4})
 function ret = qif(contrexp,ifpart,elsepart,gatesize)
-	if (nargin==3 || isempty(gatesize))
-		gatesize=length(quantum_register_allocated));
-	endif
-
  	if(nargin<3 || nargin>4)
  		usage('qif(contrexp,ifpart,elsepart[,gatesize])');
 # 	endif
@@ -35,21 +31,35 @@ function ret = qif(contrexp,ifpart,elsepart,gatesize)
 # 	if(gatesize < max(max(contrv),max(targetv)))
 # 		error('controlledgate: Operator acts on %d qubits, max control index is %d, max target index is %d!', gatesize, max(contrv), max(targetv));
  	endif
+	GATE=1;
+	TARGET=2;
+	REGISTER=contrexp.register;
+	if (nargin==3 || isempty(gatesize))
+		global quantum_register_allocated ;
+		gatesize=length(quantum_register_allocated);
+	endif
 
 	cir=id(gatesize);
+
 	for i=[1:length(contrexp.t)]
-		if (length(contrexp.t{i})!=0)
-			cir=circuit(cir,productgate(sx,contrexp.t{i},gatesize));
-			cir=circuit(cir,controlledgate(ifpart{1},contrexp.register,ifpart{2},gatesize));
-			cir=circuit(cir,productgate(sx,contrexp.t{i},gatesize));
+		s=setdiff(REGISTER,contrexp.t{i});
+		if (length(s)!=0)
+ 			cir=circuit(cir,productgate(sx,s,gatesize));
 		endif
-	endfor
+		cir=circuit(cir,controlledgate(ifpart{GATE},REGISTER,ifpart{TARGET},gatesize));
+		if (length(s)!=0)
+			cir=circuit(cir,productgate(sx,s,gatesize));
+		endif
+endfor
 
 	for i=[1:length(contrexp.f)] 
-		if (length(contrexp.f{i})!=0)
-			cir=circuit(cir,productgate(sx,contrexp.f{i},gatesize));
-			cir=circuit(cir,controlledgate(elsepart{1},contrexp.register,elsepart{2},gatesize));
-			cir=circuit(cir,productgate(sx,contrexp.f{i},gatesize));
+		s=setdiff(REGISTER,contrexp.f{i});
+		if (length(s)!=0)
+ 			cir=circuit(cir,productgate(sx,s,gatesize));
+		endif
+			cir=circuit(cir,controlledgate(elsepart{GATE},REGISTER,elsepart{TARGET},gatesize));
+		if (length(s)!=0)
+ 			cir=circuit(cir,productgate(sx,s,gatesize));
 		endif
 	endfor
  	ret=cir;
