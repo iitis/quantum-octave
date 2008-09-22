@@ -12,20 +12,31 @@
 ## @seealso {}
 
 function ret = applychannel(elements, state)
-	if (nargin>2)
+if (nargin>2)
 		usage('applychannel (elements_cell_arr,state)');
 	endif
 	if (!iscell(elements) )
 		error('First argument must be a cellarray!');
-	endif
-	
+	endif	
+
 	# dimension of the state
 	noEl = size(elements,2);
 
-	ret=zeros(size(state));
-
-	for idx=[1:noEl]
-		tmp = elements{idx}*state*elements{idx}';
-		ret = ret+tmp;
-	endfor
+	if (nargin==1 || isempty(state))
+		global quantum_octave_state;
+		state=quantum_octave_state;
+		
+		tmp=qzeros(size(state,1));
+		
+		for idx=[1:noEl]
+			tmp += elements{idx}*quantum_octave_state*elements{idx}';
+		endfor
+		quantum_octave_state=tmp;
+	else
+		ret=qzeros(size(state));
+	
+		for idx=[1:noEl]
+			ret += elements{idx}*state*elements{idx}';
+		endfor
+	endif
 endfunction
