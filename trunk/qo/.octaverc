@@ -1,0 +1,2 @@
+addpath("inst.tmp");
+addpath("examples");

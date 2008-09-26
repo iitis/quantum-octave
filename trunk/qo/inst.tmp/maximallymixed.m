@@ -15,13 +15,12 @@
 ## @seealso {}
  
 
-function ret = maximallymixed(_size)
+function ret = maximallymixed(n)
 	if( nargin == 1)
-		di = _size;
-		ret = (1/2^di)*eye(2^di);
+		ret = (1/2^n)*id(n);
 	elseif( nargin == 0)
-		ret = (1/2)*eye(2);
+		ret = (1/2)*id(1);
 	else
 		usage('maximallymixed([qubits])')
 	endif
-endif
+endfunction
