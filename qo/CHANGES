@@ -1,0 +1,8 @@
+quantum-octave (0.2.0)
+	* major changes in file names - all name are in lower case
+	* added features for operating on quantum registers
+	-- Piotr Gawron <piotr_gawron@sf.net>
+
+	* files moved to main directory
+	* some old files (eg. BFunToCirc, Measure) removed
+	-- Jarek Miszczak <jarekadam@sf.net>
