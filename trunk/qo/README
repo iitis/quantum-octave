@@ -8,7 +8,7 @@ You can download the package from the project home page.
 
 	http://quantum-octave.sf.net/ 
 
-or using SourceForge CVS service.
+or using SourceForge SVN service.
 
 Instalation
 ^^^^^^^^^^^
@@ -23,25 +23,8 @@ Users of bash compatible shell should type
 
 	export OCTAVE_PATH=$OCTAVE_PATH:/path/to/quantum-octave:/path/to/quantum-octave/examples
 
-Package was tested with GNU Ocatve versions 2.1.35 and 2.1.35. We encourage you to use the newest
-version available.
-
-Available functions
-^^^^^^^^^^^^^^^^^^^
-
-Here we list the most important function implemented in quantum-octave. You can find more 
-detailed listing in documentation.
-
-- Construction of quantum states: Ket, KetN, State, MixStates,
-- Construction of quantum circuit: Id, ProductGate, ControlledGate, RotX, RotY, RotZ, Pase
-- Testing: IsState, IsPositive, IsPPT,
-- Useful constants: PhiP, PhiM, PsiP, PsiM, H, Not, Sx, Sy, Sz, 
-- Analysis of entanglement: Entropy, Negativity, TrNorm
-- Error codes: Encode, Recover, Decode
-- Operations: PTrace, PTranspose, Measure, MeasureZ
-
-If you thing that that some function should be added to this list send an e-mail to authors.
-
+Package was tested with GNU Ocatve versions 3.1 and some function may not work
+with older version of GNU Octave.
 
 Contact
 ^^^^^^^
@@ -50,5 +33,4 @@ Any suggestions should be directed to authors:
 piotr_gawron (at) users sf net
 jarekadam (at) users sf net
 
-Last modyfication: 
-Sat Mar 27 18:36:45 UTC 2004
+Last modyfication: Mon Jul 13 09:19:07 CEST 2009
