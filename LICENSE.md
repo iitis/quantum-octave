@@ -1,5 +1,3 @@
-MIT License (MIT)
-
 Copyright (c) 2003-2018 Piotr Gawron, Jarosław Adam Miszczak, Institute of
 Theoretical and Applied Informatics, Polish Academy of Sciences.
 
