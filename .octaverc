@@ -1,4 +1,2 @@
-addpath("inst.tmp");
+addpath("src");
 addpath("examples");
-addpath("tests");
-addpath("tests/localrange2x2");
