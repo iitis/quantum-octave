@@ -2,13 +2,14 @@
 
 ```QuantumOctave``` is a set of GNU Octave functions for doing simulations of quantum computers (ie. finite-dimensional quantum systems).  It provides means to operate on registers, build complex quantum gates and perform calculations with mixed states. Most functions utilize only basic algebraic operation and should work with Matlab® as well.
 
+**Note** This package is not mainteined anymore.
+
 # Installation
 
 To use quantum-octave you need [GNU Octave](http://www.octave.org/) or [MathWorks Matlab](https://www.mathworks.com/products/matlab.html).
 
 
-Package was tested with GNU Ocatve versions 3.1 and some function may not work
-with older version of GNU Octave.
+Package was tested with GNU Ocatve versions 3.1 and some function may not work with older version of GNU Octave.
 
 Package source code can be downloaded from Github
 
@@ -22,8 +23,7 @@ In GNU Octave use ```addpath``` to use the package
 addpath <download-dir>/quantum-octave/src
 ```
 
-Alternatively you can start Octave in the ```<download-dir>/quantum-octave```
-directory where ```.octaverc``` file is located.
+Alternatively you can start Octave in the ```<download-dir>/quantum-octave``` directory where ```.octaverc``` file is located.
 
 # Documentation
 
