@@ -14,7 +14,7 @@ Package was tested with GNU Ocatve versions 3.1 and some function may not work w
 Package source code can be downloaded from Github
 
 ```
-git clone git@github.com:ZKSI/quantum-octave.git
+git clone git@github.com:iitis/quantum-octave.git
 ```
 
 In GNU Octave use ```addpath``` to use the package
