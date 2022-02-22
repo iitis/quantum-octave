@@ -2,7 +2,7 @@
 
 ```QuantumOctave``` is a set of GNU Octave functions for doing simulations of quantum computers (ie. finite-dimensional quantum systems).  It provides means to operate on registers, build complex quantum gates and perform calculations with mixed states. Most functions utilize only basic algebraic operation and should work with Matlab® as well.
 
-**Note** This package is not mainteined anymore.
+**Note:** This package is not maintained anymore. For the alternative see: [QI package for Mathematica](https://github.com/iitis/qi). 
 
 # Installation
 
